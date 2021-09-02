@@ -1,0 +1,498 @@
+html, body{
+    margin:0;
+    padding: 0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    background-color:rgb(242, 242, 242);
+}
+
+.header{
+    width: 100%;
+    background:rgb(8, 63, 181);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+    padding:6px;
+    font-weight:bolder;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("assets/shop.jpg");
+    background-size: cover;
+    padding-top: 6%;
+    padding-bottom: 6%;
+    height: 70px;
+}
+
+.main h1{
+    padding:15px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size:100px;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1861ff, 0 0 30px #1861ff, 0 0 40px #1861ff, 0 0 55px #1861ff, 0 0 75px #1861ff;
+}
+.titre{
+    color:white;
+    font-weight:bolder;
+    font-size:20px;
+}
+.deco{
+    display:flex;
+    padding:10px 10px;
+    border-radius:7px;
+    background-color:rgb(8, 63, 181);
+    text-align: center;
+    text-transform:uppercase;
+}
+
+.btn-deco{
+    padding:20px 10px;
+    text-decoration:none;
+    color:white;
+}
+.btn-deco:hover{
+    background-color:rgb(14, 78, 216);
+    border-radius:5px;
+}
+/*---barre de recherche---*/
+.formSearch{
+    width:40%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.searchBar{
+    padding:10px;
+    width:90%;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid rgb(8, 63, 181);
+    border-right:none;
+}
+.imgSearch{
+    width:24px;
+    position: relative;
+    top:2px;
+}
+.formSearch button{
+    border:1px solid rgb(8, 63, 181);
+    border-radius:0px 5px 5px 0px;
+    height:37px;
+    cursor:pointer;
+}
+
+
+/*----menu categorie---*/
+.categorie{
+    width:100%;
+    font-size:13px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color:rgb(8, 63, 181);
+    
+}
+.categorie a{
+    text-decoration:none;
+    color:white;
+    width: 100%;
+    padding:7px 0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.categorie a:hover{
+    background-color:rgb(14, 78, 216);
+}
+.categorie a div{
+    height:100%;
+}
+/*-------formulaire----------*/
+.inscription form, .connexion form{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.inscription, .connexion{
+    width:45%;
+}
+
+.form{
+    margin:20px 0px 57px 0px;
+    padding-bottom:10px;
+    width:60%;
+    border-radius:15px;
+    margin-left:auto;
+    margin-right:auto;
+    background:rgb(36, 36, 36);
+    display:flex;
+    justify-content:center;
+}
+
+input{
+    margin-top:5px;
+    margin-bottom:5px;
+    border-radius:5px;
+    padding:5px;
+}
+.connexionTitle{
+    text-align:center;
+    color:white;
+    margin:19px 0px 5px 0px;
+}
+/*--------------BOUTIQUE.PHP------------*/
+
+.shop{
+    display:flex;
+}
+.sidebar{
+    width: 15%;
+    border-top:1px solid black;
+}
+/*carte produit*/
+.produits{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    width:85%;
+    grid-column-gap: -1px;
+    /*grid-column-gap: 2%;*/
+    /*grid-template-rows: 18%;*/
+    /*margin:0px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;*/
+}
+
+.card{
+    grid-area:'body';
+    display:flex;
+    flex-direction:column;
+    /*justify-content: space-around;*/
+    align-items: center;
+    width:100%;
+    border-top:1px solid black;
+    border-left:1px solid black;
+   /* margin-top:10px;
+    padding:10px;*/
+    /*border-radius:8px;*/
+}
+.haut{
+    width:100%;
+    padding-bottom:10px;
+    display:flex;
+    justify-content:center;
+}
+
+.haut img{
+    width:auto;
+    max-height:200px;
+    min-height:200px;
+    margin-top:10px;
+}
+
+.bas{
+    width: 85%;
+    display: flex;
+    justify-content:flex-end;
+    flex-direction: column;
+}
+
+.titre_boutique{
+    text-align:center;
+    color:rgb(8, 63, 181);
+    font-size:35px;
+}
+
+.detailLink{
+    width:50px;
+    margin-bottom:5px;
+    padding: 10px 5px;
+    text-decoration:none;
+    border-radius:10px;
+    align-items:center;
+    background-color:rgb(8, 63, 181);
+    color:white;
+}
+.bas h3{
+    margin:10px 0px;
+}
+.bas p{
+    margin:10px 0px;
+}
+.detail{
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+    bottom:2%;
+}
+.btnDetail{
+    display:flex;
+    align-items:center;
+}
+
+/*--------------ARTICLE.PHP-------------*/
+.allArticle{
+    width:70%;
+    margin: 25px auto;
+    padding-bottom:30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.imgArticle{
+    width:40%;
+}
+.imgArticle img{
+    width:100%;
+    max-height:500px;
+}
+.descArticle{
+    width: 30%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.formPanier select{
+    border-radius:4px;
+    padding:4px;
+    cursor:pointer;
+}
+.formPanier input{
+    padding:6px;
+    border: none;
+    background-color:rgb(192, 1, 1);
+    color:white;
+    font-weight:bolder;
+    cursor:pointer;
+    margin-left:10px;
+}
+/*---details article---*/
+.descArticle h2{
+    margin:20px 0px 5px 0px;
+}
+.articleName,.articleBrand,.articlePrize,.articleDesc{
+    margin:0px;
+}
+.articleBrand{
+    font-size:12px;
+    margin-bottom:15px;
+}
+.articlePrize{
+    margin-bottom:15px;
+}
+.articlePrize span{
+    font-weight:bolder;
+    color:rgb(194, 4, 4);
+}
+.articleDesc{
+    margin-bottom:15px;
+}
+/*---Similiar Product----*/
+
+.similarProduct{
+    width:80%;
+    margin:0px auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+}
+.similarProduct a{
+    text-decoration:none;
+    color:black;
+}
+.similarProduct h4{
+    margin:20px 0px 5px 0px;
+}
+
+.similar{
+    padding:20px;
+}
+
+.similarTop{
+    
+}
+.similarTop img{
+    width:auto;
+    min-height:150px;
+    max-height:150px;
+}
+.similarBottom{
+
+}
+.similarBottom .articlePrize{
+    color:rgb(194, 4, 4);
+    font-weight:bolder;
+}
+
+/******CRUD*******/
+/*------------ADMIN.PHP----------*/
+.userTitle{
+    text-align:center;
+}
+.goShop{
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+}
+.goShop div{
+    background-color: rgb(8, 63, 181);
+    width:60%;
+    margin:0% auto;
+    padding:15px 0px;
+    border-radius:10px;
+
+}
+/*---liste user admin.php---*/
+.usertab{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid black;
+    border-bottom:none;
+}
+.ligne{
+    height:35px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid black;
+}
+.email , .role{
+    display:inline-block;
+    width:20%;
+    text-align:center;
+}
+.modifier, .supprimer, .bannir{
+    width:18%;
+    padding:5px;
+    text-decoration:none;
+    display:inline-block;
+    text-align:center;
+    margin: 0% 1%;
+    border-radius:5px;
+}
+.modifier{
+    background-color:rgb(0, 67, 213);
+    color:white;
+    font-weight:bolder;
+}
+.supprimer{
+    background-color:rgb(206, 0, 0);
+    color:white;
+    font-weight:bolder;
+}
+.bannir{
+    background-color:rgb(43, 43, 43);
+    color:white;
+    font-weight:bolder;
+}
+
+/*-----------Modifier.php--------------*/
+.tabUser{
+    display:flex;
+    justify-content:space-around;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid black;
+    border-radius:10px;
+}
+.afficherUser{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.modifEmail{
+    margin:10px 0px;
+}
+.modifRole{
+    margin:16px 0px;
+}
+.submit{
+    margin-bottom:16px;
+}
+
+/*---------Supprimer.php-----------*/
+.deletetab{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    border:1px solid black;
+    border-radius: 10px;
+}
+.deleteBtn{
+    margin-bottom:21px;
+    padding:15px 40px;
+    border:1px solid rgb(206,0,0);
+    background-color:rgb(206,0,0);
+    font-weight:bolder;
+    color:white;
+    cursor: pointer;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:12px;
+}
+.deleteForm{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.retourAccueil{
+    display:flex;
+    justify-content: center;
+}
+
+/*---------bannir.php-----------*/
+.bantab{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    border:1px solid black;
+    border-radius: 10px;
+}
+.banBtn{
+    margin-bottom:21px;
+    padding:15px 40px;
+    border:1px solid rgb(43, 43, 43);
+    background-color:rgb(43, 43, 43);
+    font-weight:bolder;
+    color:white;
+    cursor: pointer;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:12px;
+}
+.banForm{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/*------------footer-------------*/
+footer{
+    background-color:rgb(8, 63, 181);
+}
+footer p{
+    padding:15px;
+    margin:0px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size:100px;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1861ff, 0 0 30px #1861ff, 0 0 40px #1861ff, 0 0 55px #1861ff, 0 0 75px #1861ff;
+}
