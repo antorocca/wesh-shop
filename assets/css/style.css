@@ -161,7 +161,7 @@ input{
 /*carte produit*/
 .produits{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;
     width:85%;
     grid-column-gap: -1px;
     /*grid-column-gap: 2%;*/
@@ -176,11 +176,11 @@ input{
     grid-area:'body';
     display:flex;
     flex-direction:column;
-    /*justify-content: space-around;*/
+    justify-content: space-between;
     align-items: center;
     width:100%;
-    border-top:1px solid black;
-    border-left:1px solid black;
+    border-top:1px solid rgb(100, 100, 100);
+    border-left:1px solid rgb(100, 100, 100);
    /* margin-top:10px;
     padding:10px;*/
     /*border-radius:8px;*/
@@ -202,7 +202,7 @@ input{
 .bas{
     width: 85%;
     display: flex;
-    justify-content:flex-end;
+    justify-content:end;
     flex-direction: column;
 }
 
@@ -238,6 +238,9 @@ input{
     display:flex;
     align-items:center;
 }
+hr{
+    margin:0px;
+}
 
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
 .allArticle{
@@ -251,7 +254,8 @@ input{
     width:40%;
 }
 .imgArticle img{
-    width:100%;
+    width:auto;
+    min-height:500px;
     max-height:500px;
 }
 .descArticle{
@@ -296,7 +300,7 @@ input{
 .articleDesc{
     margin-bottom:15px;
 }
-/*--------------------Similiar Product-----------------*/
+/*--------------------Similar Product-----------------*/
 
 .similarProduct{
     width:80%;

@@ -80,8 +80,9 @@ $resultat = $select->fetchAll();
                     </div>';
                 }
                 ?>
+                
             </section>
-        </main>
+        </main><hr>
         <br>
         <?php include('footer.php'); ?>
 
