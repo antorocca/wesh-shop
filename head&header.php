@@ -21,7 +21,7 @@
             <div class="deco">
                 <?php
                 if(empty($_SESSION)){
-                    echo '<a href="connexion.php">S\'inscrire / Se connecter</a>';
+                    echo '<a class="btn-deco" href="connexion.php">S\'inscrire / Se connecter</a>';
                 }else{
                     echo '<a class="btn-deco" href="logout.php">' . $_SESSION['email'] . '<br>Se déconnecter</a>';
                 }
