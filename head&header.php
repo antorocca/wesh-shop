@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         <title>Document</title>
     </head>
     <body>
@@ -15,7 +15,7 @@
 
             <form action="#" method="get" class="formSearch">
                 <input class="searchBar" type="search" name="search">
-                <button type="submit" name="submitSearch"><img class="imgSearch" src="assets/kisspng-computer-icons-magnifier-magnifying-glass-clip-art-lupe-5b4c85ec67c638.1343363915317416764251.png" alt="loupe"></button>
+                <button type="submit" name="submitSearch"><img class="imgSearch" src="assets/picture/kisspng-computer-icons-magnifier-magnifying-glass-clip-art-lupe-5b4c85ec67c638.1343363915317416764251.png" alt="loupe"></button>
             </form>
 
             <div class="deco">

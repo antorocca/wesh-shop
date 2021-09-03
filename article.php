@@ -24,7 +24,7 @@
 
 <div class="allArticle">
     <div class='imgArticle'>
-        <img src="assets/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
+        <img src="assets/picture/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
     </div>
     <div class="descArticle">
         <h2><?php echo $article[1] ?></h2>
@@ -56,7 +56,7 @@
             echo '<a href="article.php?id=' . $similar['id'] .'">
             <div class="similar">
                 <div class="similarTop">
-                    <img src="assets/' .  $similar['photo'] . '" alt="">
+                    <img src="assets/picture/' .  $similar['photo'] . '" alt="">
                 </div>
                 <div class="similarBottom">
                     <h4>' . $similar['1'] . '</h4>

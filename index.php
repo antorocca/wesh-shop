@@ -42,7 +42,7 @@ $resultat = $select->fetchAll();
                     echo '
                     <div class="card">
                         <div class="haut">
-                            <img src="assets/' .  $article['photo'] . '" alt="">
+                            <img src="assets/picture/' .  $article['photo'] . '" alt="">
                         </div>
                         <div class="bas">';
                             if(strlen($article['nom'])>20){

@@ -26,7 +26,7 @@ html, body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-image: url("assets/shop.jpg");
+    background-image: url("../picture/shop.jpg");
     background-size: cover;
     padding-top: 6%;
     padding-bottom: 6%;
