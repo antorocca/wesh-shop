@@ -63,7 +63,7 @@ html, body{
     background-color:rgb(14, 78, 216);
     border-radius:5px;
 }
-/*---barre de recherche---*/
+/*-------------barre de recherche-------------------*/
 .formSearch{
     width:40%;
     display:flex;
@@ -90,7 +90,7 @@ html, body{
 }
 
 
-/*----menu categorie---*/
+/*------------------menu categorie-------------*/
 .categorie{
     width:100%;
     font-size:13px;
@@ -115,7 +115,7 @@ html, body{
 .categorie a div{
     height:100%;
 }
-/*-------formulaire----------*/
+/*-------------------formulaire-----------------*/
 .inscription form, .connexion form{
     display:flex;
     flex-direction: column;
@@ -149,7 +149,7 @@ input{
     color:white;
     margin:19px 0px 5px 0px;
 }
-/*--------------BOUTIQUE.PHP------------*/
+/*----------------------------------------BOUTIQUE.PHP---------------------------------------*/
 
 .shop{
     display:flex;
@@ -239,7 +239,7 @@ input{
     align-items:center;
 }
 
-/*--------------ARTICLE.PHP-------------*/
+/*-----------------------------------------ARTICLE.PHP---------------------------------*/
 .allArticle{
     width:70%;
     margin: 25px auto;
@@ -275,7 +275,7 @@ input{
     cursor:pointer;
     margin-left:10px;
 }
-/*---details article---*/
+/*----------------details article----------------*/
 .descArticle h2{
     margin:20px 0px 5px 0px;
 }
@@ -296,7 +296,7 @@ input{
 .articleDesc{
     margin-bottom:15px;
 }
-/*---Similiar Product----*/
+/*--------------------Similiar Product-----------------*/
 
 .similarProduct{
     width:80%;
@@ -333,8 +333,8 @@ input{
     font-weight:bolder;
 }
 
-/******CRUD*******/
-/*------------ADMIN.PHP----------*/
+/*******************CRUD***********************/
+/*------------------------------------ADMIN.PHP--------------------------------*/
 .userTitle{
     text-align:center;
 }
@@ -352,7 +352,7 @@ input{
     border-radius:10px;
 
 }
-/*---liste user admin.php---*/
+/*---------------liste user admin.php------------*/
 .usertab{
     width:80%;
     margin-left:auto;
@@ -396,7 +396,7 @@ input{
     font-weight:bolder;
 }
 
-/*-----------Modifier.php--------------*/
+/*---------------------Modifier.php----------------------*/
 .tabUser{
     display:flex;
     justify-content:space-around;
@@ -421,7 +421,7 @@ input{
     margin-bottom:16px;
 }
 
-/*---------Supprimer.php-----------*/
+/*----------------------Supprimer.php---------------------*/
 .deletetab{
     width:70%;
     margin-left:auto;
@@ -454,7 +454,7 @@ input{
     justify-content: center;
 }
 
-/*---------bannir.php-----------*/
+/*----------------------bannir.php------------------------*/
 .bantab{
     width:70%;
     margin-left:auto;
@@ -484,7 +484,7 @@ input{
 }
 
 
-/*------------footer-------------*/
+/*-----------------------------------------FOOTER.php---------------------------------------*/
 footer{
     background-color:rgb(8, 63, 181);
 }
