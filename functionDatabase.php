@@ -1,7 +1,7 @@
 <?php
     class Database{
 
-        private static $dbName = 'wesh';
+        private static $dbName = 'wesh-shop';
         private static $dbHost = 'localhost';
         private static $dbUserName = 'root';
         private static $dbUserPassword = '';

@@ -4,18 +4,13 @@ session_start();
         header('Location: logout.php');
     }
 
-    try{
-        $bdd= new PDO("mysql:host=localhost;dbname=wesh","root", "");
-    }
-    catch(PDOException $e){
-        echo $e->getMessage();
-    }
-
+    require_once 'functionDatabase.php';
     /*$select = $bdd->prepare('SELECT * FROM user');
     $select->execute();
     
     $resultat = $select->fetchAll();*/  
     /*--------------CA ↑ pour appeler simplement OU ca ↓ pour pouvoit trier par odre alphabetique----------*/
+    $bdd = Database::connect();
     $list = $bdd ->query('SELECT * FROM user ORDER BY role ASC');
     $userList = $list->fetchAll();
 ?>
@@ -53,9 +48,50 @@ session_start();
         }
     } ?>
     </div>
-    <br><br>
+    <br>
     <a class="goShop" href="index.php"><div>Aller dans la boutique</div></a>
-    <br><br>
+    <br>
+    <h3 class="addTitle">Ajouter un article</h3>
+    <div class="addTable">
+        <div class="addArticle">
+            <form action="" method="post">
+                <label for="">Nom:</label>
+                    <input type="text" name="articleName">
+                <label for="">Description:</label>
+                    <textarea name="articleDescription" id="" cols="30" rows="8"></textarea>
+                <label for="">Ajouter une photo:</label>
+                    <input type="text" name="">
+                <label for="">Prix:</label>
+                    <input type="text" name="articlePrize">
+                <label for="">Stock:</label>
+                    <input type="text" name="articleStock">
+                <label for="">Marque:</label>
+                    <input type="text" name="ArticleBrand">
+                <label for="">Type:</label>
+                    <select id="" name="articleType">
+                        <option value="">Art (sculpture, peinture, dessin...)</option>
+                        <option value="">Ameublement</option>
+                        <option value="">Animalerie</option>
+                        <option value="">Bijoux</option>
+                        <option value="">Boisson</option>
+                        <option value="">Décoration</option>
+                        <option value="">Épicerie</option>
+                        <option value="">Jeu de société</option>
+                        <option value="">Jeux-vidéo</option>
+                        <option value="">Jouet</option>
+                        <option value="">Musique</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value="">Vêtement</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                <input type="submit">
+
+            </form>
+        </div>
+    </div>
+    <br>
     <?php include('footer.php'); ?>
 
     

@@ -109,7 +109,6 @@ html, body{
     justify-content:space-evenly;
     align-items: center;
     background-color:rgb(8, 63, 181);
-    
 }
 .categorie a{
     text-decoration:none;
@@ -417,6 +416,26 @@ hr{
     background-color:rgb(43, 43, 43);
     color:white;
     font-weight:bolder;
+}
+
+/*------------Ajouter un article------------*/
+.addTitle{
+    text-align:center;
+}
+.addTable{
+    border:1px solid black;
+    border-radius:7px;;
+    width: 50%;
+    margin:0px auto;
+}
+.addArticle form{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin: 20px 20px;
+}
+.addArticle form input{
+    border:1px solid black;
 }
 
 /*---------------------Modifier.php----------------------*/

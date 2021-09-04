@@ -35,16 +35,18 @@
             
         </div>
         <nav class="categorie">
-            <a href=""><div>Boisson et alcool</div></a>
-            <a href=""><div>Épicerie</div></a>
-            <a href=""><div>Ameublement</div></a>
-            <a href=""><div>Décoration</div></a>
-            <a href=""><div>Bijoux</div></a>
-            <a href=""><div>Mode</div></a>
-            <a href=""><div>Animalerie</div></a>
-            <a href=""><div>Jeux video</div></a>
-            <a href=""><div>Téléphonie</div></a>
-            <a href=""><div>Livre</div></a>
+            <a href="#"><div>Librairie</div></a>
+            <a href="#"><div>Musique et Art</div></a>
+            <a href="#"><div>Jeu et Jouet</div></a>
+            <a href="#"><div>Mode et Bijoux</div></a>
+            <a href="#"><div>Bébé et puériculture</div></a>
+            <a href="#"><div>Épicerie et Boisson</div></a>
+            <a href="#"><div>Technologie</div></a>
+            <a href="#"><div>Jardinerie et animalerie</div></a>
+            <a href="#"><div>Beauté et Bien-être</div></a>
+            <a href="#"><div>Sport et Loisir</div></a>
+            <a href="#"><div>Ameublement</div></a>
+            <a href="#"><div>Auto-Moto</div></a>
         </nav>
         <?php 
             if(empty($_SESSION)){
