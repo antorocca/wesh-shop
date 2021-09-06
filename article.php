@@ -24,7 +24,7 @@
 
 <div class="allArticle">
     <div class='imgArticle'>
-        <img src="assets/picture/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
+        <img src="assets/uploads/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
     </div>
     <div class="descArticle">
         <h2><?php echo $article[1] ?></h2>

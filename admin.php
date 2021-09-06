@@ -5,6 +5,11 @@ session_start();
     }
 
     require_once 'functionDatabase.php';
+    require_once 'functionArticle.php';
+    
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
+        Article::addarticle();
+    }
     /*$select = $bdd->prepare('SELECT * FROM user');
     $select->execute();
     
@@ -50,45 +55,55 @@ session_start();
     </div>
     <br>
     <a class="goShop" href="index.php"><div>Aller dans la boutique</div></a>
-    <br>
     <h3 class="addTitle">Ajouter un article</h3>
     <div class="addTable">
         <div class="addArticle">
-            <form action="" method="post">
-                <label for="">Nom:</label>
-                    <input type="text" name="articleName">
-                <label for="">Description:</label>
-                    <textarea name="articleDescription" id="" cols="30" rows="8"></textarea>
-                <label for="">Ajouter une photo:</label>
-                    <input type="text" name="">
-                <label for="">Prix:</label>
-                    <input type="text" name="articlePrize">
-                <label for="">Stock:</label>
-                    <input type="text" name="articleStock">
-                <label for="">Marque:</label>
-                    <input type="text" name="ArticleBrand">
-                <label for="">Type:</label>
-                    <select id="" name="articleType">
-                        <option value="">Art (sculpture, peinture, dessin...)</option>
-                        <option value="">Ameublement</option>
-                        <option value="">Animalerie</option>
-                        <option value="">Bijoux</option>
-                        <option value="">Boisson</option>
-                        <option value="">Décoration</option>
-                        <option value="">Épicerie</option>
-                        <option value="">Jeu de société</option>
-                        <option value="">Jeux-vidéo</option>
-                        <option value="">Jouet</option>
-                        <option value="">Musique</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value="">Vêtement</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                <input type="submit">
-
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="addFormL">
+                    <label>*Nom:</label>
+                        <input type="text" name="addName">
+                    <label>*Description:</label>
+                        <textarea name="addDescription" id="" cols="30" rows="8"></textarea>
+                    <label>Ajouter une photo:</label>
+                        <input type="file" name="addFile">
+                </div>
+                <div class="addFormR">
+                    <label>*Prix:</label>
+                        <input type="text" name="addPrize">
+                    <label>*Stock:</label>
+                        <input type="text" name="addStock">
+                    <label>Marque:</label>
+                        <input type="text" name="addBrand">
+                    <label>*Type:</label>
+                        <select id="" name="addType">
+                            <option value="Art">Art (sculpture, peinture, dessin...)</option>
+                            <option value="Ameublement">Ameublement</option>
+                            <option value="Animalerie">Animalerie</option>
+                            <option value="Bijoux">Bijoux</option>
+                            <option value="Boisson">Boisson</option>
+                            <option value="Décoration">Décoration</option>
+                            <option value="Épicerie">Épicerie</option>
+                            <option value="Jeu de société">Jeu de société</option>
+                            <option value="Jeux-vidéo">Jeux-vidéo</option>
+                            <option value="Jouet">Jouet</option>
+                            <option value="Livre">Livre</option>
+                            <option value="Musique">Musique</option>
+                            <option value="Vêtement">Vêtement</option>
+                        </select>
+                    </div>
+                <div class="addButton">
+                    <?php
+                        if(Article::$addSuccess){
+                            echo Article::$addSuccess;
+                        }
+                        elseif(Article::$addError)
+                            echo Article::$addError; 
+                    ?>
+                    <input type="submit" value="Ajouter" name="addArticleSubmit">
+                    <p>Les champs marqués d'un (*) sont obligatoire.</p>
+                </div>
             </form>
+
         </div>
     </div>
     <br>

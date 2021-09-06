@@ -150,7 +150,7 @@ html, body{
     justify-content:center;
 }
 
-input{
+.form input{
     margin-top:5px;
     margin-bottom:5px;
     border-radius:5px;
@@ -207,7 +207,7 @@ input{
 .haut img{
     width:auto;
     max-height:200px;
-    min-height:200px;
+    min-height:50px;
     margin-top:10px;
 }
 
@@ -270,6 +270,7 @@ hr{
 }
 .imgArticle{
     width:40%;
+    margin-right:50px;
 }
 .imgArticle img{
     width:auto;
@@ -330,6 +331,7 @@ hr{
 .similarProduct a{
     text-decoration:none;
     color:black;
+    width:20%;
 }
 .similarProduct h4{
     margin:20px 0px 5px 0px;
@@ -337,19 +339,15 @@ hr{
 
 .similar{
     padding:20px;
+
 }
 
-.similarTop{
-    
-}
 .similarTop img{
     width:auto;
     min-height:150px;
     max-height:150px;
 }
-.similarBottom{
 
-}
 .similarBottom .articlePrize{
     color:rgb(194, 4, 4);
     font-weight:bolder;
@@ -430,12 +428,39 @@ hr{
 }
 .addArticle form{
     display:flex;
-    flex-direction:column;
-    align-items:flex-start;
+    justify-content:space-evenly;
+    align-items:center;
     margin: 20px 20px;
 }
-.addArticle form input{
-    border:1px solid black;
+.addArticle form label{
+    margin-top:10px;
+}
+.addFormL{
+    width:30%;
+    display:flex;
+    flex-direction:column;
+    align-items:space-evenly;
+}
+.addFormR{
+    width:30%;
+    display:flex;
+    flex-direction:column;
+}
+.addButton{
+    width:20%;
+    display:flex;
+    flex-direction:column;
+    justify-content: right;
+}
+.addError{
+    text-align:center;
+    font-weight:bolder;
+    color:red;
+}
+.addSuccess{
+    text-align:center;
+    font-weight:bolder;
+    color:rgb(0, 67, 213);
 }
 
 /*---------------------Modifier.php----------------------*/

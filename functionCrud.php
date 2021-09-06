@@ -71,17 +71,4 @@
             }
         }
 
-        /*public static function unban(){
-
-            require_once 'functionDatabase.php';
-
-            $bdd = Database::connect();
-            $email = $_GET['email'];
-
-            if(isset($_POST['banInput'])){
-                $insertBan = $bdd->prepare('UPDATE user SET role = ? WHERE email= ?');
-                $insertBan->execute(['user', $email]);
-                header('Location: admin.php');
-            }
-        }*/
     }
