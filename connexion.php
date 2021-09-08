@@ -33,6 +33,9 @@ session_start();
                 }
             ?>
                 <input type="email" name="email" placeholder="Votre e-mail">
+                <input type="text" name="pseudo" placeholder="Votre pseudo">
+                <input type="text" name="address" placeholder="Votre adresse">
+                <input type="text" name="city" placeholder="Votre ville">
                 <input type="password" name="mdp" placeholder="Votre mot de passe">
                 <input type="password" name="mdp2" placeholder="Confirmer votre mot de passe">
                 <input type="submit" name="submit">

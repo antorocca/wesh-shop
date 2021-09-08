@@ -13,6 +13,9 @@
         
         if(isset($_POST['submit'])){
             $email = htmlspecialchars($_POST['email']);
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $address = htmlspecialchars($_POST['address']);
+            $city = htmlspecialchars($_POST['city']);
             $mdp = htmlspecialchars($_POST['mdp']);
             $mdp2 = htmlspecialchars($_POST['mdp2']);
             
@@ -32,10 +35,23 @@
     
                             $mdphash = password_hash($mdp, PASSWORD_DEFAULT);
     
-                            $insert = $bdd->prepare('INSERT INTO user(email, mdp, role) VALUES(?,?, ?)');
-                            $insert-> execute([$email, $mdphash, 'user']);
-    
+                            $insert = $bdd->prepare('INSERT INTO user(email, pseudo, mdp, address, ville, role) VALUES(?, ?, ?, ?, ?, ?)');
+                            $insert-> execute([$email, $pseudo, $mdphash, $address, $city, 'user']);
+
+                            $call = $bdd->prepare('SELECT * FROM user WHERE email=?');
+                            $call-> execute([$email]);
+                            $newUser = $call->fetch();
+
+                            if($newUser['1'] == $email){
+                                $_SESSION['email'] = $newUser[1];//1 = email dans bdd
+                                $_SESSION['role'] = $newUser[6];
+                                $_SESSION['pseudo'] = $newUser[2];
+
+                            header('Location: index.php');
+
                             static::$success='Bienvenue dans Wesh la boutique fraîche';
+                            }
+    
                         }
                         else{
                             static::$erreur = '*Vous etes déjà enregistré veuillez vous connecter !';
@@ -67,16 +83,6 @@
                 
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
                     
-        
-                    /*$select = $bdd->prepare('SELECT * FROM banni WHERE email = ? ');
-                    $select-> execute([$email]);
-        
-                    $result = $select->fetch();
-                    if($result !== false){
-        
-                        $ban='Vous avez été banni.';
-                    }
-                    else{*/
                     $select = $bdd->prepare('SELECT * FROM user WHERE email = ? ');
                     $select-> execute([$email]);
         
