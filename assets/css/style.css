@@ -54,32 +54,14 @@ html, body{
     font-weight:bolder;
     font-size:20px;
 }
-.deco{
-    display:flex;
-    padding:10px 10px;
-    border-radius:7px;
-    background-color:rgb(8, 63, 181);
-    text-align: center;
-    text-transform:uppercase;
-}
 
-.btn-deco{
-    padding:20px 10px;
-    text-decoration:none;
-    color:white;
-}
-.btn-deco:hover{
-    background-color:rgb(0, 71, 225);
-    border-radius:5px;
-    color:rgb(255, 145, 0);
-    transition-duration: 0.2s;
-}
 /*-------------barre de recherche-------------------*/
 .formSearch{
     width:40%;
     display:flex;
     justify-content:center;
     align-items:center;
+    margin:15px 0px;
 }
 .searchBar{
     padding:10px;
@@ -100,6 +82,52 @@ html, body{
     cursor:pointer;
 }
 
+/*-------Account DRopdown---------*/
+.dropBtn{
+    background-color: rgb(8, 63, 181);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius:5px;
+    text-align:left;
+    line-height:20px;
+}
+
+.account:hover .dropBtn {
+    background-color: rgb(0, 71, 225);
+}
+
+.account {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownAccount {
+    display: none;
+    position: absolute;
+    background-color: rgb(0, 71, 225);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownAccount a {
+    color: white;
+    border-top:1px solid rgb(30, 101, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    margin-left:0px;
+}
+
+.dropdownAccount a:hover {
+    background-color: rgb(0, 71, 225);
+}
+
+.account:hover .dropdownAccount {
+    display: block;
+}
 
 /*------------------menu categorie-------------*/
 .categorie{
@@ -107,17 +135,22 @@ html, body{
     font-size:13px;
     display:flex;
     justify-content:space-evenly;
-    align-items: center;
+    align-items: stretch;
     background-color:rgb(8, 63, 181);
 }
 .categorie a{
     text-decoration:none;
     color:white;
     width: 100%;
-    padding:7px 0px;
-    display:flex;
+    text-align: center;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 7px 0px;
+    /* display:flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 .categorie a:hover{
     background-color:rgb(0, 71, 225);
@@ -416,52 +449,7 @@ hr{
     font-weight:bolder;
 }
 
-/*------------Ajouter un article------------*/
-.addTitle{
-    text-align:center;
-}
-.addTable{
-    border:1px solid black;
-    border-radius:7px;;
-    width: 50%;
-    margin:0px auto;
-}
-.addArticle form{
-    display:flex;
-    justify-content:space-evenly;
-    align-items:center;
-    margin: 20px 20px;
-}
-.addArticle form label{
-    margin-top:10px;
-}
-.addFormL{
-    width:30%;
-    display:flex;
-    flex-direction:column;
-    align-items:space-evenly;
-}
-.addFormR{
-    width:30%;
-    display:flex;
-    flex-direction:column;
-}
-.addButton{
-    width:20%;
-    display:flex;
-    flex-direction:column;
-    justify-content: right;
-}
-.addError{
-    text-align:center;
-    font-weight:bolder;
-    color:red;
-}
-.addSuccess{
-    text-align:center;
-    font-weight:bolder;
-    color:rgb(0, 67, 213);
-}
+
 
 /*---------------------Modifier.php----------------------*/
 .tabUser{
@@ -548,6 +536,53 @@ hr{
     display:flex;
     justify-content:center;
     align-items:center;
+}
+
+/*------------Ajouter un article------------*/
+.addTitle{
+    text-align:center;
+}
+.addTable{
+    border:1px solid black;
+    border-radius:7px;;
+    width: 50%;
+    margin:0px auto;
+}
+.addArticle form{
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    margin: 20px 20px;
+}
+.addArticle form label{
+    margin-top:10px;
+}
+.addFormL{
+    width:30%;
+    display:flex;
+    flex-direction:column;
+    align-items:space-evenly;
+}
+.addFormR{
+    width:30%;
+    display:flex;
+    flex-direction:column;
+}
+.addButton{
+    width:20%;
+    display:flex;
+    flex-direction:column;
+    justify-content: right;
+}
+.addError{
+    text-align:center;
+    font-weight:bolder;
+    color:red;
+}
+.addSuccess{
+    text-align:center;
+    font-weight:bolder;
+    color:rgb(0, 67, 213);
 }
 
 

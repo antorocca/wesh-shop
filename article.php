@@ -56,7 +56,7 @@
             echo '<a href="article.php?id=' . $similar['id'] .'">
             <div class="similar">
                 <div class="similarTop">
-                    <img src="assets/picture/' .  $similar['photo'] . '" alt="">
+                    <img src="assets/uploads/' .  $similar['photo'] . '" alt="">
                 </div>
                 <div class="similarBottom">
                     <h4>' . $similar['1'] . '</h4>

@@ -51,7 +51,6 @@ $resultat = $select->fetchAll();
                         echo '<div class="detail">
                             <div>
                                 <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $article['prix'] . ' €</p>';
-
                                 if($article['stock']>0){
                                     echo '<p style="color:green;">En stock</p>';       
                                 }

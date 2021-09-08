@@ -35,16 +35,18 @@
                             $fileInfo = pathinfo($file['name']);
                             $extension_upload = $fileInfo['extension'];
                             $extensions_autorized = array('jpg','jpeg','png','svg');
-                            $fileName = date('j-m-Y_H.i.s') . '_' . $name;
-                            
+                            $fileName = date('j-m-Y_H.i.s') . '_' . $name . "." . $extension_upload;
+                
                             if(in_array($extension_upload, $extensions_autorized))
                             {
-                              move_uploaded_file($_FILES['addFile']['tmp_name'], 'assets/uploads/' . $fileName . '.' . $fileInfo['extension']);
+                              move_uploaded_file($_FILES['addFile']['tmp_name'], 'assets/uploads/' . $fileName);
 
-                              $addArticle = $bdd->prepare('INSERT INTO article(nom,description, photo, prix, stock, marque, type) VALUES(?,?,?,?,?,?,?)');
-                              $addArticle-> execute([$name,$description,$file,$prize,$stock,$brand,$type]);
+                              $addArticle = $bdd->prepare('INSERT INTO article(nom, description, photo, prix, stock, marque, type) VALUES(?,?,?,?,?,?,?)');
+                              $addArticle-> execute([$name, $description, $fileName, $prize,$stock, $brand, $type]);
 
-                              $addSuccess = '<p class="addSuccess">L\'article a bien été rajouté au magasin</p>';
+                              static::$addSuccess = '<p class="addSuccess">L\'article a bien été rajouté au magasin</p>';
+                              
+                              
                             }
                             else{
                                 static::$addError = '<p class="addError">*Le format d\'image n\'est pas accepté </p>

@@ -18,15 +18,25 @@
                 <button type="submit" name="submitSearch"><img class="imgSearch" src="assets/picture/kisspng-computer-icons-magnifier-magnifying-glass-clip-art-lupe-5b4c85ec67c638.1343363915317416764251.png" alt="loupe"></button>
             </form>
 
-            <div class="deco">
-                <?php
-                if(empty($_SESSION)){
-                    echo '<a class="btn-deco" href="connexion.php">S\'inscrire / Se connecter</a>';
-                }else{
-                    echo '<a class="btn-deco" href="logout.php">' . $_SESSION['email'] . '<br>Se déconnecter</a>';
-                }
-                ?>
-            </div>
+            <?php
+        if(!empty($_SESSION)){
+            echo '<div class="account">
+                <button class="dropBtn">' . $_SESSION['pseudo'] . '<br>Mon Compte</button>
+                <div class="dropdownAccount">
+                    <a href="#">Mon compte</a>
+                    <a href="#">Mes commandes</a>';
+                    if($_SESSION['role'] == 'seller'){
+                        echo '<a href="magasin.php">Mon magasin</a>';
+                    }else{
+                        echo '<a href="#">Créer un compte vendeur</a>';
+                    }
+                    echo '<a href="logout.php">Se déconnecter</a>
+                </div>
+            </div>';
+        }else{
+            echo '<a href="connexion.php">Se connecter / S\'inscrire</a>';
+        }
+        ?>
         </nav>
 
         <div class="main">
@@ -35,18 +45,18 @@
             
         </div>
         <nav class="categorie">
-            <a href="#"><div>Librairie</div></a>
-            <a href="#"><div>Musique et Art</div></a>
-            <a href="#"><div>Jeu et Jouet</div></a>
-            <a href="#"><div>Mode et Bijoux</div></a>
-            <a href="#"><div>Bébé et puériculture</div></a>
-            <a href="#"><div>Épicerie et Boisson</div></a>
-            <a href="#"><div>Technologie</div></a>
-            <a href="#"><div>Jardinerie et animalerie</div></a>
-            <a href="#"><div>Beauté et Bien-être</div></a>
-            <a href="#"><div>Sport et Loisir</div></a>
-            <a href="#"><div>Ameublement</div></a>
-            <a href="#"><div>Auto-Moto</div></a>
+            <a href="#">Librairie</a>
+            <a href="#">Musique et Art</a>
+            <a href="#">Jeu et Jouet</a>
+            <a href="#">Mode et Bijoux</a>
+            <a href="#">Bébé et puériculture</a>
+            <a href="#">Épicerie et Boisson</a>
+            <a href="#">Technologie</a>
+            <a href="#">Jardinerie et animalerie</a>
+            <a href="#">Beauté et Bien-être</a>
+            <a href="#">Sport et Loisir</a>
+            <a href="#">Ameublement</a>
+            <a href="#">Auto-Moto</a>
         </nav>
         <?php 
             if(empty($_SESSION)){

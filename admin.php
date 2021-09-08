@@ -1,6 +1,6 @@
 <?php
 session_start();
-    if(empty($_SESSION || !isset($_SESSION['email']))){
+    if($_SESSION['role']!=="admin"){
         header('Location: logout.php');
     }
 

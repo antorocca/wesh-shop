@@ -86,7 +86,7 @@
                 
                     if($result !== false){
         
-                        $mdpBdd = $result[2];
+                        $mdpBdd = $result[3];
                         $role = $result['role'];
                         
                         if($role !== 'ban'){
@@ -94,7 +94,8 @@
                             if( password_verify($mdp, $mdpBdd)){
             
                                 $_SESSION['email'] = $result[1];//1 = email dans bdd
-                                $_SESSION['role'] = $result[3];
+                                $_SESSION['role'] = $result[6];
+                                $_SESSION['pseudo'] = $result[2];
 
                                 if($role == 'admin') {
                                     header('Location: admin.php');
