@@ -14,7 +14,7 @@ $resultat = $select->fetchAll();
         
     <h2 class="titre_boutique">LA BOUTIQUE</h2>
     <main class="shop">          
-        <aside class="sidebar">
+        <!--<aside class="sidebar">
             <li>lorem</li>
             <li>lorem</li>
             <li>lorem</li>
@@ -23,8 +23,29 @@ $resultat = $select->fetchAll();
             <li>lorem</li>
             <li>lorem</li>
             <li>lorem</li>
-        </aside>
+        </aside>-->
         <section class="produits">
+            <div class="nav-content">
+                <div class="mostVisitedCat">
+                    <h3>Catégories les plus visitées</h3>
+                    <div>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                    </div>
+                </div>
+                <?php include('france-liens-region-departement-svg.html');?>
+                <div class="topSell">
+                    <h3>Top vendeur de la semaine</h3>
+                    <div>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
 
             <?php
             foreach($resultat as $article){
