@@ -13,7 +13,8 @@
         
         if(isset($_POST['submit'])){
             $email = htmlspecialchars($_POST['email']);
-            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $name = htmlspecialchars($_POST['name']);
+            $firstname = htmlspecialchars($_POST['firstname']);
             $address = htmlspecialchars($_POST['address']);
             $city = htmlspecialchars($_POST['city']);
             $mdp = htmlspecialchars($_POST['mdp']);
@@ -35,8 +36,8 @@
     
                             $mdphash = password_hash($mdp, PASSWORD_DEFAULT);
     
-                            $insert = $bdd->prepare('INSERT INTO user(email, pseudo, mdp, address, ville, role) VALUES(?, ?, ?, ?, ?, ?)');
-                            $insert-> execute([$email, $pseudo, $mdphash, $address, $city, 'user']);
+                            $insert = $bdd->prepare('INSERT INTO user(email, name, firstname, mdp, address, ville, role) VALUES(?, ?, ?, ?, ?, ?, ?)');
+                            $insert-> execute([$email, $name, $firstname, $mdphash, $address, $city, 'user']);
 
                             $call = $bdd->prepare('SELECT * FROM user WHERE email=?');
                             $call-> execute([$email]);
@@ -44,8 +45,8 @@
 
                             if($newUser['1'] == $email){
                                 $_SESSION['email'] = $newUser[1];//1 = email dans bdd
-                                $_SESSION['role'] = $newUser[6];
-                                $_SESSION['pseudo'] = $newUser[2];
+                                $_SESSION['role'] = $newUser[7];
+                                $_SESSION['name'] = $newUser[2];
 
                             header('Location: index.php');
 
@@ -92,7 +93,7 @@
                 
                     if($result !== false){
         
-                        $mdpBdd = $result[3];
+                        $mdpBdd = $result[4];
                         $role = $result['role'];
                         
                         if($role !== 'ban'){
@@ -100,8 +101,8 @@
                             if( password_verify($mdp, $mdpBdd)){
             
                                 $_SESSION['email'] = $result[1];//1 = email dans bdd
-                                $_SESSION['role'] = $result[6];
-                                $_SESSION['pseudo'] = $result[2];
+                                $_SESSION['role'] = $result[7];
+                                $_SESSION['name'] = $result[2];
 
                                 if($role == 'admin') {
                                     header('Location: admin.php');

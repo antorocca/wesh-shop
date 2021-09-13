@@ -7,4 +7,4 @@
     include('head&header.php');
 ?>
 
-<?php include('regionSVG/Ile-de-France2.svg.html'); ?>
+<?php include('assets/regionSVG/Ile-de-France.svg.html'); ?>

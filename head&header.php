@@ -21,7 +21,7 @@
             <?php
         if(!empty($_SESSION)){
             echo '<div class="account">
-                <button class="dropBtn">' . $_SESSION['pseudo'] . '<br>Mon Compte</button>
+                <button class="dropBtn">' . $_SESSION['name'] . '<br>Mon Compte</button>
                 <div class="dropdownAccount">
                     <a href="#">Mon compte</a>
                     <a href="#">Mes commandes</a>';
