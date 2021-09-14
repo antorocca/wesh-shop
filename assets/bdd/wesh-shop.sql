@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 03, 2021 at 09:26 AM
+-- Generation Time: Sep 14, 2021 at 11:31 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `wesh`
+-- Database: `wesh-shop`
 --
 
 -- --------------------------------------------------------
@@ -33,9 +33,9 @@ CREATE TABLE `article` (
   `nom` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `prix` int(11) NOT NULL,
+  `prix` float NOT NULL,
   `stock` int(11) NOT NULL,
-  `Marque` varchar(255) NOT NULL,
+  `marque` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -43,7 +43,7 @@ CREATE TABLE `article` (
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`id`, `nom`, `description`, `photo`, `prix`, `stock`, `Marque`, `type`) VALUES
+INSERT INTO `article` (`id`, `nom`, `description`, `photo`, `prix`, `stock`, `marque`, `type`) VALUES
 (1, 'Iphone 12', 'Iphone 12 Apple,Lorem ipsum dolor sit amet, consectetur adipisicing elit. \r\nCorrupti facere rerum reiciendis ipsum repellendus, ad praesentium, quo, ducimus voluptatum commodi esse voluptatem eaque natus ut assumenda soluta sit dolores laudantium!Lorem ipsum dolor sit amet, consectetur adipisicing elit. \r\nCorrupti facere rerum reiciendis ipsum repellendus, ad praesentium, quo, ducimus voluptatum commodi esse voluptatem eaque natus ut assumenda soluta sit dolores laudantium!', 'iphone12.png', 1000, 150, 'Apple', 'Téléphone'),
 (2, 'Samsung Galaxy S20', 'Un samsung S20,sit amet consectetur adipisicing elit. Voluptatibus deleniti repellat nesciunt illum, sit amet consectetur adipisicing elit. Voluptatibus deleniti repellat nesciunt illum.\r\n\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Non architecto fuga eum autem soluta quidem veritatis iure, delectus nisi, ipsa eos explicabo similique fugit assumenda at modi, laborum accusantium distinctio maiores cupiditate porro nulla ut? Magnam ullam inventore maiores eligendi non dolore dolores, numquam fugit?', 'samsung.jpg', 500, 150, 'Samsung', 'Téléphone'),
 (3, 'Playstation 5', 'Playstation 5, Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero.Lorem ipsum dolor sit amet consectetur adipisicing elit. Non architecto fuga eum autem soluta quidem veritatis iure.\r\n\r\nDelectus nisi, ipsa eos explicabo similique fugit assumenda at modi, laborum accusantium distinctio maiores cupiditate porro nulla ut? Magnam ullam inventore maiores eligendi non dolore dolores, numquam fugit?Lorem ipsum dolor sit amet consectetur adipisicing elit. Non architecto fuga eum autem soluta.', 'ps5.jpg', 600, 0, 'Sony', 'Console de jeux video'),
@@ -58,7 +58,7 @@ INSERT INTO `article` (`id`, `nom`, `description`, `photo`, `prix`, `stock`, `Ma
 (12, 'Polo homme polycton - Gris foncé', 'Polo homme mélange coton polyester, manches courtes, disponible du S au 5XL\r\n\r\n- Composition : 65% polyester - 35 % coton - 200 g/m2\r\n\r\n- patte de boutonnage 3 boutons ton sur ton\r\n\r\n- col et bas de manches en bord côte 1x1\r\n\r\n- bande de propreté au col, coutures renforcées aux épaules\r\n\r\n- entretien facile', 'polo-Sols.jpg', 19, 36, 'Sol\'s', 'Vêtement'),
 (13, 'Pantalon chino kaki', 'Elégant et décontracté à la fois, LTC nous propose un pantalon chino pour homme. Associez-le à une paire de mocassins ou de sneakers.\r\n-Marques: LTC\r\n-Genre: Homme\r\n-Composition: 98% Coton - 2% Elasthanne\r\n-Coupe: Chino\r\n-Fermeture: Zippée\r\n-Hauteur de taille: Normale\r\n-Détails: 4 poches - Finitions et surpiqûres travaillées.', 'chino-kaki.jpg', 49, 12, 'LTC', 'Vêtement'),
 (14, 'Pantalon homme noir a rayures', 'Pantalon  homme à rayure de couleur noir\r\n\r\nModèle de coupe slim\r\n\r\nBandes blanches sur les cotés\r\n\r\nFermeture zip métalique et bouton\r\n\r\nComposition: 63% polyesthère 33% viscose 4% élasthane\r\n\r\nLe mannequin mesure 1M82  il porte une taille W31', 'pantalon-homme-noir-rayure.jpg', 49, 12, 'LTC', 'Vêtement'),
-(15, 'Chemise Le Temps des Cerises homme Pold blanc à motif floral', 'Chemise Le Temps des Cerises homme modèle Pold en coton blanc imprimé de motif floral.\r\n\r\n- Chemise homme Le Temps des Cerises\r\n- Modèle Pold à manches longues\r\n- 100% Coton - coupe ajustée\r\n- Coloris blanc imprimé de motif floral galaxy\r\n- Revers de manches contrastés\r\n- Galon de finition noir marqué le temps des cerises sur l\'intérieur\r\n- Boutons blanc nacré gravés Le Temps des Cerises', 'chemise-motif-fleurs.jpg', 68, 56, 'LTC', 'Vêtement'),
+(15, 'Chemise Le Temps des Cerises homme Polo blanc à motif floral', 'Chemise Le Temps des Cerises homme modèle Pold en coton blanc imprimé de motif floral.\r\n\r\n- Chemise homme Le Temps des Cerises\r\n- Modèle Pold à manches longues\r\n- 100% Coton - coupe ajustée\r\n- Coloris blanc imprimé de motif floral galaxy\r\n- Revers de manches contrastés\r\n- Galon de finition noir marqué le temps des cerises sur l\'intérieur\r\n- Boutons blanc nacré gravés Le Temps des Cerises', 'chemise-motif-fleurs.jpg', 68, 56, 'LTC', 'Vêtement'),
 (16, 'Bracelet en Or Infinite', '-Fabriqué en Italie\r\n-Vient avec un emballage personnalisé et une boîte Medusa.\r\n-Délivrée avec certificat d\'authenticité qui peut être utilisé à des fins d\'assurance.\r\n-Tous les bijoux sont estampés en fonction de leur pureté d\'or.\r\n-Chaque achat est couvert par une garantie de 100 jours contre les défectuosités. Ne couvre pas les dommages physiques.\r\n-Bijoux Medusa n’est pas un revendeur ou un partenaire officiel Versace, tous nos bijoux sont des créations de Medusa.', 'bracelet-infinite.jpg', 150, 36, 'Médusa', 'Bijoux'),
 (17, 'Bague en Or Rubia', '-Fabriqué en Italie\r\n-Vient avec un emballage personnalisé et une boîte Medusa.\r\n-Délivrée avec certificat d\'authenticité qui peut être utilisé à des fins d\'assurance.\r\n-Tous les bijoux sont estampés en fonction de leur pureté d\'or.\r\n-Chaque achat est couvert par une garantie de 100 jours contre les défectuosités. Ne couvre pas les dommages physiques.', 'bague-rubia.jpg', 249, 16, 'Médusa', 'Bijoux'),
 (18, 'Boucles d\'oreilles huggies décorées 10 mm', 'Mise sur la simplicité et l\'élégance avec ces boucles d\'oreilles huggies ! Ornées de pierres scintillantes sur chaque anneau, ces boucles d’oreilles vont habiller tes oreilles et agrémenter toutes tes tenues.', 'boucle-huggies.jpg', 69, 29, 'Marie', 'Bijoux'),
@@ -67,7 +67,8 @@ INSERT INTO `article` (`id`, `nom`, `description`, `photo`, `prix`, `stock`, `Ma
 (21, 'Chaise en cuir synthétique noir et pieds en bois plaqué noyer', 'Vous souhaitez trouver du mobilier qui impose en un tournemain son caractère à votre pièce à vivre ? Alors, vous allez adorer notre chaise Polo noire, superbe nouveauté de notre collection Vintage.\r\n\r\nSobre et élégante avec son cuir synthétique au coloris synonyme de chic et de modernité, notre chaise Polo noire vous séduira par ses proportions agréables H 69. Vous aimerez son piètement en noyer légèrement incliné et son assise accueillante.', 'chaise-bois-et-noir.jpg', 89, 23, 'Polo', 'Ameublement'),
 (22, 'Chaise en fer forgé AREB', 'Chaise en fer forgé artisanale décorée d\'arabesque en fer plein\r\n\r\nPour l\'aménagement d\'un salon de jardin complet, nous vous invitons à visiter notre page consacrée aux Tables de jardin en zellige marocaines avec piètement en fer forgé de 40 ou 75 cm de hauteur.\r\n\r\n-Hauteur: 100 cm\r\n-Hauteur de l\'assise: 45 cm\r\n-Profondeur de l\'assise: 42 cm', 'chaise-fer-forge.jpg', 65, 45, 'Areb', 'Ameublement'),
 (23, 'Chevet artisanal modèle Loup déco chalet', 'Chevet artisanal modèle loup déco chalet montagne\r\nCréation artisanale sur mesure en bois 100% écologique.\r\nen pin ou épicéa.\r\nce chevet est présenté en bois brut\r\nModèle loup pas de tiroir, 1 porte\r\nDim 50H x 45L x 32P cm', 'chevet-loup2.jpg', 209, 6, 'Déco Chalet Montange', 'Ameublement'),
-(24, 'Meuble artisanal en cageots', 'Étagère ancienne à tiroirs réalisée à partir de cageots anciens. Trois tiroirs sur glissière h8, 5/l45/p29.\r\nCharme pour cet objet unique.\r\nDimensions étagère h40/l49/p30.', 'etagere-artisanale-en-cageots_original.png', 46, 26, 'Beber', 'Ameublement');
+(24, 'Meuble artisanal en cageots', 'Étagère ancienne à tiroirs réalisée à partir de cageots anciens. Trois tiroirs sur glissière h8, 5/l45/p29.\r\nCharme pour cet objet unique.\r\nDimensions étagère h40/l49/p30.', 'etagere-artisanale-en-cageots_original.png', 46, 26, 'Beber', 'Ameublement'),
+(31, 'Les fleurs du mal - Belin Gallimard', '1857 : la publication des Fleurs du Mal fait scandale et vaut à leur auteur, Charles Baudelaire, un procès retentissant.\r\nAujourd\'hui encore, la modernité subversive de ce recueil de poèmes, riche d\'images et de symboles, ne peut qu\'étonner : alliance inédite de la volupté et de la souffrance, exaltation du mal, fascination pour la laideur comme pour la beauté...\r\nDes profondeurs de la ville aux paradis artificiels, du spleen à l\'évasion, suivez le poète dans son cheminement vers l\'idéal.\r\nDans le volume, de nombreuses activités d\'appropriation et d\'étude de la langue, ainsi qu\'un cahier photos et un groupement de textes en lien avec le parcours associé « Alchimie poétique : la boue et l\'or » (Nouveaux programmes, Bac 2020). Groupements de textes : Transfiguration poétique Ennui, spleen et mélancolie', '8-09-2021_07.21.04_Les fleurs du mal - Belin Gallimard.jpg', 3.2, 20, 'Charles Baudelaire', 'Livre');
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,11 @@ CREATE TABLE `panier` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
   `mdp` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `ville` varchar(255) NOT NULL,
   `role` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -111,16 +116,31 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `mdp`, `role`) VALUES
-(21, 'c@gmail.com', '$2y$10$qpvb2iVpbzN4QU8Y.Z1vsOV8RaMYgM9VQzBH.euZi6t1YmC4HC4oa', 'ban'),
-(22, 'd@gmail.com', '$2y$10$pr.o82q0Pidn45ZinfSX/uULBeaVwh5QaNinCZNAdA0ZVwY.UH70e', 'ban'),
-(23, 'rocca83910@gmail.com', '$2y$10$jt1wVieGXHoxRZm9jpFCOu7mRaQ80.oPODepN5kpRxh2SPFWYXObe', 'admin'),
-(24, 'a@gmail.com', '$2y$10$yMTKbvToKtuZozPKrWTT1OwMGkoQel4ebF0yyxulMVNgAYHD/S1HS', 'user'),
-(25, 'b@gmail.com', '$2y$10$R.dMv8/Ees3dmWQQhThGBOZv8hUHIeNh99kWgxok3eFv4nfbJM3Tm', 'user'),
-(26, 'g@gmail.com', '$2y$10$c9Ghey6xMOZIRgtVqBIBVewpV8A/ALF4j5VJH1kcMsmIkEkPn7Fae', 'user'),
-(32, 'w@gmail.com', '$2y$10$ZADoygxYVf5xwKaNacK.nuPR3iMiM6N7zPRVNRnIRCMyI6y0Az3/y', 'user'),
-(33, 'e@gmail.com', '$2y$10$kofxwQSY9X6M2q6BS3deoeuVPQwhAHLpAON1wQzCT2YoaXIzc3LgO', 'user'),
-(34, 'f@gmail.com', '$2y$10$pzHwgxkG3LcsCMnm26zFJ.bVZcydR7ctLIm9xYVoDhreGcqC9p2x.', 'user');
+INSERT INTO `user` (`id`, `email`, `name`, `firstname`, `mdp`, `address`, `ville`, `role`) VALUES
+(21, 'c@gmail.com', 'Monsieur-c', 'Prenom-c', '$2y$10$qpvb2iVpbzN4QU8Y.Z1vsOV8RaMYgM9VQzBH.euZi6t1YmC4HC4oa', 'rue c', 'villeC', 'ban'),
+(22, 'd@gmail.com', 'Monsieur-d', 'Prenom-d', '$2y$10$pr.o82q0Pidn45ZinfSX/uULBeaVwh5QaNinCZNAdA0ZVwY.UH70e', 'rue d', 'villeD', 'ban'),
+(23, 'rocca83910@gmail.com', 'Rocca', 'Antony', '$2y$10$jt1wVieGXHoxRZm9jpFCOu7mRaQ80.oPODepN5kpRxh2SPFWYXObe', '27 grand rue', 'Pourrieres', 'admin'),
+(24, 'a@gmail.com', 'Monsieur-a', 'Prenom-a', '$2y$10$yMTKbvToKtuZozPKrWTT1OwMGkoQel4ebF0yyxulMVNgAYHD/S1HS', 'rue a', 'villeA', 'seller'),
+(25, 'b@gmail.com', 'Monsieur-Monsieur-b', 'Prenom-b', '$2y$10$R.dMv8/Ees3dmWQQhThGBOZv8hUHIeNh99kWgxok3eFv4nfbJM3Tm', 'rue b', 'villeB', 'user'),
+(26, 'g@gmail.com', 'Monsieur-g', 'Prenom-g', '$2y$10$c9Ghey6xMOZIRgtVqBIBVewpV8A/ALF4j5VJH1kcMsmIkEkPn7Fae', 'rue g', 'villeG', 'user'),
+(32, 'w@gmail.com', 'Monsieur-w', 'Prenom-w', '$2y$10$ZADoygxYVf5xwKaNacK.nuPR3iMiM6N7zPRVNRnIRCMyI6y0Az3/y', 'rue w', 'villeW', 'user'),
+(33, 'e@gmail.com', 'Monsieur-e', 'Prenom-e', '$2y$10$kofxwQSY9X6M2q6BS3deoeuVPQwhAHLpAON1wQzCT2YoaXIzc3LgO', 'rue e', 'villeE', 'user'),
+(34, 'f@gmail.com', 'Monsieur-f', 'Prenom-f', '$2y$10$pzHwgxkG3LcsCMnm26zFJ.bVZcydR7ctLIm9xYVoDhreGcqC9p2x.', 'rue f', 'VilleF', 'user'),
+(37, 'v@gmail.com', 'Monsieur-v', 'Prenom-v', '$2y$10$44jhHAThXbA7MziMtIkyV.R6ydpoOrSaFtxOArXxOkLaDdcgkSn5C', 'rue v', 'VilleV', 'user'),
+(40, 'p@gmail.com', 'Monsieur-p', 'Prenom-p', '$2y$10$ph5vnUpU0UYWZwSRY4kmcupMVrR4kav4Y1bOy1j8h62IxvMijDKkS', 'rue p', 'villeP', 'user'),
+(41, 'm@gmail.com', 'Monsieur-m', 'Prenom-m', '$2y$10$wAoubwL8MlG4kFL6CbGq.eYLtb5bLpWcNVxDH54rIunMlOBRmJEry', 'rue m', 'villeM', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vetement`
+--
+
+CREATE TABLE `vetement` (
+  `id` int(11) NOT NULL,
+  `sexe` varchar(255) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -154,6 +174,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vetement`
+--
+ALTER TABLE `vetement`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -161,7 +187,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `historique`
@@ -179,7 +205,13 @@ ALTER TABLE `panier`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `vetement`
+--
+ALTER TABLE `vetement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

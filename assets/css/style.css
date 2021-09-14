@@ -13,21 +13,47 @@ html, body{
     align-items: center;
 }
 
-.header a{
+
+
+
+
+
+
+.headerTitle{
     color:white;
     text-decoration:none;
-    margin-left:15px;
     padding:6px;
     font-weight:bolder;
 }
 
-.header a:hover{
+.headerTitle:hover{
     color:rgb(255, 159, 34);
     transition-duration: 0.2s;
 }
-.header button:hover{
-    color:rgb(255, 159, 34);
+
+.goSubscribe, .goConnexion{
+    color:white;
+    background-color:rgb(8, 63, 181);
+    text-decoration:none;
+    padding:10px;
+    font-weight:bolder;
 }
+.goSubscribe{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.goConnexion{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-right:-8px;
+    border-right:none;
+}
+.goSubscribe:hover, .goConnexion:hover{
+    color:rgb(255, 159, 34); 
+    background-color: rgb(0, 81, 255);
+    transition-duration:0.3s;
+}
+
 
 .main{
     display: flex;
@@ -594,14 +620,15 @@ hr{
     flex-direction:column;
     justify-content: center;
 }
-.modifEmail{
-    margin:10px 0px;
-}
-.modifRole{
-    margin:16px 0px;
+.updateUser form{
+    display:flex;
+    flex-direction:column;
 }
 .submit{
     margin-bottom:16px;
+}
+.updateUser form label{
+    margin-top:10px;
 }
 
 /*----------------------Supprimer.php---------------------*/

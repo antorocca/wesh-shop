@@ -10,7 +10,7 @@
     <body>
         <nav class="header">
             <div class="titre">
-                 <a href="index.php">WESH Shop</a>
+                 <a class="headerTitle" href="index.php">WESH Shop</a>
             </div>
 
             <form action="#" method="get" class="formSearch">
@@ -34,7 +34,10 @@
                 </div>
             </div>';
         }else{
-            echo '<a href="connexion.php">Se connecter / S\'inscrire</a>';
+            echo '<div>
+                    <a class="goConnexion" href="connexion.php">S\'identifier</a>
+                    <a class="goSubscribe" href="inscription.php">Créer un compte</a>
+                 </div>';
         }
         ?>
         </nav>

@@ -9,34 +9,10 @@ session_start();
 
     require_once 'functionCrud.php';
     Crud::ban();
+
+include('head&header.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Document</title>
-    </head>
-    <body>
-        <nav>
-            <div class="titre">
-                WESH Shop
-            </div>
-
-            <div class="menu">
-                <a href="">home</a>
-            </div>
-            <div class="deco">
-                <a class="btn-deco" href="logout.php"><?php echo $_SESSION['email'] . ' (' . $_SESSION['role'] . ')' ?><br>Se déconnecter</a>
-            </div>
-        </nav>
-
-        <div class="main">
-        
-            <h1>WESH SHOP</h1>
-            
+           
         </div>
 
         <h2 class="userTitle">Bannir un utilisateur</h2>

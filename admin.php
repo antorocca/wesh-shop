@@ -31,7 +31,7 @@ session_start();
         echo '<div class="ligne">
                 <div class="email">' . $user['email'] . '</div>
                 <div class="role">' . $user['role'] . '</div>
-                <a class="modifier" href="modifier.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) . '"><div>Voir/Modifier</div></a>
+                <a class="modifier" href="modifier.php?email='. urlencode($user['email']) . '"><div>Voir/Modifier</div></a>
                 <a class="supprimer" href="supprimer.php?email='. urlencode($user['email']) .'"><div>Supprimer</div></a>';
                 if($user['role'] == 'ban'){
                     echo '<a class="bannir" href="bannir.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) .'"><div>Débannir</div></a>

@@ -10,27 +10,67 @@
             require_once 'functionDatabase.php';
 
             $bdd = Database::connect();
+
             $email = $_GET['email'];
-            $role = $_GET['role'];
+
+            
+            $user = $bdd->prepare('SELECT * FROM user WHERE email = ?');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $user->execute([$email]);
+
+            $userDetails = $user->fetch();
 
             if(isset($_POST['submitModif'])){
+                $modifEmail = htmlspecialchars($_POST['updateEmail']);
+                $modifRole = $_POST['updateRole'];
+                $updateName = htmlspecialchars($_POST['updateName']);
+                $updateFirstName = htmlspecialchars($_POST['updateFirstname']);
+                $updateAddress = htmlspecialchars($_POST['updateAddress']);
+                $updateCity = htmlspecialchars($_POST['updateCity']);
 
-                $modifEmail = htmlspecialchars($_POST['modifEmail']);
-                $modifRole = $_POST['modifRole'];
+    
+                    if(empty($modifEmail)){
+    
+                        $modifEmail = $userDetails[1];
+                    }
+                    if(empty($updateName)){
+                            
+                        $updateName = $userDetails[2];
+                    }
+                    if(empty($updateFirstName)){
+                                
+                        $updateFirstName = $userDetails[3];
+                    }               
+                    if(empty($updateAddress)){
+                                    
+                        $updateAddress = $userDetails[5];
+                    }
+                    if(empty($updateCity)){
+                                        
+                        $updateCity = $userDetails[6];
+                    }
+                    if(empty($modifRole)){
+                                            
+                        $modifRole = $userDetails[7];
+                    }
+                $update = $bdd->prepare('UPDATE user SET email = ?, name = ?, firstname = ?, address = ?, ville = ?, role = ? WHERE email= ?');
+                $update->execute([$modifEmail, $updateName, $updateFirstName, $updateAddress, $updateCity,$modifRole, $email]);
+                header('Location: admin.php');
 
-                if(empty($modifEmail)) {
-                    $modifEmail = $email;
-                    $update = $bdd->prepare('UPDATE user SET email = ?, role = ? WHERE email= ?');
-                    $update-> execute([$modifEmail, $modifRole, $email]);
-                    header('Location: admin.php');
-                }
-                else {
-                    $update = $bdd->prepare('UPDATE user SET email = ?, role = ? WHERE email= ?');
-                    $update->execute([$modifEmail, $modifRole, $email]);
-                    header('Location: admin.php');
-                }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public static function delete(){

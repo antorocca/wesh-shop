@@ -3,68 +3,54 @@ session_start();
     if(empty($_SESSION || !isset($_SESSION['email']))){
         header('Location: logout.php');
     }
-
-    $email = $_GET['email'];
-    $role = $_GET['role'];
-
     require_once 'functionCrud.php';
+    require_once 'functionDatabase.php';
+
+    $bdd=Database::connect();
+    $email = $_GET['email'];
+
+    $user = Database::$bdd-> prepare('SELECT * FROM user WHERE email = ?');
+    $user-> execute([$email]);
+    $userDetails = $user-> fetch();
+
 
     Crud::update();
+    include('head&header.php');
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Document</title>
-    </head>
-    <body>
-        <nav>
-            <div class="titre">
-                WESH Shop
-            </div>
-
-            <div class="menu">
-                <a href="">home</a>
-            </div>
-            <div class="deco">
-                <a class="btn-deco" href="logout.php"><?php echo $_SESSION['email'] . ' (' . $_SESSION['role'] . ')' ?><br>Se déconnecter</a>
-            </div>
-        </nav>
-
-        <div class="main">
-        
-            <h1>WESH SHOP</h1>
-            
-        </div>
 
         <h2 class="userTitle">Modifier un utilisateur</h2>
 
         <div class="tabUser">
-            <div class="afficherUser">
-                <div class="affichEmail">
-                    <p>Adresse E-mail: <?php echo $email ?></p>
-                </div>
-                <div class="affichRole">
-                    <p>Rôle de l'utilisateur: <?php echo $role ?></p>
-                </div>
+            <div class="afficherUser">        
+                    <p>Adresse E-mail: <?php echo $userDetails[1] ?></p>
+                    <p>Nom: <?php echo $userDetails[2] ?></p>
+                    <p>Prénom: <?php echo $userDetails[3] ?></p>
+                    <p>Adresse: <?php echo $userDetails[5] ?></p>
+                    <p>Ville: <?php echo $userDetails[6] ?></p>
+                    <p>Rôle de l'utilisateur: <?php echo $userDetails[7] ?></p>
             </div>
-            <div class="modifUser">
-                <form action="modifier.php?email=<?php echo $email . "&role=" . $role ?>" method="post">
-                    <div class="modifEmail">
+            <div class="updateUser">
+                <form action="modifier.php?email=<?php echo $email ?>" method="post">
                         <label>Modifier l'email:</label>
-                        <input type="text" name="modifEmail">
-                    </div>
-                    <div class="modifRole">
+                            <input type="text" name="updateEmail">
+                        <label>Modifier le nom:</label>
+                            <input type="text" name="updateName">
+                        <label>Modifier le prénom:</label>
+                            <input type="text" name="updateFirstname">
+                        <label>Modifier l'adresse:</label>
+                            <input type="text" name="updateAddress">
+                        <label>Modifier la ville:</label>
+                            <input type="text" name="updateCity">
                         <label>Modifier le rôle:</label>
-                        <select name="modifRole">
-                            <option value="user">Utilisateur</option>
-                            <option value="admin">Administrateur</option>
-                        </select>
-                    </div>
+                            <select name="updateRole">
+                                <option value=""></option>
+                                <option value="user">Utilisateur</option>
+                                <option value="admin">Administrateur</option>
+                                <option value="seller">Vendeur</option>
+                                <option value="ban">Banni</option>
+                            </select>
+                        
                     <input class="submit" type="submit" name='submitModif' value="Sauvegarder les modifications">
                 </form>
             </div>
