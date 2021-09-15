@@ -5,7 +5,6 @@ session_start();
     require_once 'functionDatabase.php';
 
     Submit::submitRegister();
-    Submit::submitConnexion();
 
 ?>
 

@@ -4,6 +4,7 @@
         
         private static $email ;
         private static $role;
+        public static $erreur = '';
 
         public static function update(){ 
 
@@ -60,19 +61,6 @@
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         public static function delete(){
 
             require_once 'functionDatabase.php';
@@ -111,4 +99,59 @@
             }
         }
 
+        public static function create(){
+
+            require_once 'functionDatabase.php';
+
+            $bdd = Database::connect();
+
+            if(isset($_POST['submitCreate'])){
+
+            $email = htmlspecialchars($_POST['createEmail']);
+            $name = htmlspecialchars($_POST['createName']);
+            $firstname = htmlspecialchars($_POST['createFirstname']);
+            $address = htmlspecialchars($_POST['createAddress']);
+            $city = htmlspecialchars($_POST['createCity']);
+            $mdp = htmlspecialchars($_POST['createMdp']);
+            $mdp2 = htmlspecialchars($_POST['createMdp2']);
+            
+    
+            if(!empty($email) && !empty($mdp) && !empty($mdp2)){
+                
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+    
+                    if($mdp===$mdp2){
+                        
+                        $select = $bdd->prepare("SELECT * FROM user WHERE email=?");
+                        $select->execute([$email]);
+    
+                        $count = $select->rowcount();
+    
+                        if($count === 0){
+    
+                            $mdphash = password_hash($mdp, PASSWORD_DEFAULT);
+    
+                            $insert = $bdd->prepare('INSERT INTO user(email, name, firstname, mdp, address, ville, role) VALUES(?, ?, ?, ?, ?, ?, ?)');
+                            $insert-> execute([$email, $name, $firstname, $mdphash, $address, $city, 'user']);
+
+                            header('Location: admin.php');
+                            }
+    
+                        }
+                        else{
+                            static::$erreur = '*Vous etes déjà enregistré veuillez vous connecter !';
+                        }
+                    }
+                    else{
+                       static::$erreur="*Les mots de passes ne sont pas identique !";
+                    }
+                }
+                else{
+                    static::$erreur="*Veuillez entrer un email valide !";
+                }
+            }
+            else{
+                static::$erreur= "*Veuillez remplir les champs !";
+            }
+        }   
     }

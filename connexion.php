@@ -3,8 +3,7 @@ session_start();
 
     require_once 'functionSubmit.php';
     require_once 'functionDatabase.php';
-
-    Submit::submitRegister();
+    
     Submit::submitConnexion();
 
 ?>
@@ -23,9 +22,9 @@ session_start();
                 }
             ?>
                 <label>E-mail:</label>
-                <input class="inputConnexion" type="email" name="email" placeholder="Votre e-mail">
+                <input class="inputConnexion" type="email" name="email">
                 <label>Mot de passe:</label>
-                <input class="inputConnexion" type="password" name="mdp" placeholder="Votre mot de passe">
+                <input class="inputConnexion" type="password" name="mdp">
                 <input class="btnConnexion" type="submit" name="submitConnexion" value="Se connecter">
             </form>
     </div>
