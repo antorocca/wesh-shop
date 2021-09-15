@@ -8,7 +8,7 @@
         <title>Document</title>
     </head>
     <body>
-        <nav class="header">
+        <header class="header">
             <div class="titre">
                  <a class="headerTitle" href="index.php">WESH Shop</a>
             </div>
@@ -17,12 +17,12 @@
                 <input class="searchBar" type="search" name="search">
                 <button type="submit" name="submitSearch"><img class="imgSearch" src="assets/picture/kisspng-computer-icons-magnifier-magnifying-glass-clip-art-lupe-5b4c85ec67c638.1343363915317416764251.png" alt="loupe"></button>
             </form>
-
-            <?php
-        if(!empty($_SESSION)){
-            echo '<div class="account">
-                <button class="dropBtn">' . $_SESSION['name'] . '<br>Mon Compte</button>
-                <div class="dropdownAccount">
+            <div class="headerRight">
+                <?php
+                if(!empty($_SESSION)){
+                    echo '<div class="account">
+                    <button class="dropBtn">' . $_SESSION['name'] . '<br>Mon Compte</button>
+                    <div class="dropdownAccount">
                     <a href="#">Mon compte</a>
                     <a href="#">Mes commandes</a>';
                     if($_SESSION['role'] == 'seller'){
@@ -31,16 +31,20 @@
                         echo '<a href="#">Créer un compte vendeur</a>';
                     }
                     echo '<a href="logout.php">Se déconnecter</a>
-                </div>
-            </div>';
-        }else{
-            echo '<div>
+                    </div>
+                    </div>';
+                }else{
+                    echo '<div>
                     <a class="goConnexion" href="connexion.php">S\'identifier</a>
                     <a class="goSubscribe" href="inscription.php">Créer un compte</a>
-                 </div>';
-        }
-        ?>
-        </nav>
+                    </div>';
+                }
+                ?>
+                <figure class="panier">
+                    <a href="panier.php"><img src="assets/picture/panier2.png" alt="panier"></a>
+                </figure>
+            </div>
+        </header>
 
         <div class="main">
         

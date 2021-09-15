@@ -22,7 +22,8 @@ session_start();
         <h2 class="userTitle">Modifier un utilisateur</h2>
 
         <div class="tabUser">
-            <div class="afficherUser">        
+            <div class="afficherUser">    
+                    <h3>Informations</h3>    
                     <p>Adresse E-mail: <?php echo $userDetails[1] ?></p>
                     <p>Nom: <?php echo $userDetails[2] ?></p>
                     <p>Prénom: <?php echo $userDetails[3] ?></p>
@@ -31,6 +32,7 @@ session_start();
                     <p>Rôle de l'utilisateur: <?php echo $userDetails[7] ?></p>
             </div>
             <div class="updateUser">
+                <h3>Modifier les informations</h3>
                 <form action="modifier.php?email=<?php echo $email ?>" method="post">
                         <label>Modifier l'email:</label>
                             <input type="text" name="updateEmail">
@@ -51,7 +53,7 @@ session_start();
                                 <option value="ban">Banni</option>
                             </select>
                         
-                    <input class="submit" type="submit" name='submitModif' value="Sauvegarder les modifications">
+                    <input class="submitUpdate" type="submit" name='submitModif' value="Sauvegarder les modifications">
                 </form>
             </div>
         </div>
