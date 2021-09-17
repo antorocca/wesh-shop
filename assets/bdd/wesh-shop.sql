@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 17, 2021 at 06:58 AM
+-- Generation Time: Sep 17, 2021 at 09:50 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -88,21 +88,21 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `catName`, `imgCat`) VALUES
-(1, 'Bijoux', ''),
-(2, 'Librairie', ''),
-(3, 'Mode', ''),
-(4, 'Épicerie', ''),
-(5, 'Technologie', ''),
-(6, 'Jeu et Jouet', ''),
+(1, 'Bijoux', 'bijoux.png'),
+(2, 'Librairie', 'librairie.png'),
+(3, 'Mode', 'mode.png'),
+(4, 'Épicerie', 'epicerie.png'),
+(5, 'Technologie', 'technologie.png'),
+(6, 'Jeu et Jouet', 'jeu.png'),
 (7, 'Musique et Art', ''),
 (8, 'Boisson', ''),
-(9, 'Beauté et Bien-être', ''),
-(10, 'Sport et Loisir', ''),
-(11, 'Ameublement', ''),
-(12, 'Bébé et puériculture', ''),
-(13, 'Auto-moto', ''),
-(14, 'Jardinerie', ''),
-(15, 'Animalerie', ''),
+(9, 'Beauté et Bien-être', 'beautebienetre.png'),
+(10, 'Sport et Loisir', 'sportloisir.png'),
+(11, 'Ameublement', 'ameublement.png'),
+(12, 'Bébé et puériculture', 'bebe.png'),
+(13, 'Auto-moto', 'automoto.png'),
+(14, 'Jardinerie', 'jardinerie.png'),
+(15, 'Animalerie', 'animalerie.png'),
 (16, 'Décoration', '');
 
 -- --------------------------------------------------------
