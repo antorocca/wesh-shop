@@ -56,7 +56,8 @@
             <a href="#">Bébé et puériculture</a>
             <a href="#">Épicerie et Boisson</a>
             <a href="#">Technologie</a>
-            <a href="#">Jardinerie et animalerie</a>
+            <a href="#">Animalerie</a>
+            <a href="#">Jardinerie</a>
             <a href="#">Beauté et Bien-être</a>
             <a href="#">Sport et Loisir</a>
             <a href="#">Ameublement</a>
