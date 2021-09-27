@@ -27,6 +27,7 @@ html, body{
     transition-duration: 0.2s;
 }
 /*------identification button--------*/
+/*************************************/
 .goSubscribe, .goConnexion{
     color:white;
     background-color:rgb(8, 63, 181);
@@ -49,7 +50,8 @@ html, body{
     background-color: rgb(0, 81, 255);
     transition-duration:0.3s;
 }
-/*-------panier button-------*/
+/*-------PANIER BUTTON-------*/
+/*****************************/
 .panier img{   
     padding:5px 10px 5px 7px;
     width:40px;
@@ -99,7 +101,8 @@ html, body{
 
 }
 
-/*-------------barre de recherche-------------------*/
+/*-------------SEARCH BAR-------------------*/
+/****************************************************/
 .formSearch{
     width:40%;
     display:flex;
@@ -127,6 +130,7 @@ html, body{
 }
 
 /*-------Account Dropdown---------*/
+/*********************************/
 .dropBtn{
     background-color: rgb(8, 63, 181);
     color: white;
@@ -148,12 +152,15 @@ html, body{
 }
 
 .dropdownAccount {
-    display: none;
+    /*display:none;*/
+    height:0;
+    overflow:hidden;
     position: absolute;
     background-color: rgb(0, 71, 225);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    transition:0.5s;
 }
 
 .dropdownAccount a {
@@ -171,10 +178,12 @@ html, body{
 }
 
 .account:hover .dropdownAccount {
-    display: block;
+    /*display: block;*/
+    height:auto;
 }
 
 /*------------------menu categorie-------------*/
+/***********************************************/
 .categorie{
     width:100%;
     font-size:15px;
@@ -200,6 +209,7 @@ html, body{
 }
 
 /*-------------------formulaire connexion-----------------*/
+/**********************************************************/
 
 .inscription, .connexion{
     width:45%;
@@ -258,6 +268,7 @@ html, body{
 
 
 /*-------------------formulaire inscription-----------------*/
+/************************************************************/
 .formSubscribe{
     margin:20px auto 57px auto;
     padding-bottom:10px;
@@ -298,18 +309,16 @@ html, body{
 }
 
 /*----------------------------------------BOUTIQUE.PHP---------------------------------------*/
+/*********************************************************************************************/
 
 .shop{
     display:flex;
     width:100%;
 }
-/*.sidebar{
-    width: 15%;
-    border-top:1px solid black;
-}*/
-
-/*---------menu categorie--------*/
-/*----france map---*/
+/*---------MENU CATEGORY--------ON INDEX(BOUTIQUE).PHP AND CATEGORY.PHP*/ 
+/********************************/
+/*----FRANCE MAP---*/
+/*******************/
 .nav-content{
     width:100%;
     display:flex;
@@ -329,7 +338,12 @@ html, body{
     border-radius:5px;
     margin:15px 0px;
 }
+main>section[class="nav-content"]{
+    width: 90%;
+    margin:0 auto;
+}
 /*---visitedcategories---*/
+/*************************/
 .mostVisitedCat h3{
     color:rgb(8, 63, 181);
     margin:0px;
@@ -355,6 +369,7 @@ html, body{
 }
 
 /*----top seller---*/
+/*******************/
 .topSell h3{
     color:rgb(8, 63, 181);
     margin:0px;
@@ -379,7 +394,8 @@ html, body{
     border-radius:5px;
 }
 
-/*------------carte produit--------*/
+/*---------carte produit--------*/
+/********************************/
 .produits{
     width:90%;
     margin: 15px auto;
@@ -462,6 +478,7 @@ hr{
 }
 
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
+/***************************************************************************************/
 .allArticle{
     width:70%;
     margin: 25px auto;
@@ -499,7 +516,8 @@ hr{
     cursor:pointer;
     margin-left:10px;
 }
-/*----------------details article----------------*/
+/*----------------ARTICLE DETAILS----------------*/
+/*************************************************/
 .descArticle h2{
     margin:20px 0px 5px 0px;
 }
@@ -520,7 +538,8 @@ hr{
 .articleDesc{
     margin-bottom:15px;
 }
-/*--------------------Similar Product-----------------*/
+/*--------------------SIMILAR PRODUCT-----------------*/
+/******************************************************/
 
 .similarProduct{
     width:80%;
@@ -554,8 +573,8 @@ hr{
     font-weight:bolder;
 }
 
-/*******************CRUD***********************/
 /*------------------------------------ADMIN.PHP--------------------------------*/
+/******************************************************************************/
 .userTitle{
     text-align:center;
 }
@@ -635,7 +654,8 @@ hr{
     justify-content:center;
 }
 
-/*---------------------Modifier.php----------------------*/
+/*---------------------MODIFIER.PHP----------------------*/
+/*********************************************************/
 .tabUser{
     display:flex;
     justify-content:space-around;
@@ -670,7 +690,8 @@ hr{
     border:1px solid black
 }
 
-/*----------------------Supprimer.php---------------------*/
+/*----------------------SUPPRIMER.php---------------------*/
+/*********************************************************/
 .deletetab{
     width:70%;
     margin-left:auto;
@@ -703,7 +724,8 @@ hr{
     justify-content: center;
 }
 
-/*----------------------bannir.php------------------------*/
+/*----------------------BANNIR.php------------------------*/
+/**********************************************************/
 .bantab{
     width:70%;
     margin-left:auto;
@@ -733,6 +755,7 @@ hr{
 }
 
 /*----------------------CREATE.PHP-----------------------*/
+/*********************************************************/
 .create form{
     display: flex;
     flex-direction: column;
@@ -770,7 +793,8 @@ hr{
 }
 
 
-/*------------Ajouter un article------------*/
+/*------------ADD ARTICLE------------*/
+/************************************/
 .addTitle{
     text-align:center;
 }
@@ -819,6 +843,7 @@ hr{
 
 
 /*-----------------------------------------FOOTER.php---------------------------------------*/
+/********************************************************************************************/
 footer{
     background-color:rgb(8, 63, 181);
     margin-top:2%;

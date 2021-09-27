@@ -2,12 +2,19 @@
 session_start();
 
 require_once 'functionDatabase.php';
-Database::connect();
+    Database::connect();
 
-$select = Database::$bdd->prepare('SELECT * FROM article');
-$select->execute();
+$article = Database::$bdd->prepare('SELECT * FROM article');
+$article->execute();
+$resultA = $article->fetchAll();
 
-$resultat = $select->fetchAll();
+
+$topCat = Database::$bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,4');
+$topCat->execute();
+$resultTopCat = $topCat->fetchAll();
+// echo '<pre>';
+// var_dump($resultTopCat);
+// echo '</pre>';
 ?>
 
 <?php include('head&header.php'); ?>
@@ -29,10 +36,10 @@ $resultat = $select->fetchAll();
                 <div class="mostVisitedCat">
                     <h3>Catégories les plus visitées</h3>
                     <div>
-                        <a href="#"><img src="sans titre2.png" alt=""></a>
-                        <a href="#"><img src="sans titre2.png" alt=""></a>
-                        <a href="#"><img src="sans titre2.png" alt=""></a>
-                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[0][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[0][2] ?>" alt="<?php echo $resultTopCat[0][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[1][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[1][2] ?>" alt="<?php echo $resultTopCat[1][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[2][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[2][2] ?>" alt="<?php echo $resultTopCat[2][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[3][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[3][2] ?>" alt="<?php echo $resultTopCat[3][1] ?>"></a>
                     </div>
                 </div>
                 <?php include('assets/regionSVG/france-liens-region-departement-svg.html');?>
@@ -48,11 +55,11 @@ $resultat = $select->fetchAll();
             </div>
             
             <?php
-            foreach($resultat as $article){
+            foreach($resultA as $article){
                 echo '
                 <div class="card">
                     <div class="haut">
-                        <img src="assets/uploads/' .  $article['photo'] . '" alt="">
+                        <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
                     </div>
                     <div class="bas">';
                         if(strlen($article['nom'])>20){
@@ -91,8 +98,7 @@ $resultat = $select->fetchAll();
             ?>
             
         </section>
-    </main><hr>
-    <br>
+    </main>
     <?php include('footer.php'); ?>
 
 

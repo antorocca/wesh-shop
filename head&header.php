@@ -1,3 +1,9 @@
+<?php
+    Database::connect();
+    $category = Database::$bdd->prepare('SELECT id FROM category');
+    $category->execute();
+    $resultC = $category->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,19 +55,21 @@
             
         </div>
         <nav class="categorie">
-            <a href="#">Librairie</a>
-            <a href="#">Musique et Art</a>
-            <a href="#">Jeu et Jouet</a>
-            <a href="#">Mode et Bijoux</a>
-            <a href="#">Bébé et puériculture</a>
-            <a href="#">Épicerie et Boisson</a>
-            <a href="#">Technologie</a>
-            <a href="#">Animalerie</a>
-            <a href="#">Jardinerie</a>
-            <a href="#">Beauté et Bien-être</a>
-            <a href="#">Sport et Loisir</a>
-            <a href="#">Ameublement</a>
-            <a href="#">Auto-Moto</a>
+            <a href="category.php?id=<?php echo $resultC[1]['id'] ?>">Librairie</a>
+            <a href="category.php?id=<?php echo $resultC[6]['id'] ?>">Musique et Art</a>
+            <a href="category.php?id=<?php echo $resultC[5]['id'] ?>">Jeu et Jouet</a>
+            <a href="category.php?id=<?php echo $resultC[2]['id'] ?>">Mode et Bijoux</a>
+            <a href="category.php?id=<?php echo $resultC[11]['id'] ?>">Côté Bébé</a>
+            <a href="category.php?id=<?php echo $resultC[15]['id'] ?>">Décoration</a>
+            <a href="category.php?id=<?php echo $resultC[7]['id'] ?>">Boisson</a>
+            <a href="category.php?id=<?php echo $resultC[3]['id'] ?>">Épicerie</a>
+            <a href="category.php?id=<?php echo $resultC[4]['id'] ?>">Technologie</a>
+            <a href="category.php?id=<?php echo $resultC[14]['id'] ?>">Animalerie</a>
+            <a href="category.php?id=<?php echo $resultC[13]['id'] ?>">Jardinerie</a>
+            <a href="category.php?id=<?php echo $resultC[8]['id'] ?>">Beauté et Bien-être</a>
+            <a href="category.php?id=<?php echo $resultC[9]['id'] ?>">Sport et Loisir</a>
+            <a href="category.php?id=<?php echo $resultC[10]['id'] ?>">Ameublement</a>
+            <a href="category.php?id=<?php echo $resultC[12]['id'] ?>">Auto-Moto</a>
         </nav>
         <?php 
             if(empty($_SESSION)){

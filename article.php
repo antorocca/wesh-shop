@@ -1,10 +1,6 @@
 <?php
     session_start();
 
-    if(empty($_SESSION || !isset($_SESSION['email']))){
-        header('Location: logout.php');
-    }
-
     require_once 'functionDatabase.php';
     Database::connect();
 
