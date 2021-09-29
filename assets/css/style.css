@@ -26,7 +26,7 @@ html, body{
     color:rgb(255, 159, 34);
     transition-duration: 0.2s;
 }
-/*------identification button--------*/
+/*------IDENTIFICATION BUTTON--------*/
 /*************************************/
 .goSubscribe, .goConnexion{
     color:white;
@@ -59,9 +59,10 @@ html, body{
 .panier{
     border:2px outset rgb(0, 46, 145);
     border-radius:10px;
+    background:rgb(255, 159, 34); 
 }
 .panier:hover{
-    background-color: rgb(0, 81, 255);
+    background-color: rgb(255, 145, 0); 
     border:2px outset rgb(0, 56, 177);
     transition:0.2s;
 }
@@ -114,22 +115,24 @@ html, body{
     padding:10px;
     width:90%;
     border-radius: 5px 0px 0px 5px;
-    border: 1px solid rgb(8, 63, 181);
+    border: 1px solid rgb(103, 120, 156);
     border-right:none;
 }
-.imgSearch{
-    width:24px;
-    position: relative;
-    top:2px;
+.formSearch button>i{
+    font-size:1.1rem;
 }
+
 .formSearch button{
+    background: rgb(255, 159, 34);
+    color:white;
+    text-shadow: 2px 2px 2px rgba(40,67,232,0.69);
     border:1px solid rgb(8, 63, 181);
     border-radius:0px 5px 5px 0px;
     height:37px;
     cursor:pointer;
 }
 
-/*-------Account Dropdown---------*/
+/*-------DROPDOWN ACCOUNT---------*/
 /*********************************/
 .dropBtn{
     background-color: rgb(8, 63, 181);
@@ -182,33 +185,34 @@ html, body{
     height:auto;
 }
 
-/*------------------menu categorie-------------*/
+/*------------------MENU CATEGORY-------------*/
 /***********************************************/
-.categorie{
+.category{
     width:100%;
     font-size:15px;
     display:flex;
-    justify-content:space-evenly;
+    justify-content: center;
     align-items: stretch;
     background-color:rgb(8, 63, 181);
 }
-.categorie a{
+.category a{
     text-decoration:none;
     color:white;
-    width: 100%;
+    width: auto;
     text-align: center;
     display: flex;
     flex-direction:column;
     justify-content:center;
-    padding: 7px 2px;
+    padding: 0.4vw 1vw;
+    font-size:0.9rem;
 }
-.categorie a:hover{
+.category a:hover{
     background-color:rgb(0, 71, 225);
     color:rgb(255, 159, 34);
     transition-duration: 0.2s;
 }
 
-/*-------------------formulaire connexion-----------------*/
+/*-------------------FORMULAIRE CONNEXION-----------------*/
 /**********************************************************/
 
 .inscription, .connexion{
@@ -267,7 +271,7 @@ html, body{
 }
 
 
-/*-------------------formulaire inscription-----------------*/
+/*-------------------FORMULAIRE INSCRIPTION-----------------*/
 /************************************************************/
 .formSubscribe{
     margin:20px auto 57px auto;
@@ -342,7 +346,7 @@ main>section[class="nav-content"]{
     width: 90%;
     margin:0 auto;
 }
-/*---visitedcategories---*/
+/*--- + VISITED CATEGORIES---*/
 /*************************/
 .mostVisitedCat h3{
     color:rgb(8, 63, 181);
@@ -367,8 +371,11 @@ main>section[class="nav-content"]{
     padding:10px;
     border-radius:5px;
 }
+.mostVisitedCat>div>a>img:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
 
-/*----top seller---*/
+/*----TOP SELLER---*/
 /*******************/
 .topSell h3{
     color:rgb(8, 63, 181);
@@ -394,6 +401,47 @@ main>section[class="nav-content"]{
     border-radius:5px;
 }
 
+/*--------SLIDER in CATEGORY.PHP-------*/
+.slider{
+    width:90%;
+    margin:0 auto;
+}
+.img-div{
+    width: 300px;
+    margin:10px;
+    background:white;
+}
+.img-div>img{
+    height:170px;
+    width:auto;
+    margin:0 auto;
+}
+.slick-slide{
+    height:42%;
+    border-radius:5px;
+    padding:0px 20px;
+}
+.slick-slide:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
+
+
+.slick-prev:before, .slick-next:before{
+    color: rgb(255, 159, 34);
+    padding: 174px 10px 126px 10px;
+    background: rgb(1, 62, 196);
+    font-size: 30px;
+    position:relative;
+}
+.slick-prev:before{
+    right:25px;
+    border-radius: 5px 0px 0px 5px;
+}
+.slick-next:before{
+    right:5px;
+    border-radius:0px 5px 5px 0px;
+}
+
 /*---------carte produit--------*/
 /********************************/
 .produits{
@@ -413,6 +461,9 @@ main>section[class="nav-content"]{
     border-radius:5px;
     margin-bottom:10px;
     background-color: white;
+}
+.card:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 .haut{
     width:100%;
@@ -559,7 +610,6 @@ hr{
 
 .similar{
     padding:20px;
-
 }
 
 .similarTop img{
@@ -573,8 +623,13 @@ hr{
     font-weight:bolder;
 }
 
+/*-------------------------------------CATEGORY.PHP-------------------------------*/
+/*********************************************************************************/
+
+
 /*------------------------------------ADMIN.PHP--------------------------------*/
 /******************************************************************************/
+/*****************************************************************************/
 .userTitle{
     text-align:center;
 }
@@ -592,7 +647,8 @@ hr{
     border-radius:10px;
 
 }
-/*---------------liste user admin.php------------*/
+/*---------------LISTE USER------------*/
+/**************************************/
 .usertab{
     width:80%;
     border:1px solid black;
@@ -856,3 +912,6 @@ footer p{
     font-size:100px;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1861ff, 0 0 30px #1861ff, 0 0 40px #1861ff, 0 0 55px #1861ff, 0 0 75px #1861ff;
 }
+
+/*test*/
+/*category slide*/

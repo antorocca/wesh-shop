@@ -73,7 +73,7 @@ $resultTopCat = $topCat->fetchAll();
 
                         if(strlen($article['description'])>85){
                             $article['description'] = substr( $article['description'],0,85);
-                        echo '<p>' . $article['description'] . '... <a href="article.php?id=' . $article['id'] .'"> voir plus</a> </p>';
+                        echo '<p>' . $article['description'] . '... </p>';
                         }
 
                         echo '<div class="detail">

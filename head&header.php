@@ -1,8 +1,9 @@
 <?php
     Database::connect();
-    $category = Database::$bdd->prepare('SELECT id FROM category');
+    $category = Database::$bdd->prepare('SELECT id ,catName FROM category');
     $category->execute();
     $resultC = $category->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style2.css">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.csss"> -->
         <title>Document</title>
     </head>
     <body>
@@ -18,7 +24,7 @@
             <a class="headerTitle" href="index.php">WESH Shop</a>
             <form action="#" method="get" class="formSearch">
                 <input class="searchBar" type="search" name="search">
-                <button type="submit" name="submitSearch"><img class="imgSearch" src="assets/picture/kisspng-computer-icons-magnifier-magnifying-glass-clip-art-lupe-5b4c85ec67c638.1343363915317416764251.png" alt="loupe"></button>
+                <button type="submit" name="submitSearch"><i class="fas fa-search"></i></button>
             </form>
             <div class="headerRight">
                 <?php
@@ -44,7 +50,7 @@
                 }
                 ?>
                 <figure class="panier">
-                    <a href="panier.php"><img src="assets/picture/panier3.png" alt="panier"></a>
+                    <a href="panier.php"><img src="assets/picture/panier4.png" alt="panier"></a>
                 </figure>
             </div>
         </header>
@@ -54,11 +60,12 @@
             <h1>WESH SHOP</h1>
             
         </div>
-        <nav class="categorie">
+        <nav class="category">
             <a href="category.php?id=<?php echo $resultC[1]['id'] ?>">Librairie</a>
             <a href="category.php?id=<?php echo $resultC[6]['id'] ?>">Musique et Art</a>
             <a href="category.php?id=<?php echo $resultC[5]['id'] ?>">Jeu et Jouet</a>
-            <a href="category.php?id=<?php echo $resultC[2]['id'] ?>">Mode et Bijoux</a>
+            <a href="category.php?id=<?php echo $resultC[2]['id'] ?>">Mode</a>
+            <a href="category.php?id=<?php echo $resultC[0]['id'] ?>">Bijoux</a>
             <a href="category.php?id=<?php echo $resultC[11]['id'] ?>">Côté Bébé</a>
             <a href="category.php?id=<?php echo $resultC[15]['id'] ?>">Décoration</a>
             <a href="category.php?id=<?php echo $resultC[7]['id'] ?>">Boisson</a>
