@@ -346,6 +346,13 @@ main>section[class="nav-content"]{
     width: 90%;
     margin:0 auto;
 }
+section~h3{
+    width:90%;
+    margin:0 auto;
+    padding:3.5vh 0 0 0;
+    color:rgb(8, 63, 181);
+    /* text-decoration: underline; */
+}
 /*--- + VISITED CATEGORIES---*/
 /*************************/
 .mostVisitedCat h3{
@@ -403,13 +410,14 @@ main>section[class="nav-content"]{
 
 /*--------SLIDER in CATEGORY.PHP-------*/
 .slider{
-    width:90%;
+    width:84%;
     margin:0 auto;
 }
 .img-div{
     width: 300px;
     margin:10px;
     background:white;
+    
 }
 .img-div>img{
     height:170px;
@@ -417,18 +425,20 @@ main>section[class="nav-content"]{
     margin:0 auto;
 }
 .slick-slide{
-    height:42%;
+    /*height:42%;*/
     border-radius:5px;
     padding:0px 20px;
+}
+.slick-track{
+    height:39vh;
 }
 .slick-slide:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 
-
 .slick-prev:before, .slick-next:before{
     color: rgb(255, 159, 34);
-    padding: 174px 10px 126px 10px;
+    padding: 173px 10px 163px 10px;
     background: rgb(1, 62, 196);
     font-size: 30px;
     position:relative;
@@ -455,7 +465,7 @@ main>section[class="nav-content"]{
 .card{
     display:flex;
     flex-direction:column;
-    justify-content: space-between;
+    justify-content: stretch;
     align-items: center;
     width:19%;
     border-radius:5px;
@@ -465,21 +475,22 @@ main>section[class="nav-content"]{
 .card:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
-.haut{
+.top{
     width:100%;
     padding-bottom:10px;
     display:flex;
     justify-content:center;
 }
 
-.haut img{
+.top img{
     width:auto;
+    max-width:180px;
     max-height:200px;
     min-height:50px;
-    margin-top:10px;
+    margin-top:20px;
 }
 
-.bas{
+.bottom{
     width: 85%;
     display: flex;
     justify-content:end;
@@ -490,6 +501,7 @@ main>section[class="nav-content"]{
     text-align:center;
     color:rgb(8, 63, 181);
     font-size:35px;
+    text-transform:uppercase;
 }
 
 .detailLink{
@@ -508,17 +520,17 @@ main>section[class="nav-content"]{
     transition-duration: 0.2s;
 }
 
-.bas h3{
+.bottom h3{
     margin:10px 0px;
 }
-.bas p{
+.bottom p{
     margin:10px 0px;
 }
 .detail{
     display:flex;
     justify-content:space-between;
     position:relative;
-    bottom:2%;
+    bottom:0px;
 }
 .btnDetail{
     display:flex;
@@ -546,11 +558,17 @@ hr{
     min-height:500px;
     max-height:500px;
 }
-.descArticle{
-    width: 30%;
+.detailArticle{
+    width: 40%;
     display:flex;
     flex-direction:column;
     justify-content:center;
+}
+.detailArticle>h2{
+    margin-bottom:2px;
+}
+.articleDesc{
+    line-height:1.5rem;
 }
 
 .formPanier select{
@@ -561,11 +579,17 @@ hr{
 .formPanier input{
     padding:6px;
     border: none;
+    border-radius:5px;
     background-color:rgb(192, 1, 1);
     color:white;
     font-weight:bolder;
     cursor:pointer;
     margin-left:10px;
+    transition:.3s;
+
+}
+.formPanier input:hover{
+    background-color:rgb(219, 0, 0);
 }
 /*----------------ARTICLE DETAILS----------------*/
 /*************************************************/
@@ -577,7 +601,7 @@ hr{
 }
 .articleBrand{
     font-size:12px;
-    margin-bottom:15px;
+    margin-bottom:25px;
 }
 .articlePrize{
     margin-bottom:15px;
@@ -904,7 +928,7 @@ footer{
     background-color:rgb(8, 63, 181);
     margin-top:2%;
 }
-footer p{
+footer>p{
     padding:15px;
     margin:0px;
     text-align: center;

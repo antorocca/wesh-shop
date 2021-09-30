@@ -45,29 +45,31 @@
         </div>
     </section>
 
-    <h3>Produit les recherché</h3>
+    <h3>Produits les plus recherchés :</h3>
     <section class="slider">
         <?php
             foreach($articles as $article){
+                // $v = var_export($article);
+                $price = number_format($article['prix'], 2,',','');
                 echo '
                     <div class="img-div">
-                        <div class="haut">
+                        <div class="top">
                             <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
                         </div>
-                        <div class="bas">';
+                        <div class="bottom">';
                             if(strlen($article['nom'])>20){
                                 $article['nom'] = substr( $article['nom'],0,20);
                             
-                                echo '<h3>' . $article['nom'] . '...</h3>
-                                <p>' . $article['marque'] . '</p>';
+                                echo '<h3 style="margin:2px 0px;">' . $article['nom'] . '...</h3>';
                             }
                             else{
-                                echo '<h3>' . $article['nom'] . '</h3>';
+                                echo '<h3 style="margin:2px 0px;">' . $article['nom'] . '</h3>';
                             }
-
-                            echo '<div class="detail">
+                            
+                            echo '<p style="margin:2px 0px;">' . $article['marque'] . '</p>
+                                <div class="detail">
                                 <div>
-                                    <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $article['prix'] . ' €</p>';
+                                    <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $price . ' €</p>';
                                     if($article['stock']>0){
                                         echo '<p style="color:green;">En stock</p>';       
                                     }

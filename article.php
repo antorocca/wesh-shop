@@ -14,18 +14,19 @@
     $similar-> execute([$article[7]]);
     $similarArticle = $similar->fetchAll();
 
+    $price = number_format($article['prix'], 2,',','');
+    
     include('head&header.php'); 
-
 ?>
 
 <div class="allArticle">
     <div class='imgArticle'>
         <img src="assets/uploads/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
     </div>
-    <div class="descArticle">
+    <div class="detailArticle">
         <h2><?php echo $article[1] ?></h2>
         <p class="articleBrand"><?php echo $article[6] ?></p>
-        <p class="articlePrize">Prix: <span><?php echo $article[4] ?> €</span></p>
+        <p class="articlePrize">Prix: <span><?php echo $price ?> €</span></p>
         <p class="articleDesc"><?php echo $article[2] ?></p>
             <?php 
                 if($article[5] > 0){

@@ -1,12 +1,14 @@
 <?php
 session_start();
 
+
+
 require_once 'functionDatabase.php';
     Database::connect();
 
-$article = Database::$bdd->prepare('SELECT * FROM article');
-$article->execute();
-$resultA = $article->fetchAll();
+$stmt = Database::$bdd->prepare('SELECT * FROM article');
+$stmt->execute();
+$resultA = $stmt->fetchAll();
 
 
 $topCat = Database::$bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,4');
@@ -15,6 +17,7 @@ $resultTopCat = $topCat->fetchAll();
 // echo '<pre>';
 // var_dump($resultTopCat);
 // echo '</pre>';
+
 ?>
 
 <?php include('head&header.php'); ?>
@@ -56,12 +59,13 @@ $resultTopCat = $topCat->fetchAll();
             
             <?php
             foreach($resultA as $article){
+                $price = number_format($article['prix'], 2,',','');
                 echo '
                 <div class="card">
-                    <div class="haut">
+                    <div class="top">
                         <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
                     </div>
-                    <div class="bas">';
+                    <div class="bottom">';
                         if(strlen($article['nom'])>20){
                             $article['nom'] = substr( $article['nom'],0,20);
                         
@@ -78,7 +82,7 @@ $resultTopCat = $topCat->fetchAll();
 
                         echo '<div class="detail">
                             <div>
-                                <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $article['prix'] . ' €</p>';
+                                <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $price . ' €</p>';
                                 if($article['stock']>0){
                                     echo '<p style="color:green;">En stock</p>';       
                                 }

@@ -61,20 +61,23 @@ session_start();
                 <label>Marque:</label>
                     <input type="text" name="addBrand">
                 <label>*Type:</label>
-                    <select id="" name="addType">
-                        <option value="Art">Art (sculpture, peinture, dessin...)</option>
-                        <option value="Ameublement">Ameublement</option>
-                        <option value="Animalerie">Animalerie</option>
-                        <option value="Bijoux">Bijoux</option>
-                        <option value="Boisson">Boisson</option>
-                        <option value="Décoration">Décoration</option>
-                        <option value="Épicerie">Épicerie</option>
-                        <option value="Jeu de société">Jeu de société</option>
-                        <option value="Jeux-vidéo">Jeux-vidéo</option>
-                        <option value="Jouet">Jouet</option>
-                        <option value="Livre">Livre</option>
-                        <option value="Musique">Musique</option>
-                        <option value="Vêtement">Vêtement</option>
+                    <select id="" name="addCat">
+                        <option value="7">Musique et Art (sculpture, peinture, dessin...)</option>
+                        <option value="11">Ameublement</option>
+                        <option value="15">Animalerie</option>
+                        <option value="13">Auto-moto</option>
+                        <option value="9">Beauté et bien-être</option>
+                        <option value="1">Bijoux</option>
+                        <option value="8">Boisson</option>
+                        <option value="16">Décoration</option>
+                        <option value="4">Épicerie</option>
+                        <option value="14">Jardinerie</option>
+                        <option value="6">Jeu et jouet</option>
+                        <option value="12">Puériculture et bébé</option>
+                        <option value="2">Livre</option>
+                        <option value="3">Mode</option>
+                        <option value="10">Sport et loisir</option>
+                        <option value="5">Technologie</option>
                     </select>
                 </div>
             <div class="addButton">
