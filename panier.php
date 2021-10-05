@@ -8,3 +8,6 @@
 ?>
 
 <?php include('assets/regionSVG/Ile-de-France.svg.html'); ?>
+
+
+<?php include('footer.php');
