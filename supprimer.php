@@ -9,7 +9,7 @@ session_start();
     require_once 'functionCrud.php';
 
     Crud::delete();
-    include('head&header.php');
+    include('include/head&header.php');
 ?>
 
         <h2 class="userTitle">Supprimer un utilisateur</h2>
@@ -22,12 +22,7 @@ session_start();
                 <input class="deleteBtn" type="submit" name="deleteInput" value="Supprimer">
             </form>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="retourAccueil">
-            <a href="admin.php">Accueil administrateur</a>
-        </div>
-    </body>
-</html>
+
+        <a class="retourAccueil" href="admin.php">Accueil administrateur</a>
+
+<?php include('include/footer.php'); ?>

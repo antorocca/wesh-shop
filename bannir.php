@@ -10,7 +10,7 @@ session_start();
     require_once 'functionCrud.php';
     Crud::ban();
 
-include('head&header.php');
+include('include/head&header.php');
 ?>
            
         </div>
@@ -41,12 +41,5 @@ include('head&header.php');
                 </div>';
             }
         ?>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="retourAccueil">
-            <a href="admin.php">Accueil administrateur</a>
-        </div>
-    </body>
-</html>
+        <a class="retourAccueil" href="admin.php">Accueil administrateur</a>
+        <?php include('include/footer.php'); ?>

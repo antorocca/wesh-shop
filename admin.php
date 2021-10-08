@@ -15,7 +15,7 @@ session_start();
     $list = $bdd ->query('SELECT * FROM user ORDER BY role ASC');
     $userList = $list->fetchAll();
 ?>
-   <?php include('head&header.php'); ?>
+   <?php include('include/head&header.php'); ?>
 
 <h2 class="userTitle">Page administrateur</h2>
 <h3 class="userTitle">Liste des utilisateurs</h3>
@@ -95,7 +95,7 @@ session_start();
     </div>
 </div>
 <br>
-<?php include('footer.php'); ?>
+<?php include('include/footer.php'); ?>
 
     
 

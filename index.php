@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-
-
 require_once 'functionDatabase.php';
     Database::connect();
 
 $stmt = Database::$bdd->prepare('SELECT * FROM article');
 $stmt->execute();
-$resultA = $stmt->fetchAll();
+$articles = $stmt->fetchAll();
 
+$brand = Database::$bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');
+$brand->execute();
+$brandA = $brand->fetchAll();
 
 $topCat = Database::$bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,4');
 $topCat->execute();
@@ -17,10 +18,9 @@ $resultTopCat = $topCat->fetchAll();
 // echo '<pre>';
 // var_dump($resultTopCat);
 // echo '</pre>';
-
 ?>
 
-<?php include('head&header.php'); ?>
+<?php include('include/head&header.php'); ?>
         
     <h2 class="titre_boutique">LA BOUTIQUE</h2>
     <main class="shop">          
@@ -56,53 +56,16 @@ $resultTopCat = $topCat->fetchAll();
                     </div>
                 </div>
             </div>
-            
-            <?php
-            foreach($resultA as $article){
-                $price = number_format($article['prix'], 2,',','');
-                echo '
-                <div class="card">
-                    <div class="top">
-                        <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
-                    </div>
-                    <div class="bottom">';
-                        if(strlen($article['nom'])>20){
-                            $article['nom'] = substr( $article['nom'],0,20);
-                        
-                        echo '<h3>' . $article['nom'] . '...</h3>';
-                        }
-                        else{
-                            echo '<h3>' . $article['nom'] . '</h3>';
-                        }
-
-                        if(strlen($article['description'])>85){
-                            $article['description'] = substr( $article['description'],0,85);
-                        echo '<p>' . $article['description'] . '... </p>';
-                        }
-
-                        echo '<div class="detail">
-                            <div>
-                                <p style="color:rgb(194, 4, 4);font-weight:bolder;">' . $price . ' €</p>';
-                                if($article['stock']>0){
-                                    echo '<p style="color:green;">En stock</p>';       
-                                }
-                                else{
-                                    echo '<p style="color:red;">Stock épuisé</p>';
-                                }
-                                echo'
-                            </div>
-                                <div class="btnDetail">
-                                    <a class="detailLink" href="article.php?id=' . $article['id'] .'">Détails</a>
-                                </div>
-                            
-                        </div>
-                    </div>
-                </div>';
-            }
-            ?>
-            
+        </section>
+        <article class="PFbrand">
+            <h3>Découvrez les produits de la marque Doriane</h3>
+            <div class = "sliderT2">
+                <?php include('include/SScard.php') ?>
+            </div>
+        </article>
+        <section class="loop">
+            <?php include('include/BScard.php') ?>
         </section>
     </main>
-    <?php include('footer.php'); ?>
-
-
+    <?php include('include/sliderLink.php'); ?>
+    <?php include('include/footer.php'); ?>

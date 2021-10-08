@@ -9,7 +9,7 @@ session_start();
 
     Crud::create();
 
-    include('head&header.php');
+    include('include/head&header.php');
     ?>
                <div class="create">
                 <h3>Créer un utilisateur</h3>
@@ -43,4 +43,4 @@ session_start();
         </div>
 
 
-    <?php include('footer.php'); ?>
+    <?php include('include/footer.php'); ?>

@@ -4,10 +4,10 @@
     require_once 'functionDatabase.php';
     Database::connect();
 
-    include('head&header.php');
+    include('include/head&header.php');
 ?>
 
 <?php include('assets/regionSVG/Ile-de-France.svg.html'); ?>
 
 
-<?php include('footer.php');
+<?php include('include/footer.php');

@@ -8,7 +8,7 @@ session_start();
 
 ?>
 
-<?php include('head&header.php'); ?>
+<?php include('include/head&header.php'); ?>
     
     <div class="formConnexion">
             <h2 class="connexionTitle">S'identifier</h2>
@@ -28,4 +28,4 @@ session_start();
                 <input class="btnConnexion" type="submit" name="submitConnexion" value="Se connecter">
             </form>
     </div>
-<?php include('footer.php'); ?>
+<?php include('include/footer.php'); ?>

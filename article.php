@@ -16,7 +16,7 @@
 
     $price = number_format($article['prix'], 2,',','');
     
-    include('head&header.php'); 
+    include('include/head&header.php'); 
 ?>
 
 <div class="allArticle">
@@ -66,7 +66,7 @@
 </div>
 <hr>
 <br>
-<?php include('footer.php'); ?>
+<?php include('include/footer.php'); ?>
 
 
 <script>

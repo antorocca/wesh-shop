@@ -8,7 +8,7 @@ session_start();
 
 ?>
 
-<?php include('head&header.php'); ?>
+<?php include('include/head&header.php'); ?>
     
     <div class="formSubscribe">
             <h2 class="connexionTitle">Créer un compte sur WESH Shop</h2>
@@ -38,4 +38,4 @@ session_start();
                 <input class="btnSubscribe" type="submit" name="submit" value="Créer mon compte">
             </form>
     </div>
-<?php include('footer.php'); ?>
+<?php include('include/footer.php'); ?>

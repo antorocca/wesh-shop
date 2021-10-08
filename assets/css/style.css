@@ -27,7 +27,7 @@ html, body{
     transition-duration: 0.2s;
 }
 /*------IDENTIFICATION BUTTON--------*/
-/*************************************/
+/************************************/
 .goSubscribe, .goConnexion{
     color:white;
     background-color:rgb(8, 63, 181);
@@ -51,7 +51,7 @@ html, body{
     transition-duration:0.3s;
 }
 /*-------PANIER BUTTON-------*/
-/*****************************/
+/****************************/
 .panier img{   
     padding:5px 10px 5px 7px;
     width:40px;
@@ -103,7 +103,7 @@ html, body{
 }
 
 /*-------------SEARCH BAR-------------------*/
-/****************************************************/
+/*******************************************/
 .formSearch{
     width:40%;
     display:flex;
@@ -186,7 +186,7 @@ html, body{
 }
 
 /*------------------MENU CATEGORY-------------*/
-/***********************************************/
+/*********************************************/
 .category{
     width:100%;
     font-size:15px;
@@ -212,8 +212,8 @@ html, body{
     transition-duration: 0.2s;
 }
 
-/*-------------------FORMULAIRE CONNEXION-----------------*/
-/**********************************************************/
+/*-------------------FORMULAIRE CONNEXION.php-----------------*/
+/*********************************************************/
 
 .inscription, .connexion{
     width:45%;
@@ -271,8 +271,8 @@ html, body{
 }
 
 
-/*-------------------FORMULAIRE INSCRIPTION-----------------*/
-/************************************************************/
+/*-------------------FORMULAIRE INSCRIPTION.php-----------------*/
+/***********************************************************/
 .formSubscribe{
     margin:20px auto 57px auto;
     padding-bottom:10px;
@@ -312,11 +312,12 @@ html, body{
     cursor:pointer;
 }
 
-/*----------------------------------------BOUTIQUE.PHP---------------------------------------*/
-/*********************************************************************************************/
+/*----------------------------------------INDEX.PHP---------------------------------------*/
+/********************************************************************************************/
 
 .shop{
     display:flex;
+    flex-direction:column;
     width:100%;
 }
 /*---------MENU CATEGORY--------ON INDEX(BOUTIQUE).PHP AND CATEGORY.PHP*/ 
@@ -408,24 +409,68 @@ section~h3{
     border-radius:5px;
 }
 
+/*--------put forward brand section--------*/
+.PFbrand{
+    background-color: rgb(235, 235, 235);
+    width:90%;
+    margin:0 auto;
+    border-radius: 5px;
+    padding-bottom:3vh;
+}
+.PFbrand>h3{
+    margin:1.5vh 0 1vh 2vw;
+    color:rgb(8, 63, 181);
+    
+}
+/*-------------------------------------------
+------------CSS SMALL SIZE CARD.php--------------
+---------------------------------------------*/
+.card{
+    display:flex;
+    flex-direction:column;
+    justify-content: stretch;
+    align-items: center;
+    width:16.5vw;
+    border-radius:5px;
+    margin:7px 6px 5px 6px;
+    background-color: white;
+}
+.card:hover{
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.30);
+}
+/*--------INFINITE LOOP OF ARTICLE------*/
+.loop{
+    width:90%;
+    margin: 15px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+/*--------SLIDER IN INDEXPHP*/
+.sliderT2{
+    width:94%;
+    margin:0 auto;
+}
+
+
 /*--------SLIDER in CATEGORY.PHP-------*/
-.slider{
+.sliderT1{
     width:84%;
     margin:0 auto;
 }
-.img-div{
-    width: 300px;
+ .img-div{
+     height:38vh;
+   /* width: 300px;
     margin:10px;
-    background:white;
+    background:white;*/
     
 }
 .img-div>img{
     height:170px;
     width:auto;
     margin:0 auto;
-}
-.slick-slide{
-    /*height:42%;*/
+} 
+/*.slick-slide{
     border-radius:5px;
     padding:0px 20px;
 }
@@ -434,9 +479,9 @@ section~h3{
 }
 .slick-slide:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
-}
+}*/
 
-.slick-prev:before, .slick-next:before{
+/*.slick-prev:before, .slick-next:before{
     color: rgb(255, 159, 34);
     padding: 173px 10px 163px 10px;
     background: rgb(1, 62, 196);
@@ -450,29 +495,29 @@ section~h3{
 .slick-next:before{
     right:5px;
     border-radius:0px 5px 5px 0px;
-}
+}*/
 
 /*---------carte produit--------*/
-/********************************/
+/*******************************/
 .produits{
-    width:90%;
+    width:80%;
     margin: 15px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.card{
+.img-div{
     display:flex;
     flex-direction:column;
     justify-content: stretch;
     align-items: center;
-    width:19%;
+    width:16.5vw;
     border-radius:5px;
-    margin-bottom:10px;
+    margin:7px 6px 0px 6px;
     background-color: white;
 }
-.card:hover{
+.img-div:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 .top{
@@ -541,7 +586,7 @@ hr{
 }
 
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
-/***************************************************************************************/
+/**************************************************************************************/
 .allArticle{
     width:70%;
     margin: 25px auto;
@@ -592,7 +637,7 @@ hr{
     background-color:rgb(219, 0, 0);
 }
 /*----------------ARTICLE DETAILS----------------*/
-/*************************************************/
+/************************************************/
 .descArticle h2{
     margin:20px 0px 5px 0px;
 }
@@ -614,7 +659,7 @@ hr{
     margin-bottom:15px;
 }
 /*--------------------SIMILAR PRODUCT-----------------*/
-/******************************************************/
+/*****************************************************/
 
 .similarProduct{
     width:80%;
@@ -735,7 +780,7 @@ hr{
 }
 
 /*---------------------MODIFIER.PHP----------------------*/
-/*********************************************************/
+/********************************************************/
 .tabUser{
     display:flex;
     justify-content:space-around;
@@ -800,12 +845,13 @@ hr{
     align-items:center;
 }
 .retourAccueil{
-    display:flex;
-    justify-content: center;
+    margin-top:5vh;
+    display:block;
+    text-align: center;
 }
 
 /*----------------------BANNIR.php------------------------*/
-/**********************************************************/
+/*********************************************************/
 .bantab{
     width:70%;
     margin-left:auto;
@@ -835,7 +881,7 @@ hr{
 }
 
 /*----------------------CREATE.PHP-----------------------*/
-/*********************************************************/
+/********************************************************/
 .create form{
     display: flex;
     flex-direction: column;
@@ -923,7 +969,7 @@ hr{
 
 
 /*-----------------------------------------FOOTER.php---------------------------------------*/
-/********************************************************************************************/
+/*******************************************************************************************/
 footer{
     background-color:rgb(8, 63, 181);
     margin-top:2%;

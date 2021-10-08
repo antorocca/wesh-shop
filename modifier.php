@@ -15,7 +15,7 @@ session_start();
 
 
     Crud::update();
-    include('head&header.php');
+    include('include/head&header.php');
 
 ?>
 
@@ -57,12 +57,6 @@ session_start();
                 </form>
             </div>
         </div>
-        <br>
-            <br>
-            <br>
-            <div class="retourAccueil">
-                <a href="admin.php">Accueil administrateur</a>
-            </div>
-    </body>
-</html>
+        <a class="retourAccueil" href="admin.php">Accueil administrateur</a>
+<?php include('include/footer.php'); ?>
     
