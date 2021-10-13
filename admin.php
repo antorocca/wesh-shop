@@ -14,6 +14,10 @@ session_start();
     $bdd = Database::connect();
     $list = $bdd ->query('SELECT * FROM user ORDER BY role ASC');
     $userList = $list->fetchAll();
+
+    $catN = $bdd->query('SELECT catName FROM category');
+    $catName = $catN->fetchAll();
+
 ?>
    <?php include('include/head&header.php'); ?>
 
@@ -39,7 +43,7 @@ session_start();
         }
     } ?>
 </div></div>
-<br>
+
 <a class="goShop" href="index.php"><div>Aller dans la boutique</div></a>
 <h3 class="addTitle">Ajouter un article</h3>
 <div class="addTable">
@@ -60,26 +64,29 @@ session_start();
                     <input type="text" name="addStock">
                 <label>Marque:</label>
                     <input type="text" name="addBrand">
-                <label>*Type:</label>
-                    <select id="" name="addCat">
-                        <option value="7">Musique et Art (sculpture, peinture, dessin...)</option>
-                        <option value="11">Ameublement</option>
-                        <option value="15">Animalerie</option>
-                        <option value="13">Auto-moto</option>
-                        <option value="9">Beauté et bien-être</option>
-                        <option value="1">Bijoux</option>
-                        <option value="8">Boisson</option>
-                        <option value="16">Décoration</option>
-                        <option value="4">Épicerie</option>
-                        <option value="14">Jardinerie</option>
-                        <option value="6">Jeu et jouet</option>
-                        <option value="12">Puériculture et bébé</option>
-                        <option value="2">Livre</option>
-                        <option value="3">Mode</option>
-                        <option value="10">Sport et loisir</option>
-                        <option value="5">Technologie</option>
-                    </select>
-                </div>
+                <label>*Catégorie:</label>
+                <select id="cats" name="">
+                    <option value="none"></option>
+                    <option value="11">Ameublement</option>
+                    <option value="15">Animalerie</option>
+                    <option value="9">Beauté et bien-être</option>
+                    <option value="1">Bijoux</option>
+                    <option value="8">Boisson</option>
+                    <option value="16">Décoration</option>
+                    <option value="4">Épicerie</option>
+                    <option value="14">Jardinerie</option>
+                    <option value="6">Jeu et jouet</option>
+                    <option value="12">Puériculture et bébé</option>
+                    <option value="2">Livre</option>
+                    <option value="3">Mode</option>
+                    <option value="7">Musique et Art</option>
+                    <option value="10">Sport et loisir</option>
+                    <option value="5">Technologie</option>
+                </select>
+                <label>*Sous-Catégorie:</label>
+                <select name="addCat" id="subcats"></select>
+                <script src="./assets/js/app.js"></script>
+            </div>
             <div class="addButton">
                 <?php
                     if(Article::$addSuccess){
@@ -96,9 +103,5 @@ session_start();
 </div>
 <br>
 <?php include('include/footer.php'); ?>
-
-    
-
-
 
 

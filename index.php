@@ -24,25 +24,15 @@ $resultTopCat = $topCat->fetchAll();
         
     <h2 class="titre_boutique">LA BOUTIQUE</h2>
     <main class="shop">          
-        <!--<aside class="sidebar">
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-            <li>lorem</li>
-        </aside>-->
         <section class="produits">
             <div class="nav-content">
                 <div class="mostVisitedCat">
                     <h3>Catégories les plus visitées</h3>
                     <div>
-                        <a href="category.php?id=<?php echo $resultTopCat[0][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[0][2] ?>" alt="<?php echo $resultTopCat[0][1] ?>"></a>
-                        <a href="category.php?id=<?php echo $resultTopCat[1][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[1][2] ?>" alt="<?php echo $resultTopCat[1][1] ?>"></a>
-                        <a href="category.php?id=<?php echo $resultTopCat[2][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[2][2] ?>" alt="<?php echo $resultTopCat[2][1] ?>"></a>
-                        <a href="category.php?id=<?php echo $resultTopCat[3][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[3][2] ?>" alt="<?php echo $resultTopCat[3][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[0][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[0][3] ?>" alt="<?php echo $resultTopCat[0][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[1][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[1][3] ?>" alt="<?php echo $resultTopCat[1][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[2][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[2][3] ?>" alt="<?php echo $resultTopCat[2][1] ?>"></a>
+                        <a href="category.php?id=<?php echo $resultTopCat[3][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[3][3] ?>" alt="<?php echo $resultTopCat[3][1] ?>"></a>
                     </div>
                 </div>
                 <?php include('assets/regionSVG/france-liens-region-departement-svg.html');?>

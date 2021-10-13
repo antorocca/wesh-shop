@@ -15,14 +15,14 @@
     $searchCat->execute([$idCat]);
     $detCat = $searchCat->fetch();
 
-    $a = Database::$bdd->prepare('SELECT * FROM article WHERE idCat=? LIMIT 0,20');
-    $a->execute([$detCat['id']]);
+    $a = Database::$bdd->prepare('SELECT * FROM article WHERE idCat >= ? *100 AND idCat < ? *100 + 100 LIMIT 0,20');
+    $a->execute([$detCat['id'],$detCat['id']]);
     $articles = $a->fetchAll();
 
     include('include/head&header.php');
 ?>
 <main>
-    <h2 class="titre_boutique"><?php echo $detCat[1] ?></h2>
+    <h2 class="titre_boutique"><?php echo $detCat[2] ?></h2>
     <section class="nav-content">
         <div class="mostVisitedCat">
             <h3>Produits en vedettes</h3>
@@ -45,9 +45,11 @@
         </div>
     </section>
 
-    <h3>Produits les plus recherchés :</h3>
-    <section class="sliderT1">
-        <?php include('include/BScard.php') ?>
+    <section class="mWa">
+        <h3>Produits les plus recherchés :</h3>
+        <div class="sliderT1">
+            <?php include('include/BScard.php') ?>
+        </div>
     </section>
 </main>
 <?php include('include/sliderLink.php'); ?>

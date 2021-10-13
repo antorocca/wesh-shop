@@ -23,7 +23,7 @@
             $stock = htmlspecialchars($_POST['addStock']);
             $brand = htmlspecialchars($_POST['addBrand']);
             $cat = htmlspecialchars($_POST['addCat']);
-
+                
             if(isset ($_POST['addArticleSubmit'])){
 
                 if(!empty($name) && !empty($description) && !empty($prize) && !empty($stock) && !empty($cat)){
@@ -45,8 +45,7 @@
                               $addArticle-> execute([$name, $description, $fileName, $prize,$stock, $brand, $cat]);
 
                               static::$addSuccess = '<p class="addSuccess">L\'article a bien été ajouté au magasin</p>';
-                              
-                              
+                            
                             }
                             else{
                                 static::$addError = '<p class="addError">*Le format d\'image n\'est pas accepté </p>

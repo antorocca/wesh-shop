@@ -3,7 +3,6 @@
     $category = Database::$bdd->prepare('SELECT id ,catName FROM category');
     $category->execute();
     $resultC = $category->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,16 +65,15 @@
             <a href="category.php?id=<?php echo $resultC[2]['id'] ?>">Mode</a>
             <a href="category.php?id=<?php echo $resultC[0]['id'] ?>">Bijoux</a>
             <a href="category.php?id=<?php echo $resultC[11]['id'] ?>">Côté Bébé</a>
-            <a href="category.php?id=<?php echo $resultC[15]['id'] ?>">Décoration</a>
+            <a href="category.php?id=<?php echo $resultC[14]['id'] ?>">Décoration</a>
             <a href="category.php?id=<?php echo $resultC[7]['id'] ?>">Boisson</a>
             <a href="category.php?id=<?php echo $resultC[3]['id'] ?>">Épicerie</a>
             <a href="category.php?id=<?php echo $resultC[4]['id'] ?>">Technologie</a>
-            <a href="category.php?id=<?php echo $resultC[14]['id'] ?>">Animalerie</a>
-            <a href="category.php?id=<?php echo $resultC[13]['id'] ?>">Jardinerie</a>
+            <a href="category.php?id=<?php echo $resultC[13]['id'] ?>">Animalerie</a>
+            <a href="category.php?id=<?php echo $resultC[12]['id'] ?>">Jardinerie</a>
             <a href="category.php?id=<?php echo $resultC[8]['id'] ?>">Beauté et Bien-être</a>
             <a href="category.php?id=<?php echo $resultC[9]['id'] ?>">Sport et Loisir</a>
             <a href="category.php?id=<?php echo $resultC[10]['id'] ?>">Ameublement</a>
-            <a href="category.php?id=<?php echo $resultC[12]['id'] ?>">Auto-Moto</a>
         </nav>
         <?php 
             if(empty($_SESSION)){
