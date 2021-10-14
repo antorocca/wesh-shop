@@ -4,16 +4,22 @@
         $price = number_format($article['prix'], 2,',','');
         echo '<div class="cardBS">
                 <div class="topCard">
-                    <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
+                    <a href="article.php?id=' . $article['id'] .'">
+                        <img src="assets/uploads/' .  $article['photo'] . '" alt="' . $article['nom'] . '">
+                    </a>
                 </div>
                 <div class="bottomCard">';
                     if(strlen($article['nom'])>20){
                         $article['nom'] = substr( $article['nom'],0,20);
                     
-                        echo '<h3 style="margin:2px 0px;">' . $article['nom'] . '...</h3>';
+                        echo '<a href="article.php?id=' . $article['id'] .'">
+                                <h3 style="margin:2px 0px;">' . $article['nom'] . '...</h3>
+                            </a>';
                     }
                     else{
-                        echo '<h3 style="margin:2px 0px;">' . $article['nom'] . '</h3>';
+                        echo '<a href="article.php?id=' . $article['id'] .'">
+                                <h3 style="margin:2px 0px;">' . $article['nom'] . '</h3>
+                            </a>';
                     }
                     
                     echo '<p style="margin:2px 0px;">' . $article['marque'] . '</p>

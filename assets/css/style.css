@@ -1,49 +1,3 @@
-/* html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-} */
-/*--------------↑  RESET CSS  ↑---------------*/
-
-
 html, body{
     margin:0;
     padding: 0;
@@ -169,6 +123,7 @@ html, body{
 }
 
 .formSearch button{
+    padding:0 10px;
     background: rgb(255, 159, 34);
     color:white;
     text-shadow: 2px 2px 2px rgba(40,67,232,0.69);
@@ -482,7 +437,7 @@ section~h3{
     flex-direction:column;
     justify-content: stretch;
     align-items: center;
-    width:16.5vw;
+    width:14vw;
     border-radius:5px;
     margin:7px 6px 5px 6px;
     background-color: white;
@@ -583,6 +538,15 @@ section~h3{
     margin-left:1vw;
 }
 
+.bottomCard>h3~p{
+    font-size:12px;
+}
+
+.bottomCard>a{
+    text-decoration: none;
+    color:black;
+}
+
 .titre_boutique{
     text-align:center;
     color:rgb(8, 63, 181);
@@ -621,18 +585,22 @@ section~h3{
     align-items:center;
 }
 /*-----small size card details-----*/
-.bottomCardSS{
-    padding-left:20px
-}
+/*
+*
+*
+*
+*/
 
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
 /**************************************************************************************/
 .allArticle{
-    width:70%;
+    width:80%;
     margin: 25px auto;
-    padding-bottom:30px;
+    padding:2vh 10px 1vh 10px;
     display: flex;
     justify-content: space-evenly;
+    background-color:white;
+    border-radius:5px;
 }
 .imgArticle{
     width:40%;
@@ -644,7 +612,7 @@ section~h3{
     max-height:500px;
 }
 .detailArticle{
-    width: 40%;
+    width: 35%;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -654,6 +622,26 @@ section~h3{
 }
 .articleDesc{
     line-height:1.5rem;
+}
+.addCartSuccess{
+    display:inline-block;
+    width:40%;
+    background-color:rgb(255, 166, 49);
+    color:rgb(8, 63, 181);
+    padding:5px;
+    border-radius:5px;
+    font-size:1.1rem;
+    /* text-shadow: 1px 1px 1px #0348FF; */
+}
+.addCartSuccess~a{
+    text-decoration: none;
+    display:inline-block;
+    width:30%;
+    background-color:rgb(8, 63, 181);
+    color:rgb(255, 145, 0);
+    padding:5px;
+    border-radius:5px;
+    font-size:1rem;
 }
 
 .formPanier select{
@@ -686,7 +674,7 @@ section~h3{
 }
 .articleBrand{
     font-size:12px;
-    margin-bottom:25px;
+    margin-bottom:5px;
 }
 .articlePrize{
     margin-bottom:15px;
@@ -698,20 +686,32 @@ section~h3{
 .articleDesc{
     margin-bottom:15px;
 }
+
 /*--------------------SIMILAR PRODUCT-----------------*/
 /*****************************************************/
-
+.similarh3{
+    width:80%;
+    margin:0px auto;
+    background-color: white;
+    color:rgb(8, 63, 181);
+    padding:15px 10px;
+    border-radius:5px 5px 0 0;
+}
 .similarProduct{
     width:80%;
     margin:0px auto;
+    padding:0 10px 1vh 10px;
     display:flex;
     flex-direction:row;
     justify-content:space-evenly;
+    background-color:#FFF;
+    border-radius:0 0 5px 5px;
 }
+
 .similarProduct a{
     text-decoration:none;
     color:black;
-    width:20%;
+    width:16%;
 }
 .similarProduct h4{
     margin:20px 0px 5px 0px;
@@ -719,6 +719,11 @@ section~h3{
 
 .similar{
     padding:20px;
+    text-align: center;
+}
+
+.similar:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 
 .similarTop img{
@@ -731,7 +736,29 @@ section~h3{
     color:rgb(194, 4, 4);
     font-weight:bolder;
 }
+.similarBottom{
+    text-align:left;
+}
+/*------------------------------------CART.PHP------------------------------------*/
+.gridCart{
+    display:grid;
+    width:60%;
+    grid-template-columns:55% 15% 15% 15%;
+    border:1px solid black;
+}
+.gridCart div{
 
+    border:1px solid black;
+    box-sizing:border-box;
+}
+
+.gridCart img{
+    width:6vw;
+    height:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 /*-------------------------------------CATEGORY.PHP-------------------------------*/
 /*********************************************************************************/
 .mWa{

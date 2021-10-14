@@ -47,6 +47,7 @@
                                 $_SESSION['email'] = $newUser[1];//1 = email dans bdd
                                 $_SESSION['role'] = $newUser[7];
                                 $_SESSION['name'] = $newUser[2];
+                                $_SESSION['id'] = $newUser[0];
 
                             header('Location: index.php');
 
@@ -103,6 +104,7 @@
                                 $_SESSION['email'] = $result[1];//1 = email dans bdd
                                 $_SESSION['role'] = $result[7];
                                 $_SESSION['name'] = $result[2];
+                                $_SESSION['id'] = $result[0];
 
                                 if($role == 'admin') {
                                     header('Location: admin.php');
