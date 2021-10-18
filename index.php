@@ -35,7 +35,6 @@ $resultTopCat = $topCat->fetchAll();
                         <a href="category.php?id=<?php echo $resultTopCat[3][0] ?>"><img src="assets/picture/imgCat/<?php echo $resultTopCat[3][3] ?>" alt="<?php echo $resultTopCat[3][1] ?>"></a>
                     </div>
                 </div>
-                <?php include('assets/regionSVG/france-liens-region-departement-svg.html');?>
                 <div class="topSell">
                     <h3>Top vendeur de la semaine</h3>
                     <div>

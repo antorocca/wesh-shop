@@ -33,7 +33,6 @@
                 <a href="#"><img src="sans titre2.png" alt=""></a>
             </div>
         </div>
-        <?php include('assets/regionSVG/france-liens-region-departement-svg.html');?>
         <div class="topSell">
             <h3>Top vendeur de la semaine</h3>
             <div>

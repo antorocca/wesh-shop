@@ -1,13 +1,21 @@
+:root{
+    --base-txt-color:rgb(48, 48, 48);
+    --base-blue:rgb(8, 63, 181);
+    --blue-hover:rgb(0, 81, 255);
+    --base-orange:rgb(255, 159, 34);
+}
+
 html, body{
     margin:0;
     padding: 0;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     background-color:rgb(242, 242, 242);
+    color:var(--base-txt-color,rgb(48, 48, 48));
 }
 
 .header{
     width: 100%;
-    background:rgb(8, 63, 181);
+    background:var(--base-blue,rgb(8, 63, 181));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,14 +31,14 @@ html, body{
 }
 
 .headerTitle:hover{
-    color:rgb(255, 159, 34);
+    color:var(--base-orange,rgb(255, 159, 34));
     transition-duration: 0.2s;
 }
 /*------IDENTIFICATION BUTTON--------*/
 /************************************/
 .goSubscribe, .goConnexion{
     color:white;
-    background-color:rgb(8, 63, 181);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     text-decoration:none;
     padding:10px;
     font-weight:bolder;
@@ -46,8 +54,8 @@ html, body{
     border-right:none;
 }
 .goSubscribe:hover, .goConnexion:hover{
-    color:rgb(255, 159, 34); 
-    background-color: rgb(0, 81, 255);
+    color:var(--base-orange,rgb(255, 159, 34));
+    background-color: var(--blue-hover,rgb(0, 81, 255));
     transition-duration:0.3s;
 }
 /*-------PANIER BUTTON-------*/
@@ -57,16 +65,10 @@ html, body{
     width:40px;
 }
 .panier{
-    border:2px outset rgb(0, 46, 145);
+    border:2px outset var(--base-blue,rgb(8, 63, 181));
     border-radius:10px;
-    background:rgb(255, 159, 34); 
+    background:var(--base-orange,rgb(255, 159, 34));
 }
-.panier:hover{
-    background-color: rgb(255, 145, 0); 
-    border:2px outset rgb(0, 56, 177);
-    transition:0.2s;
-}
-
 .headerRight{
     display:flex;
     align-items:center;
@@ -99,7 +101,6 @@ html, body{
 
 .titre{
     color:white;
-
 }
 
 /*-------------SEARCH BAR-------------------*/
@@ -124,10 +125,10 @@ html, body{
 
 .formSearch button{
     padding:0 10px;
-    background: rgb(255, 159, 34);
+    background: var(--base-orange,rgb(255, 159, 34));
     color:white;
     text-shadow: 2px 2px 2px rgba(40,67,232,0.69);
-    border:1px solid rgb(8, 63, 181);
+    border:1px solid var(--base-blue,rgb(8, 63, 181));
     border-radius:0px 5px 5px 0px;
     height:37px;
     cursor:pointer;
@@ -136,7 +137,7 @@ html, body{
 /*-------DROPDOWN ACCOUNT---------*/
 /*********************************/
 .dropBtn{
-    background-color: rgb(8, 63, 181);
+    background-color: var(--base-blue,rgb(8, 63, 181));
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -147,7 +148,7 @@ html, body{
 }
 
 .account:hover .dropBtn {
-    background-color: rgb(0, 71, 225);
+    background-color: var(--blue-hover,rgb(0, 81, 255));
 }
 
 .account {
@@ -178,7 +179,7 @@ html, body{
 
 .dropdownAccount a:hover {
     background-color: rgb(0, 71, 225);
-    color:rgb(255, 159, 34);
+    color:var(--base-orange,rgb(255, 159, 34));
 }
 
 .account:hover .dropdownAccount {
@@ -194,7 +195,7 @@ html, body{
     display:flex;
     justify-content: center;
     align-items: stretch;
-    background-color:rgb(8, 63, 181);
+    background-color:var(--base-blue,rgb(8, 63, 181));
 }
 .category a{
     text-decoration:none;
@@ -208,8 +209,8 @@ html, body{
     font-size:0.9rem;
 }
 .category a:hover{
-    background-color:rgb(0, 71, 225);
-    color:rgb(255, 159, 34);
+    background-color:var(--blue-hover,rgb(0, 81, 255));
+    color:var(--base-orange,rgb(255, 159, 34));
     transition-duration: 0.2s;
 }
 
@@ -261,7 +262,7 @@ html, body{
     margin:20px 2%;
     border:1px solid rgb(151, 151, 151);
     border-radius: 5px;
-    background-color: rgb(255, 159, 34);
+    background-color: var(--base-orange,rgb(255, 159, 34));
     font-weight:bold;
     cursor:pointer;
 }
@@ -308,7 +309,7 @@ html, body{
     margin:20px 2%;
     border:1px solid rgb(151, 151, 151);
     border-radius: 5px;
-    background-color: rgb(255, 159, 34);
+    background-color: var(--base-orange,rgb(255, 159, 34));
     font-weight:bold;
     cursor:pointer;
 }
@@ -324,7 +325,6 @@ html, body{
 
 .cardLink{
     text-decoration: none;
-    color:black;
 } 
 /*---------MENU CATEGORY--------ON INDEX(BOUTIQUE).PHP AND CATEGORY.PHP*/ 
 /********************************/
@@ -337,6 +337,7 @@ html, body{
     margin-bottom:15px;
     padding-top: 10px;
     background-color: #FFF;
+    border-radius:5px;
 }
 
 .nav-content div{
@@ -357,13 +358,13 @@ section~h3{
     width:90%;
     margin:0 auto;
     padding:3.5vh 0 0 0;
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     /* text-decoration: underline; */
 }
 /*--- + VISITED CATEGORIES---*/
 /*************************/
 .mostVisitedCat h3{
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     margin:0px;
 }
 .mostVisitedCat{
@@ -392,7 +393,7 @@ section~h3{
 /*----TOP SELLER---*/
 /*******************/
 .topSell h3{
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     margin:0px;
 }
 .topSell{
@@ -426,7 +427,7 @@ section~h3{
 }
 .PFbrand>h3{
     margin:1.5vh 0 1vh 2vw;
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     
 }
 /*-------------------------------------------
@@ -441,6 +442,7 @@ section~h3{
     border-radius:5px;
     margin:7px 6px 5px 6px;
     background-color: white;
+    color:var(--base-txt-color);
 }
 .cardSS:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
@@ -476,20 +478,19 @@ section~h3{
     justify-content: center;
 }
 .cardBS>img{
-    height:170px;
+    height:150px;
     width:auto;
     margin:0 auto;
 } 
 /*-----------scroll button in sliders---------*/
 .slick-prev:before, .slick-next:before {
-    color:rgb(255, 159, 34);
+    color:var(--base-orange,rgb(255, 159, 34));
     font-size:1.5rem;
     position:relative;
     right:2px;
 }
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
-    color: blue;
-    background: blue;
+    background: var(--base-blue,rgb(8, 63, 181));
     border-radius:50%;
 }
 /*---------carte produit--------*/
@@ -561,12 +562,12 @@ section~h3{
     text-decoration:none;
     border-radius:10px;
     align-items:center;
-    background-color:rgb(8, 63, 181);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     color:white;
 }
 .detailLink:hover{
-    background-color:rgb(0, 71, 225);
-    color:rgb(255, 159, 34);
+    background-color:var(--blue-hover,rgb(0, 81, 255));
+    color:var(--base-orange,rgb(255, 159, 34));
     transition-duration: 0.2s;
 }
 
@@ -626,7 +627,7 @@ section~h3{
 .addCartSuccess{
     display:inline-block;
     width:40%;
-    background-color:rgb(255, 166, 49);
+    background-color:var(--base-orange,rgb(255, 159, 34));
     color:rgb(8, 63, 181);
     padding:5px;
     border-radius:5px;
@@ -637,7 +638,7 @@ section~h3{
     text-decoration: none;
     display:inline-block;
     width:30%;
-    background-color:rgb(8, 63, 181);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     color:rgb(255, 145, 0);
     padding:5px;
     border-radius:5px;
@@ -693,7 +694,7 @@ section~h3{
     width:80%;
     margin:0px auto;
     background-color: white;
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     padding:15px 10px;
     border-radius:5px 5px 0 0;
 }
@@ -710,7 +711,7 @@ section~h3{
 
 .similarProduct a{
     text-decoration:none;
-    color:black;
+    color:rgb(22, 22, 22);
     width:16%;
 }
 .similarProduct h4{
@@ -743,7 +744,7 @@ section~h3{
 .cart{
     display:flex;
     flex-direction:column;
-    width: 50%;
+    width: 60%;
     border-bottom:none;
     border-radius:5px;
     
@@ -765,29 +766,37 @@ section~h3{
 .cart img{
     height:10vh;
 }
-.cart>div:last-child>p{
+
+.cart>div div:nth-child(2){
+    width:60%;
+}
+.cart div:nth-child(2)>p:first-child{
+    font-weight:bold;
+}
+.cart>div div:nth-child(3){
+    width:15%;
+}
+.cart div:last-child{
+    
+}
+.cartSpan{
+    font-weight: bold;
+}
+.cart div div:last-child{
+    width:5%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart>p:last-child{
     text-align: right;
     width:100%;
     margin-right:2vw;
     font-size:1.3rem;
     font-weight: bold;
+    color:rgb(206, 0, 0);
+    background-color:white;
 }
-.cart>div div:nth-child(2){
-    width:60%;
-}
-.cart div~p{
-    color:rgb(255, 145, 0);
-    font-weight:bold;
-    font-size:1.2rem;
-}
-/* .cart>div div:nth-child(2) p:last-child{
-    float:right;
-    color:rgb(255, 145, 0);
-    font-weight:bold;
-    font-size:1.3rem;
-    position:relative;
-    bottom:60%;
-} */
 /*-------------------------------------CATEGORY.PHP-------------------------------*/
 /*********************************************************************************/
 .mWa{
@@ -798,7 +807,7 @@ section~h3{
 }
 .mWa h3{
     width:95%;
-    color:rgb(8, 63, 181);
+    color:var(--base-blue,rgb(8, 63, 181));
     margin:0 auto;
     padding-top:15px;
 }
@@ -816,7 +825,7 @@ section~h3{
     font-weight:bolder;
 }
 .goShop div{
-    background-color: rgb(8, 63, 181);
+    background-color: var(--base-blue,rgb(8, 63, 181));
     width:60%;
     margin:0% auto;
     padding:15px 0px;
@@ -851,7 +860,7 @@ section~h3{
     border-radius:5px;
 }
 .modifyUser{
-    background-color:rgb(0, 67, 213);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     color:white;
     font-weight:bolder;
 }
@@ -917,7 +926,7 @@ section~h3{
     padding:7px;
     border-radius:5px;
     cursor:pointer;
-    background-color:rgb(0, 67, 213);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     color:white;
     border:1px solid black
 }
@@ -1071,14 +1080,14 @@ section~h3{
 .addSuccess{
     text-align:center;
     font-weight:bolder;
-    color:rgb(0, 67, 213);
+    color:var(--base-blue,rgb(8, 63, 181));
 }
 
 
 /*-----------------------------------------FOOTER.php---------------------------------------*/
 /*******************************************************************************************/
 footer{
-    background-color:rgb(8, 63, 181);
+    background-color:var(--base-blue,rgb(8, 63, 181));
     margin-top:2%;
 }
 footer>p{
