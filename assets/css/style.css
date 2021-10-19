@@ -459,23 +459,33 @@ section~h3{
     justify-content: space-evenly;
 }
 /*--------SLIDER IN INDEXPHP*/
-.sliderT2{
+.sliderT2{/*SScard*/
     width:94%;
     margin:0 auto;
 }
-
 
 /*--------SLIDER in CATEGORY.PHP-------*/
-.sliderT1{
-    width:94%;
+.sliderT1{ /*BScard*/
+    width:93%;
     margin:0 auto;
-    height:41vh;
+    height:42vh;
+    overflow:visible;
 }
+
+
+/*----------BScard-----------*/
 .cardBS{
-    height:38vh;
     display:flex;
-    align-items:center;
-    justify-content: center;
+    flex-direction:column;
+    /* justify-content: stretch; */
+    /* align-items: center; */
+    width:15vw;
+    border-radius:5px;
+    margin:7px 5px 0px 5px;
+    background-color: white;
+}
+.cardBS:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 .cardBS>img{
     height:150px;
@@ -503,19 +513,7 @@ section~h3{
     justify-content: space-evenly;
 }
 
-.cardBS{
-    display:flex;
-    flex-direction:column;
-    justify-content: stretch;
-    align-items: center;
-    width:15vw;
-    border-radius:5px;
-    margin:7px 5px 0px 5px;
-    background-color: white;
-}
-.cardBS:hover{
-    box-shadow: 2px 2px 5px 1px #b6b6b6;
-}
+
 .topCard{
     width:100%;
     padding-bottom:10px;
@@ -740,15 +738,22 @@ section~h3{
 .similarBottom{
     text-align:left;
 }
+/*----------------------------------ADDTOCART.php--------------------------------*/
+.stkNtG{
+    color:red;
+}
 /*------------------------------------PANIER.PHP------------------------------------*/
+.sctnCaPa{
+    width: 70%;
+    margin:0 auto;
+}
+/**************left section cart***************/ 
 .cart{
-    display:flex;
+    display:inline-flex;
     flex-direction:column;
-    width: 60%;
+    width: 65%;
     border-bottom:none;
     border-radius:5px;
-    
-    margin:0 auto;
 }
 .cart>div{
     display:flex;
@@ -776,9 +781,6 @@ section~h3{
 .cart>div div:nth-child(3){
     width:15%;
 }
-.cart div:last-child{
-    
-}
 .cartSpan{
     font-weight: bold;
 }
@@ -788,15 +790,58 @@ section~h3{
     justify-content: center;
     align-items: center;
 }
-.cart>p:last-child{
+.delbtn{
     text-align: right;
-    width:100%;
-    margin-right:2vw;
-    font-size:1.3rem;
-    font-weight: bold;
-    color:rgb(206, 0, 0);
-    background-color:white;
+    width:fit-content;
+    margin:0;
+    padding:0;
+} 
+.delbtn input{
+    cursor:pointer;
+    background:var(--base-orange);
+    border:none;
+    border-radius:3px;
+    padding:3px;
+    color:black;
+    padding:0.3vh 0.4vw;
 }
+/***********right section payment***************/
+.payment{
+    width:22%;
+    display:inline-block;
+    background: white;
+    border-radius:5px;
+    position:fixed;
+    margin-left:1vw;
+    margin-top:7vh;
+}
+.payment p{
+    display:flex;
+    flex-direction:column;
+    margin:1.5vh 3.5vw;
+}
+.payment p span:first-child{
+    font-weight: bold;
+    margin-bottom:1vh;
+    font-size:1.3rem;
+}
+.payment p span:last-child{
+    font-weight: bold;
+    color:rgb(194, 4, 4);
+    font-size:1.3rem;
+}
+.payment a{
+    text-decoration:none;
+    background: var(--base-orange);
+    color:black;
+    display:block;
+    width:50%;
+    margin:1vh auto;
+    text-align: center;
+    padding:0.5vw 0;
+    border-radius:5px;
+}
+
 /*-------------------------------------CATEGORY.PHP-------------------------------*/
 /*********************************************************************************/
 .mWa{

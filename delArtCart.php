@@ -7,14 +7,21 @@ $bdd = Database::connect();
 // $idA = $_POST['delArt'];
 
 
-$art = implode(',',$_POST['delArt']);
-var_dump($art);
 
- if(isset($_POST["delArtB"])){
-     $d = $bdd->prepare('DELETE FROM cart WHERE idUser=? AND idArticle IN (?)');
-     $d->execute([$_SESSION['id'], $art]);
-     var_dump($d->errorInfo());
+$art = implode(',',$_POST['delArt']);
+
+
+if(isset($_POST["delArtB"])){
+    
+     foreach($_POST['delArt'] as $value){
+     $d = $bdd->prepare('DELETE FROM cart WHERE idUser=? AND idArticle=?');
+     $d->execute([$_SESSION['id'], $value]);
+
+    }
+    //  var_dump($d->errorInfo());
  }
-//  header('Location: panier.php');
+
+// die();
+ header('Location: panier.php');
 ?>
 

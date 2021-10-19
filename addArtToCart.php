@@ -15,10 +15,12 @@
     $similar-> execute([$article[7]]);
     $similarArticle = $similar->fetchAll();
 
-    $add = $bdd->prepare('INSERT INTO cart(idUser, idArticle, quantity) VALUES(?, ?, ?)');
-    $add->execute([$_SESSION['id'],$article[0], $quantity]);
-
     $price = number_format($article['prix'], 2,',','');
+
+    // echo '<pre>';
+    // var_dump($quantity);
+    // var_dump($article['stock']);
+    // echo '</pre>';
 
     include('include/head&header.php'); 
 ?>
@@ -33,15 +35,33 @@
         <p class="articlePrize">Prix: <span><?php echo $price ?> €</span></p>
         <p class="articleDesc"><?php echo $article[2] ?></p>
         <?php 
-            if($article[5] > 0){
-            echo '<p style="color:green;font-weight:bolder;">En stock</p>';
+            if($article[5] >= 50){
+                echo '<p style="color:green;font-weight:bolder;">En stock</p>';
+            }
+            elseif($article['stock'] < 50 && $article['stock'] > 0){ 
+                echo '<p style="color:green;font-weight:bolder;">Plus que ' . $article['stock'] . ' en stock !</p>';
             }
             else{
                 echo '<p style="color:red;font-weight:bolder;">Stock épuisé</p>';
-            } 
+            }
+            //if the quantity is too high
+            if($article['stock'] < $quantity || $quantity < 1){ ?>
+                <p class="stkNtG"><i class="fas fa-times"> Le stock n'est pas suffisant, veuillez choisir une quantité  correcte</i></p>
+                <form class="formPanier" action="addArtToCart.php?id=<?=$article[0]?>" method="post">
+                    <label for="quantity">Quantité:</label>
+                    <select id="quantity" name="quantity"></select>
+                    <input type="submit" name="submitPanier" value="Ajouter au panier">
+                </form>
+            <?php }
+            //if it's good
+            else{
+                $add = $bdd->prepare('INSERT INTO cart(idUser, idArticle, quantity) VALUES(?, ?, ?)');
+                $add->execute([$_SESSION['id'],$article[0], $quantity]);
+
+                echo '<p class="addCartSuccess"><i class="fas fa-check"></i> Article ajouté au panier</p>
+                <a href="panier.php">Accéder à mon panier</a>';
+            }
         ?>
-        <p class="addCartSuccess"><i class="fas fa-check"></i> Article ajouté au panier</p>
-        <a href="panier.php">Accéder à mon panier</a>
     </div>
 </div>
 
@@ -66,3 +86,13 @@
 </div>
 
 <?php include('include/footer.php'); ?>
+
+<script>
+    const select = document.getElementById('quantity');
+
+    for (let i = 1; i <= 30; i += 1 ) {
+        let option = document.createElement('option');
+        option.value = option.text = i;
+        select.add(option);
+    }
+</script>

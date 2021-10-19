@@ -16,10 +16,8 @@
 
     $price = number_format($article['prix'], 2,',','');
 
-    include('include/head&header.php'); 
-
+    include('include/head&header.php');
 ?>
-
 <div class="allArticle">
     <div class='imgArticle'>
         <img src="assets/uploads/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
@@ -30,19 +28,26 @@
         <p class="articlePrize">Prix: <span><?php echo $price ?> €</span></p>
         <p class="articleDesc"><?php echo $article[2] ?></p>
             <?php 
-                if($article[5] > 0){
-                echo '<p style="color:green;font-weight:bolder;">En stock</p>';
-                }
+                if($article['stock'] >= 50){ ?>
+                    <p style="color:green;font-weight:bolder;">En stock</p>
+                        <form class="formPanier" action="addArtToCart.php?id=<?=$article[0]?>" method="post">
+                            <label>Quantité:</label> 
+                            <select id="quantity" name="quantity"></select>
+                            <input type="submit" name="submitPanier" value="Ajouter au panier">
+                        </form>
+                <?php }
+                elseif($article['stock'] < 50 && $article['stock'] > 0){ ?>
+                    <p style="color:green;font-weight:bolder;"><?=$article['stock']?> en stock</p>
+                    <form class="formPanier" action="addArtToCart.php?id=<?=$article[0]?>" method="post">
+                        <label for="quantity">Quantité: </label>
+                        <select id="quantity" name="quantity"></select>
+                        <input type="submit" name="submitPanier" value="Ajouter au panier">
+                    </form>
+                <?php }
                 else{
                     echo '<p style="color:red;font-weight:bolder;">Stock épuisé</p>';
                 }
             ?>
-        <div>
-            <form class="formPanier" action="addArtToCart.php?id=<?php echo $article[0] ?>" method="post">
-                Quantité: <select id="quantity" name="quantity"></select>
-                <input type="submit" name="submitPanier" value="Ajouter au panier">
-            </form>
-        </div>
     </div>
 </div>
 <h3 class="similarh3">Articles similaire à <?php echo $article[1]; ?></h3>
@@ -77,3 +82,10 @@
         select.add(option);
     }
 </script>
+
+
+
+
+<!-- if($article['stock'] == 0){
+                echo '<p class="addCartSuccess"><i class="fas fa-times"></i> Article ajouté au panier</p>'             
+            } -->
