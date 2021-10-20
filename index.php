@@ -21,11 +21,19 @@ $resultTopCat = $topCat->fetchAll();
 ?>
 
 <?php include('include/head&header.php'); ?>
-        
-    <h2 class="titre_boutique">LA BOUTIQUE</h2>
+
     <main class="shop">          
         <section class="produits">
             <div class="nav-content">
+            <div class="topSell">
+                    <h3>Les nouveaux vendeur</h3>
+                    <div>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                        <a href="#"><img src="sans titre2.png" alt=""></a>
+                    </div>
+                </div>
                 <div class="mostVisitedCat">
                     <h3>Catégories les plus visitées</h3>
                     <div>
@@ -36,7 +44,7 @@ $resultTopCat = $topCat->fetchAll();
                     </div>
                 </div>
                 <div class="topSell">
-                    <h3>Top vendeur de la semaine</h3>
+                    <h3>Top article de la semaine</h3>
                     <div>
                         <a href="#"><img src="sans titre2.png" alt=""></a>
                         <a href="#"><img src="sans titre2.png" alt=""></a>

@@ -27,15 +27,15 @@
 
 <div class="allArticle">
     <div class='imgArticle'>
-        <img src="assets/uploads/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
+        <img src="assets/uploads/<?php echo $article['photo'] ?>" alt="<?php echo $article['nom'] ?>">
     </div>
     <div class="detailArticle">
-        <h2><?php echo $article[1] ?></h2>
-        <p class="articleBrand"><?php echo $article[6] ?></p>
+        <h2><?php echo $article['nom'] ?></h2>
+        <p class="articleBrand"><?php echo $article['marque'] ?></p>
         <p class="articlePrize">Prix: <span><?php echo $price ?> €</span></p>
-        <p class="articleDesc"><?php echo $article[2] ?></p>
+        <p class="articleDesc"><?php echo $article['description'] ?></p>
         <?php 
-            if($article[5] >= 50){
+            if($article['stock'] >= 50){
                 echo '<p style="color:green;font-weight:bolder;">En stock</p>';
             }
             elseif($article['stock'] < 50 && $article['stock'] > 0){ 
@@ -56,7 +56,7 @@
             //if it's good
             else{
                 $add = $bdd->prepare('INSERT INTO cart(idUser, idArticle, quantity) VALUES(?, ?, ?)');
-                $add->execute([$_SESSION['id'],$article[0], $quantity]);
+                $add->execute([$_SESSION['id'],$article['id'], $quantity]);
 
                 echo '<p class="addCartSuccess"><i class="fas fa-check"></i> Article ajouté au panier</p>
                 <a href="panier.php">Accéder à mon panier</a>';

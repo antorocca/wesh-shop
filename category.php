@@ -22,7 +22,7 @@
     include('include/head&header.php');
 ?>
 <main>
-    <h2 class="titre_boutique"><?php echo $detCat[2] ?></h2>
+    <h2 class="shopTitle"><?php echo $detCat[2] ?></h2>
     <section class="nav-content">
         <div class="mostVisitedCat">
             <h3>Produits en vedettes</h3>
@@ -46,9 +46,12 @@
 
     <section class="mWa">
         <h3>Produits les plus recherchés :</h3>
-        <div class="sliderT1">
-            <?php include('include/BScard.php') ?>
+        <div class="sliderC3">
+            <?php include('include/card3.php') ?>
         </div>
+    </section>
+    <section>
+        <div class="subCinC"></div>
     </section>
 </main>
 <?php include('include/sliderLink.php'); ?>

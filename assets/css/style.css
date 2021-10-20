@@ -3,12 +3,13 @@
     --base-blue:rgb(8, 63, 181);
     --blue-hover:rgb(0, 81, 255);
     --base-orange:rgb(255, 159, 34);
+    --base-red:rgb(192, 1, 1);
 }
 
 html, body{
     margin:0;
     padding: 0;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family:'Lato', sans-serif;
     background-color:rgb(242, 242, 242);
     color:var(--base-txt-color,rgb(48, 48, 48));
 }
@@ -33,6 +34,11 @@ html, body{
 .headerTitle:hover{
     color:var(--base-orange,rgb(255, 159, 34));
     transition-duration: 0.2s;
+}
+/*---title top page---*/
+.shopTitle{
+    text-align:center;
+    color:var(--base-blue);
 }
 /*------IDENTIFICATION BUTTON--------*/
 /************************************/
@@ -313,9 +319,9 @@ html, body{
     font-weight:bold;
     cursor:pointer;
 }
-
+/*******************************************************************************************/
 /*----------------------------------------INDEX.PHP---------------------------------------*/
-/********************************************************************************************/
+/*****************************************************************************************/
 
 .shop{
     display:flex;
@@ -430,26 +436,8 @@ section~h3{
     color:var(--base-blue,rgb(8, 63, 181));
     
 }
-/*-------------------------------------------
-------------CSS SMALL SIZE CARD.php--------------
----------------------------------------------*/
-.cardSS{
-    display:flex;
-    flex-direction:column;
-    justify-content: stretch;
-    align-items: center;
-    width:14vw;
-    border-radius:5px;
-    margin:7px 6px 5px 6px;
-    background-color: white;
-    color:var(--base-txt-color);
-}
-.cardSS:hover{
-    box-shadow: 2px 2px 5px 1px #b6b6b6;
-}
-.slick-slide{
-    height:unset;
-}
+
+
 /*--------INFINITE LOOP OF ARTICLE------*/
 .loop{
     width:80%;
@@ -458,27 +446,25 @@ section~h3{
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-/*--------SLIDER IN INDEXPHP*/
+
+/*********************************/
+/*--------SLIDER and CARD-------*/
+/*******************************/
+/*--slider index.php--*/
 .sliderT2{/*SScard*/
     width:94%;
     margin:0 auto;
 }
-
-/*--------SLIDER in CATEGORY.PHP-------*/
-.sliderT1{ /*BScard*/
-    width:93%;
+/*--slider category.php--*/
+.sliderC3{
+    width:76vw;
     margin:0 auto;
-    height:42vh;
-    overflow:visible;
+    padding-bottom:1vh;
 }
-
-
 /*----------BScard-----------*/
 .cardBS{
     display:flex;
     flex-direction:column;
-    /* justify-content: stretch; */
-    /* align-items: center; */
     width:15vw;
     border-radius:5px;
     margin:7px 5px 0px 5px;
@@ -492,6 +478,71 @@ section~h3{
     width:auto;
     margin:0 auto;
 } 
+/*-----------SScard-----------*/
+.cardSS{
+   display:flex;
+   flex-direction:column;
+   justify-content: stretch;
+   align-items: center;
+   width:14vw;
+   border-radius:5px;
+   margin:7px 6px 5px 6px;
+   background-color: white;
+   color:var(--base-txt-color);
+}
+.cardSS:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
+
+/*----------card3-------------*/
+.card3{
+    margin:3px;
+    margin-right:10px;
+    border-radius:5px;
+}
+.card3:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
+.card3 div:first-child{
+    height:16vh;
+}
+.card3 div:first-child img{
+    max-height: 150px;
+    max-width: 150px;
+    height:auto;
+    width:auto;
+    margin:8px auto 0 auto;
+}
+.card3 div:last-child{
+    margin:0.5vw;
+    height:15vh;
+}
+
+.card3 div:last-child a{
+    text-decoration: none;
+}
+.card3 div:last-child a>h3{
+    color:var(--base-txt-color);
+}
+.card3 div:last-child>a~p{
+    font-size: 0.8rem;
+    
+}
+.card3 div:last-child div{
+    margin:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+.card3 div:last-child div p{
+    margin:0;
+}
+.card3 div:last-child div p:first-child{
+    color:rgb(194, 4, 4);
+    font-size: 1.1rem;  
+}
+
+
 /*-----------scroll button in sliders---------*/
 .slick-prev:before, .slick-next:before {
     color:var(--base-orange,rgb(255, 159, 34));
@@ -546,13 +597,6 @@ section~h3{
     color:black;
 }
 
-.titre_boutique{
-    text-align:center;
-    color:rgb(8, 63, 181);
-    font-size:35px;
-    text-transform:uppercase;
-}
-
 .detailLink{
     width:50px;
     margin-bottom:5px;
@@ -589,7 +633,7 @@ section~h3{
 *
 *
 */
-
+/****************************************************************************************/
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
 /**************************************************************************************/
 .allArticle{
@@ -857,9 +901,86 @@ section~h3{
     padding-top:15px;
 }
 
-/*------------------------------------ADMIN.PHP--------------------------------*/
-/******************************************************************************/
-/*****************************************************************************/
+/*-----------------------------------BESELLER.PHP----------------------------------*/
+/**********************************************************************************/
+/*-----------first section subscribe----------*/
+.infSubSell{
+    width: 80%;
+    margin: 0 auto;
+}
+.infSubSell h2{
+    text-align:center;
+    color:var(--base-blue);
+}
+.infSubSell article:nth-child(2),.infSubSell article:nth-child(3),.infSubSell article:last-child{
+    width: 31%;
+    display:inline-block;
+    border-radius:5px;
+    background: white;
+}
+.infSubSell article h3, .infSubSell article p{
+    margin:1vh 1vw;
+}
+.infSubSell article h3{
+    text-align:center;
+    font-size:1.8rem;
+    color:var(--base-blue);
+}
+.infSubSell article p{
+    margin:2vh 1vw;
+    font-size: 1.1rem;
+}
+.infSubSell article p span{
+    font-weight: bold;
+}
+.infSubSell article a{
+    display:block;
+    width:15%;
+    margin:0 auto 2vh auto;
+    padding:1vh 2vw;
+    text-align:center;
+    text-decoration: none;
+    color:var(--base-blue);
+    background: var(--base-orange);
+    border:1px solid var(--base-txt-color);
+    border-radius:5px;
+    font-weight: bold;
+}
+.infSubSell article p:nth-child(8) span{/*prix*/
+    color:var(--base-red);
+}
+.infSubSell article:nth-child(3),.infSubSell article:last-child{
+    margin-left:2%;
+}
+.infSubSell article:nth-child(2){/*abo1*/
+    
+}
+.infSubSell article:nth-child(2) i{
+    color:red;
+}
+
+.infSubSell article:nth-child(3){/*abo2*/
+    
+}
+
+.infSubSell article:last-child{/*abo3*/
+    
+}
+.infSubSell article:last-child i{
+    color:green;
+}
+
+
+
+
+
+
+
+/*************************************************************************************/
+/*-------------------------------------BACK OFFICE----------------------------------*/
+/*--------------------------------------ADMIN.PHP----------------------------------*/
+/**********************************************************************************/
+
 .userTitle{
     text-align:center;
 }
@@ -1143,6 +1264,3 @@ footer>p{
     font-size:100px;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1861ff, 0 0 30px #1861ff, 0 0 40px #1861ff, 0 0 55px #1861ff, 0 0 75px #1861ff;
 }
-
-/*test*/
-/*category slide*/
