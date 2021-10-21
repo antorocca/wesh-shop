@@ -35,11 +35,6 @@
                         <div class="dropdownAccount">
                         <a href="#">Mon compte</a>
                         <a href="#">Mes commandes</a>';
-                        if($_SESSION['role'] == 'seller'){
-                            echo '<a href="magasin.php">Mon magasin</a>';
-                        }else{
-                            echo '<a href="beSeller.php">Créer un compte vendeur</a>';
-                        }
                         echo '<a href="logout.php">Se déconnecter</a>
                         </div>
                     </div>';

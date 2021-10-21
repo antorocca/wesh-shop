@@ -10,7 +10,7 @@ html, body{
     margin:0;
     padding: 0;
     font-family:'Lato', sans-serif;
-    background-color:rgb(242, 242, 242);
+    background-color:rgb(240, 240, 240);
     color:var(--base-txt-color,rgb(48, 48, 48));
 }
 
@@ -39,6 +39,12 @@ html, body{
 .shopTitle{
     text-align:center;
     color:var(--base-blue);
+}
+section~h3{
+    width:90%;
+    margin:0 auto;
+    padding:3.5vh 0 0 0;
+    color:var(--base-blue,rgb(8, 63, 181));
 }
 /*------IDENTIFICATION BUTTON--------*/
 /************************************/
@@ -328,115 +334,117 @@ html, body{
     flex-direction:column;
     width:100%;
 }
-
-.cardLink{
-    text-decoration: none;
-} 
-/*---------MENU CATEGORY--------ON INDEX(BOUTIQUE).PHP AND CATEGORY.PHP*/ 
-/********************************/
-/*----FRANCE MAP---*/
-/*******************/
-.nav-content{
-    width:100%;
-    display:flex;
-    justify-content: space-evenly;
-    margin-bottom:15px;
-    padding-top: 10px;
-    background-color: #FFF;
-    border-radius:5px;
+/*----Promotion-----*/
+.promo{
+    height:32vh;
+    margin:0;
+}
+.promo>img{
+     width:100%;
+    /*height:250px;*/
 }
 
-.nav-content div{
-    width: 85%;
-}
-
-.carte svg{
-    width:100%;
-    padding:10px;
-    border-radius:5px;
-    margin:15px 0px;
-}
-main>section[class="nav-content"]{
-    width: 80%;
-    margin:0 auto;
-}
-section~h3{
-    width:90%;
-    margin:0 auto;
-    padding:3.5vh 0 0 0;
-    color:var(--base-blue,rgb(8, 63, 181));
-    /* text-decoration: underline; */
-}
 /*--- + VISITED CATEGORIES---*/
 /*************************/
-.mostVisitedCat h3{
-    color:var(--base-blue,rgb(8, 63, 181));
-    margin:0px;
-}
-.mostVisitedCat{
+.indFirst{
     display:flex;
     flex-direction:column;
     align-items: center;
-}
-.mostVisitedCat img{
-    margin:1px 1px;
-    border-radius:5px;
-    width: 100%;
-}
-.mostVisitedCat div{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 5px;
-    margin-top:15px;
-    padding:10px;
-    border-radius:5px;
-}
-.mostVisitedCat>div>a>img:hover{
-    box-shadow: 2px 2px 5px 1px #b6b6b6;
+    width:80%;
+    margin: 2vh auto;
+    justify-content: space-evenly;
 }
 
-/*----TOP SELLER---*/
-/*******************/
-.topSell h3{
+.indFirst h3{
     color:var(--base-blue,rgb(8, 63, 181));
-    margin:0px;
+    margin:2vh;
 }
-.topSell{
+.indFirst div{
     display:flex;
-    flex-direction:column;
-    align-items: center;
 }
-.topSell img{
+.indFirst img{
     margin:1px 1px;
-    border-radius:5px;
-    width:100%;
+    border-radius:50%;
+    width: 80%;
+    transition:0.3s;
 }
-.topSell div{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 5px;
-    margin-top:15px;
-    padding:10px;
-    border-radius:5px;
+.indfirst img:before{
+    top:8px;
+    left:10px;
+}
+.indfirst img:after{
+    top:8px;
+    right:10px;
+}
+.indFirst img:hover{
+    transform:scale(1.1)
+}
+.indFirst>div>a>img:hover{
+    box-shadow: 2px 2px 5px 1px #929292;
 }
 
 /*--------put forward brand section--------*/
 .PFbrand{
     background-color: rgb(255, 255, 255);
     width:80%;
-    margin:0 auto;
+    margin:2vh auto 0 auto;
     border-radius: 5px;
-    padding-bottom:2vh;
-    border-radius:5px;
+    padding-bottom:1vh;
 }
 .PFbrand>h3{
-    margin:1.5vh 0 1vh 2vw;
+    margin:1vh 0 0.5vh 2vw;
     color:var(--base-blue,rgb(8, 63, 181));
-    
 }
-
+/*--------Third section--------*/
+.highLighted{
+    width:80%;
+    margin:2vh auto 0 auto;
+    border-radius:5px;
+    /* background: darkmagenta; */
+}
+.highLighted>div{
+    display: inline-block;
+    background:white;
+    height:250px;
+    border-radius:5px;
+}
+.highLighted div p{
+    text-align: center;
+}
+.highLighted div:nth-child(1){
+    width: 25%;
+    position: relative;
+    left:0px;
+}
+.highLighted>div:nth-child(2){
+    width: 74%;
+    float:right;
+}
+ /*********************/
+.highLighted2{
+    width:80%;
+    margin:2vh auto 0 auto;
+    border-radius:5px;
+    background: darkmagenta;
+}
+.highLighted2 div{
+    display: inline-block;
+    background:white;
+    height:250px;
+}
+.highLighted2 div p{
+    text-align: center;
+}
+.highLighted2 div:nth-child(2){
+    width: 25%;
+    position: relative;
+    left:0px;
+}
+.highLighted2 div:nth-child(1){
+    width: 74%;
+    position: relative;
+    right:0px;
+}
 
 /*--------INFINITE LOOP OF ARTICLE------*/
 .loop{
@@ -446,12 +454,14 @@ section~h3{
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
 /*********************************/
 /*--------SLIDER and CARD-------*/
 /*******************************/
+.sliderI1{
+    width:100%;
+}
 /*--slider index.php--*/
-.sliderT2{/*SScard*/
+.sliderI2{/*SScard*/
     width:94%;
     margin:0 auto;
 }
@@ -477,6 +487,72 @@ section~h3{
     height:150px;
     width:auto;
     margin:0 auto;
+} 
+
+.topCard{
+    width:100%;
+    padding-bottom:10px;
+    display:flex;
+    justify-content:center;
+}
+
+.topCard img{
+    width:auto;
+    max-width:180px;
+    max-height:200px;
+    min-height:50px;
+    margin-top:20px;
+}
+
+.bottomCard{
+    width: 85%;
+    display: flex;
+    justify-content:end;
+    flex-direction: column;
+    margin-left:1vw;
+}
+
+.bottomCard>h3~p{
+    font-size:12px;
+}
+
+.bottomCard>a{
+    text-decoration: none;
+    color:black;
+}
+
+.detailLink{
+    width:50px;
+    margin-bottom:5px;
+    padding: 10px 5px;
+    text-decoration:none;
+    border-radius:10px;
+    align-items:center;
+    background-color:var(--base-blue,rgb(8, 63, 181));
+    color:white;
+}
+.detailLink:hover{
+    background-color:var(--blue-hover,rgb(0, 81, 255));
+    color:var(--base-orange,rgb(255, 159, 34));
+    transition-duration: 0.2s;
+}
+
+.bottomCard h3{
+    margin:10px 0px;
+}
+.bottomCard p{
+    margin:10px 0px;
+}
+.detail{
+    display:flex;
+    justify-content:space-between;
+}
+.btnDetail{
+    display:flex;
+    align-items:center;
+}
+.cardLink{
+    text-decoration: none;
 } 
 /*-----------SScard-----------*/
 .cardSS{
@@ -542,6 +618,38 @@ section~h3{
     font-size: 1.1rem;  
 }
 
+/*------card4------*/
+.card4{
+    width:200px;
+    text-decoration:none;
+}
+.card4:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
+.card4>img{
+    max-width:100px;
+    width:auto;
+    max-height:100px;
+    height:auto;
+    margin:0 auto;
+}
+.card4>p{
+    color:var(--base-txt-color);
+}
+.card4>div{
+    display:flex;
+    justify-content:space-between;
+    margin:0 2vw;
+}
+.card4>div p{
+    color:var(--base-red);
+}
+.card4>div p:first-child{
+    text-decoration: line-through;
+}
+
+
+
 
 /*-----------scroll button in sliders---------*/
 .slick-prev:before, .slick-next:before {
@@ -554,85 +662,7 @@ section~h3{
     background: var(--base-blue,rgb(8, 63, 181));
     border-radius:50%;
 }
-/*---------carte produit--------*/
-/*******************************/
-.produits{
-    width:80%;
-    margin: 15px auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
 
-
-.topCard{
-    width:100%;
-    padding-bottom:10px;
-    display:flex;
-    justify-content:center;
-}
-
-.topCard img{
-    width:auto;
-    max-width:180px;
-    max-height:200px;
-    min-height:50px;
-    margin-top:20px;
-}
-
-.bottomCard{
-    width: 85%;
-    display: flex;
-    justify-content:end;
-    flex-direction: column;
-    margin-left:1vw;
-}
-
-.bottomCard>h3~p{
-    font-size:12px;
-}
-
-.bottomCard>a{
-    text-decoration: none;
-    color:black;
-}
-
-.detailLink{
-    width:50px;
-    margin-bottom:5px;
-    padding: 10px 5px;
-    text-decoration:none;
-    border-radius:10px;
-    align-items:center;
-    background-color:var(--base-blue,rgb(8, 63, 181));
-    color:white;
-}
-.detailLink:hover{
-    background-color:var(--blue-hover,rgb(0, 81, 255));
-    color:var(--base-orange,rgb(255, 159, 34));
-    transition-duration: 0.2s;
-}
-
-.bottomCard h3{
-    margin:10px 0px;
-}
-.bottomCard p{
-    margin:10px 0px;
-}
-.detail{
-    display:flex;
-    justify-content:space-between;
-}
-.btnDetail{
-    display:flex;
-    align-items:center;
-}
-/*-----small size card details-----*/
-/*
-*
-*
-*
-*/
 /****************************************************************************************/
 /*-----------------------------------------ARTICLE.PHP---------------------------------*/
 /**************************************************************************************/
