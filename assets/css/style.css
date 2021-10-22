@@ -363,21 +363,19 @@ section~h3{
     display:flex;
 }
 .indFirst img{
-    margin:1px 1px;
+    display:block;
+    margin:1px auto;
     border-radius:50%;
     width: 80%;
     transition:0.3s;
 }
-.indfirst img:before{
-    top:8px;
-    left:10px;
-}
-.indfirst img:after{
-    top:8px;
-    right:10px;
-}
 .indFirst img:hover{
     transform:scale(1.1)
+}
+.indFirst>div>a{
+    border-radius:50%;
+    background:var(--base-orange);
+    width:16%;
 }
 .indFirst>div>a>img:hover{
     box-shadow: 2px 2px 5px 1px #929292;
@@ -395,21 +393,17 @@ section~h3{
     margin:1vh 0 0.5vh 2vw;
     color:var(--base-blue,rgb(8, 63, 181));
 }
-/*--------Third section--------*/
+/*--------promo section and last viewed--------*/
 .highLighted{
     width:80%;
     margin:2vh auto 0 auto;
     border-radius:5px;
-    /* background: darkmagenta; */
 }
 .highLighted>div{
     display: inline-block;
     background:white;
-    height:250px;
+    height:28vh;
     border-radius:5px;
-}
-.highLighted div p{
-    text-align: center;
 }
 .highLighted div:nth-child(1){
     width: 25%;
@@ -420,7 +414,31 @@ section~h3{
     width: 74%;
     float:right;
 }
- /*********************/
+.highLighted div:nth-child(2)>a{
+    margin: 1vh auto 0 auto;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--base-blue);
+    text-align: center;
+    display: block;
+    width: 20%;
+    transition:0.3s;
+}
+.highLighted div:nth-child(2)>a:hover{
+    transform:scale(1.07);
+}
+/*----------last viewed product-----------*/
+.highLighted div:nth-child(1)>a>img{
+    display:block;
+    max-width:120px;
+    width:auto;
+    max-height:120px;
+    height:auto;
+    margin:1vh auto 0 auto;
+}
+
+
+ /**********on verra***********/
 .highLighted2{
     width:80%;
     margin:2vh auto 0 auto;
@@ -446,6 +464,7 @@ section~h3{
     right:0px;
 }
 
+
 /*--------INFINITE LOOP OF ARTICLE------*/
 .loop{
     width:80%;
@@ -458,7 +477,8 @@ section~h3{
 /*--------SLIDER and CARD-------*/
 /*******************************/
 .sliderI1{
-    width:100%;
+    width:92%;
+    margin:0 auto;
 }
 /*--slider index.php--*/
 .sliderI2{/*SScard*/
@@ -570,7 +590,7 @@ section~h3{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 
-/*----------card3-------------*/
+/*----------card3-------------(sliderC3)*/
 .card3{
     margin:3px;
     margin-right:10px;
@@ -618,36 +638,48 @@ section~h3{
     font-size: 1.1rem;  
 }
 
-/*------card4------*/
+/*------card4------(sliderI1)*/
 .card4{
     width:200px;
     text-decoration:none;
+    height:23vh;
+    margin:1vh 1vw;
+    border-radius:5px;
 }
 .card4:hover{
     box-shadow: 2px 2px 5px 1px #b6b6b6;
 }
 .card4>img{
-    max-width:100px;
+    max-width:120px;
     width:auto;
-    max-height:100px;
+    max-height:120px;
     height:auto;
-    margin:0 auto;
+    margin:1vh auto 0 auto;
 }
 .card4>p{
+    text-align: center;
     color:var(--base-txt-color);
+    font-weight:bold;
+    margin:1vh 0 0.5vh 0;
 }
 .card4>div{
     display:flex;
     justify-content:space-between;
     margin:0 2vw;
 }
-.card4>div p{
+.card4>p:last-child{
     color:var(--base-red);
+    margin:0.5vh 0 1vh 0;
+}
+.card4>p:last-child>span{
+    text-decoration: line-through;
 }
 .card4>div p:first-child{
     text-decoration: line-through;
 }
-
+.slick-dots{
+    visibility: hidden;
+}
 
 
 
@@ -930,81 +962,6 @@ section~h3{
     margin:0 auto;
     padding-top:15px;
 }
-
-/*-----------------------------------BESELLER.PHP----------------------------------*/
-/**********************************************************************************/
-/*-----------first section subscribe----------*/
-.infSubSell{
-    width: 80%;
-    margin: 0 auto;
-}
-.infSubSell h2{
-    text-align:center;
-    color:var(--base-blue);
-}
-.infSubSell article:nth-child(2),.infSubSell article:nth-child(3),.infSubSell article:last-child{
-    width: 31%;
-    display:inline-block;
-    border-radius:5px;
-    background: white;
-}
-.infSubSell article h3, .infSubSell article p{
-    margin:1vh 1vw;
-}
-.infSubSell article h3{
-    text-align:center;
-    font-size:1.8rem;
-    color:var(--base-blue);
-}
-.infSubSell article p{
-    margin:2vh 1vw;
-    font-size: 1.1rem;
-}
-.infSubSell article p span{
-    font-weight: bold;
-}
-.infSubSell article a{
-    display:block;
-    width:15%;
-    margin:0 auto 2vh auto;
-    padding:1vh 2vw;
-    text-align:center;
-    text-decoration: none;
-    color:var(--base-blue);
-    background: var(--base-orange);
-    border:1px solid var(--base-txt-color);
-    border-radius:5px;
-    font-weight: bold;
-}
-.infSubSell article p:nth-child(8) span{/*prix*/
-    color:var(--base-red);
-}
-.infSubSell article:nth-child(3),.infSubSell article:last-child{
-    margin-left:2%;
-}
-.infSubSell article:nth-child(2){/*abo1*/
-    
-}
-.infSubSell article:nth-child(2) i{
-    color:red;
-}
-
-.infSubSell article:nth-child(3){/*abo2*/
-    
-}
-
-.infSubSell article:last-child{/*abo3*/
-    
-}
-.infSubSell article:last-child i{
-    color:green;
-}
-
-
-
-
-
-
 
 /*************************************************************************************/
 /*-------------------------------------BACK OFFICE----------------------------------*/

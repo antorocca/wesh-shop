@@ -1,17 +1,19 @@
 <?php
     session_start();
+    
+    $articleId = $_GET['id'];
+
+    setcookie('lastViewedProduct', $articleId, time() + 365 * 24 * 3600, null, null, true, true);
 
     require_once 'functionDatabase.php';
     $bdd = Database::connect();
-
-    $articleId = $_GET['id'];
 
     $articleDesc = $bdd-> prepare('SELECT * FROM article WHERE id = ?');
     $articleDesc-> execute([$articleId]);
     $article = $articleDesc->fetch();
 
     $similar = $bdd-> prepare('SELECT * FROM article WHERE idCat = ?');
-    $similar-> execute([$article[7]]);
+    $similar-> execute([$article['idCat']]);
     $similarArticle = $similar->fetchAll();
 
     $price = number_format($article['prix'], 2,',','');
@@ -54,7 +56,6 @@
 <div class="similarProduct">
     <?php
         foreach($similarArticle as $similar){
-
             echo '<a href="article.php?id=' . $similar['id'] .'">
             <div class="similar">
                 <div class="similarTop">
