@@ -4,10 +4,11 @@
         private static $name;
         private static $description;
         private static $file;
-        private static $prize;
+        private static $price;
         private static $stock;
         private static $brand;
         private static $type;
+        private static $promo;
         public static $addError = '';
         public static $addSuccess = '';
 
@@ -19,14 +20,15 @@
             $name = htmlspecialchars($_POST['addName']);
             $description = htmlspecialchars($_POST['addDescription']);
             $file = $_FILES['addFile'];
-            $prize = htmlspecialchars($_POST['addPrize']);
+            $price = htmlspecialchars($_POST['addPrize']);
             $stock = htmlspecialchars($_POST['addStock']);
             $brand = htmlspecialchars($_POST['addBrand']);
             $cat = htmlspecialchars($_POST['addCat']);
+            $promo = htmlspecialchars($_POST['promo']);
                 
             if(isset ($_POST['addArticleSubmit'])){
 
-                if(!empty($name) && !empty($description) && !empty($prize) && !empty($stock) && !empty($cat)){
+                if(!empty($name) && !empty($description) && !empty($price) && !empty($stock) && !empty($cat)){
                     
                     if(isset($file) && $file['error'] == 0) {
 
@@ -41,8 +43,8 @@
                             {
                               move_uploaded_file($_FILES['addFile']['tmp_name'], 'assets/uploads/' . $fileName);
 
-                              $addArticle = $bdd->prepare('INSERT INTO article(nom, description, photo, prix, stock, marque, idCat) VALUES(?,?,?,?,?,?,?)');
-                              $addArticle-> execute([$name, $description, $fileName, $prize,$stock, $brand, $cat]);
+                              $addArticle = $bdd->prepare('INSERT INTO article(nom, description, photo, prix, idPromo, stock, marque, idCat) VALUES(?,?,?,?,?,?,?,?)');
+                              $addArticle-> execute([$name, $description, $fileName, $price, $promo, $stock, $brand, $cat]);
 
                               static::$addSuccess = '<p class="addSuccess">L\'article a bien été ajouté au magasin</p>';
                             

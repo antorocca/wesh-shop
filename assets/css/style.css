@@ -361,12 +361,14 @@ section~h3{
 }
 .indFirst div{
     display:flex;
+    justify-content: space-evenly;
 }
+
 .indFirst img{
     display:block;
     margin:1px auto;
     border-radius:50%;
-    width: 80%;
+    width:100%;
     transition:0.3s;
 }
 .indFirst img:hover{
@@ -375,7 +377,7 @@ section~h3{
 .indFirst>div>a{
     border-radius:50%;
     background:var(--base-orange);
-    width:16%;
+    width:13%;
 }
 .indFirst>div>a>img:hover{
     box-shadow: 2px 2px 5px 1px #929292;
@@ -393,7 +395,7 @@ section~h3{
     margin:1vh 0 0.5vh 2vw;
     color:var(--base-blue,rgb(8, 63, 181));
 }
-/*--------promo section and last viewed--------*/
+/*------------promo section------------*/
 .highLighted{
     width:80%;
     margin:2vh auto 0 auto;
@@ -405,30 +407,36 @@ section~h3{
     height:28vh;
     border-radius:5px;
 }
-.highLighted div:nth-child(1){
+.highLighted>div:nth-child(1){
     width: 25%;
-    position: relative;
-    left:0px;
 }
 .highLighted>div:nth-child(2){
     width: 74%;
     float:right;
 }
-.highLighted div:nth-child(2)>a{
-    margin: 1vh auto 0 auto;
+.highLighted>div:nth-child(2)>a{
+    display: inline;
+    float: right;
+    margin-right:1vw;
+    position:relative;
+    bottom:3vh;
     text-decoration: none;
     font-weight: bold;
     color: var(--base-blue);
-    text-align: center;
-    display: block;
-    width: 20%;
     transition:0.3s;
 }
 .highLighted div:nth-child(2)>a:hover{
     transform:scale(1.07);
 }
 /*----------last viewed product-----------*/
-.highLighted div:nth-child(1)>a>img{
+.highLighted>div:nth-child(1)>h3{
+    margin:1vh 0vw 1.4vh 1vw;
+    color:var(--base-blue);
+}
+.highLighted>div:nth-child(1)>a{
+    text-decoration:none;
+}
+.highLighted>div:nth-child(1)>a>img{
     display:block;
     max-width:120px;
     width:auto;
@@ -436,7 +444,27 @@ section~h3{
     height:auto;
     margin:1vh auto 0 auto;
 }
-
+.highLighted>div:nth-child(1)>a>p:nth-child(2){
+    text-align:center;
+    color:var(--base-txt-color);
+    font-weight:bold;
+}
+.highLighted>div:nth-child(1)>div{
+    display:flex;
+    justify-content:space-between;
+}
+.highLighted>div:nth-child(1)>div>p:nth-child(1){
+    color:var(--base-txt-color);
+    margin:0;
+    margin-left:1vw;
+}
+.highLighted>div:nth-child(1)>div>p:nth-child(2){
+    color:var(--base-red);
+    font-weight:bold;
+    font-size:1.1rem;
+    margin:0;
+    margin-right:1vw;
+}
 
  /**********on verra***********/
 .highLighted2{
@@ -445,24 +473,20 @@ section~h3{
     border-radius:5px;
     background: darkmagenta;
 }
-.highLighted2 div{
+.highLighted2>div{
     display: inline-block;
     background:white;
     height:250px;
+    border-radius:5px;
 }
-.highLighted2 div p{
-    text-align: center;
+.highLighted2>div:nth-child(1){
+    width: 75%;
 }
-.highLighted2 div:nth-child(2){
-    width: 25%;
-    position: relative;
-    left:0px;
+.highLighted2>div:nth-child(2){
+    width: 24%;
+    float:right;
 }
-.highLighted2 div:nth-child(1){
-    width: 74%;
-    position: relative;
-    right:0px;
-}
+
 
 
 /*--------INFINITE LOOP OF ARTICLE------*/
@@ -482,6 +506,10 @@ section~h3{
 }
 /*--slider index.php--*/
 .sliderI2{/*SScard*/
+    width:80%;
+    margin:0 auto;
+}
+.sliderI3{
     width:94%;
     margin:0 auto;
 }

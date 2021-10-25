@@ -11,5 +11,3 @@
 
     echo json_encode($cat);
 ?>
-
-

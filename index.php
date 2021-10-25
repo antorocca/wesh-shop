@@ -2,28 +2,62 @@
 session_start();
 
 require_once 'functionDatabase.php';
-    $bdd = Database::connect();
+$bdd = Database::connect();
 
-$stmt = $bdd->prepare('SELECT * FROM article');/*for the loop*/
+/*for the loop at the end*/
+$stmt = $bdd->prepare('SELECT * FROM article');
 $stmt->execute();
 $articles = $stmt->fetchAll();
 
-$brand = $bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');/* for the doriane brand*/
+/* for the doriane brand*/
+$brand = $bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');
 $brand->execute();
 $brandA = $brand->fetchAll();
 
-$topC = $bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,6');/*top categories*/
+/*top categories*/
+$topC = $bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,6');
 $topC->execute();
 $topCats = $topC->fetchAll();
 
-$p = $bdd->prepare('SELECT article.id AS idArticle, article.nom, article.photo, article.prix, article.idPromo, promotion.id, promotion.percentage FROM article INNER JOIN promotion WHERE article.idPromo = promotion.id AND article.idPromo IS NOT NULL ORDER BY `idPromo` DESC LIMIT 0,10');/*for the promotion slider*/
+/*top article*/
+$topA = $bdd->prepare('SELECT * FROM article ORDER BY viewCount DESC LIMIT 0,1');
+$topA ->execute();
+$topArt = $topA->fetch();
+
+/*for the promotion slider*/
+$p = $bdd->prepare('SELECT article.id AS idArticle, article.nom, article.photo, article.prix, article.idPromo, promotion.id, promotion.percentage FROM article INNER JOIN promotion WHERE article.idPromo = promotion.id AND article.idPromo IS NOT NULL ORDER BY `idPromo` DESC LIMIT 0,10');
 $p->execute();
 $promotions = $p->fetchAll();
 
-$ls = $bdd->prepare('SELECT id, nom,photo,prix FROM article WHERE id=?');/* for last viewed product*/
-$ls->execute([$_COOKIE['lastViewedProduct']]);
-$lastSeen = $ls->fetch();
+/* for last viewed product*/
+if(isset($_COOKIE['lastViewedProduct'])){
+    $ls = $bdd->prepare('SELECT id, nom,photo,prix FROM article WHERE id=?');
+    $ls->execute([$_COOKIE['lastViewedProduct']]);
+    $lastSeen = $ls->fetch();
+}
 
+/*LVP method*/
+$dateDiff='';
+if(isset($_COOKIE['dateLVP'])){
+    if(time() - $_COOKIE['dateLVP'] < 3600){
+        $dateDiff = 'il y a moins d\' 1 heures';
+    }
+    elseif(time() - $_COOKIE['dateLVP'] < 21600){
+        $dateDiff = 'il y a moins de 6 heures';
+    }
+    elseif(time() - $_COOKIE['dateLVP'] < 43200){
+        $dateDiff = 'il y a moins de 12 heures';
+    }
+    elseif(time() - $_COOKIE['dateLVP'] < 86400){
+        $dateDiff = 'il y a moins de 24 heures';
+    }
+    elseif(time() - $_COOKIE['dateLVP']<172800){
+        $dateDiff = 'hier';
+    }
+    else{
+        $dateDiff = 'le' . date('d/m/y');
+    }
+}
 ?>
 
 <?php include('include/head&header.php'); ?>
@@ -45,21 +79,34 @@ $lastSeen = $ls->fetch();
             <div>
                 <?php
                 if(isset($_COOKIE['lastViewedProduct'])){
-                echo '<p>Reprenez où vous en étiez</p>
+
+                    $lastSeen['prix'] = number_format($lastSeen['prix'], 2,',','');
+
+                echo '<h3>Reprenez où vous en étiez</h3>
                     <a href="article.php?id=' . $lastSeen['id']. '">
                         <img src="assets/uploads/' . $lastSeen['photo'] . '" alt="' . $lastSeen['nom'] . '">
-                        <p>' . $lastSeen['nom'] . '</p>
-                        <p>' . $lastSeen['prix'] . ' €</p>
-                    </a>';
-                }else{
-
+                        <p>' . $lastSeen['nom'] . '</p></a>
+                        <div>
+                            <p>Consulté ' . $dateDiff . '</p>
+                            <p>' . $lastSeen['prix'] . ' €</p>
+                        </div>';
                 }
-                
-                    
+                else{
+                    $topArt['prix'] = number_format($topArt['prix'], 2,',','');
+
+                    echo '<h3>Article le plus consulté hier</h3>
+                        <a href="article.php?id=' . $topArt['id'] . '">
+                            <img src="assets/uploads/' . $topArt['photo'] . '" alt="">
+                            <p>' . $topArt['nom'] . '</p>
+                        </a>
+                        <div>
+                            <p>Consulté ' . $topArt['viewCount'] . ' fois</p>
+                            <p>' . $topArt['prix'] . ' €</p>
+                        </div>';
+                }  
                 ?>
             </div>
             <div>
-                <a href="#">Toutes les promotions</a>
                 <div class="sliderI1">
                     <?php
                     foreach($promotions as $promotion){
@@ -84,18 +131,26 @@ $lastSeen = $ls->fetch();
                     }
                     ?>
                 </div>
+                <a href="#">Voir toutes les promotions</a>
             </div>
         </section>
+
+
 
 
         <section class="highLighted2">
             <div>
-                <p>Reprenez ou vous en étiez</p>
+                <p>C'est bientot noël ! Des offres pour ravir les plus petits</p>
+                <div class="sliderI3">
+                    
+                </div>
             </div>
             <div>
-                <p>Toutes les promotions</p>
+                <p>top vu hier ou nouveauté?</p>
             </div>
         </section>
+
+
 
 
 
@@ -115,10 +170,12 @@ $lastSeen = $ls->fetch();
 
 
 
-   <?php if(strlen($promotion['nom'])>15){
-                            $promotion['nom'] = substr( $promotion['nom'],0,15);
-                            echo '<p>' . $promotion['nom'] . '...</p>';
-                        }
-                        else{
-                            echo '<p>' . $promotion['nom'] . '</p>';
-                        }
+    <!-- if(time()-$_COOKIE['dateLVP']< 86400){
+                        echo '<p>Consulté aujourd\'hui</p>';
+                    }
+                    elseif(time()-$_COOKIE['dateLVP']> 86400 && time()-$_COOKIE['dateLVP']< 172800){
+                        echo '<p>Consulté hier</p>';
+                    }
+                    else{
+                        echo '<p>Consulté le ' .  date('d.m.y') . '</p>';
+                    } -->

@@ -64,6 +64,19 @@ session_start();
                     <input type="text" name="addStock">
                 <label>Marque:</label>
                     <input type="text" name="addBrand">
+                <label>Promotion:</label>
+                <select name="promo">
+                    <option value="none"></option>
+                    <option value="1">10%</option>
+                    <option value="2">20%</option>
+                    <option value="3">30%</option>
+                    <option value="4">40%</option>
+                    <option value="5">50%</option>
+                    <option value="6">60%</option>
+                    <option value="7">70%</option>
+                    <option value="8">80%</option>
+                    <option value="9">90%</option>
+                </select>
                 <label>*Catégorie:</label>
                 <select id="cats" name="">
                     <option value="none"></option>

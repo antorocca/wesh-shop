@@ -1,5 +1,5 @@
 const categorySelect = document.getElementById('cats');
-
+console.log('hello');
 categorySelect.addEventListener('change', (event) => {
     console.log('updated');
     let catId = event.target.value;
@@ -7,20 +7,22 @@ categorySelect.addEventListener('change', (event) => {
         document.getElementById('subcats').innerHTML = '';
     } else {
         fetch(`http://localhost:8080/wesh-shop/api/subcat.php?cat=${catId}`)
-            .then(response => response.json())
-            .then((data) => {
-                let options = data
-                    .map(element => `<option value="${element.id}">${element.catName}</option>`)
-                    .join();
-                document.getElementById('subcats').innerHTML = options;
+        .then(response => response.json())
+        .then((data) => {
+            let options = data
+            .map(element => `<option value="${element.id}">${element.catName}</option>`)
+            .join();
+            document.getElementById('subcats').innerHTML = options;
             })
             .catch(err => {
                 console.error(err)
             })
-    }
-});
-
-// categorySelect.addEventListener('change', async (event) => {
+        }
+        console.log('test');
+    });
+    console.log('hello2');
+    
+    // categorySelect.addEventListener('change', async (event) => {
 //     let catId = event.target.value;
 //     const response = await fetch(`http://localhost:8080/wesh-shop/api/soucat.php?cat=${catId}`)
 //     const data = await response.json();

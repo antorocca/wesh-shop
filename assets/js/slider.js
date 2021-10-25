@@ -1,9 +1,9 @@
 $('.sliderC3').slick({
-    infinite: true,
-    slidesToShow: 6,
+  infinite: true,
+  slidesToShow: 6,
     slidesToScroll: 2
   });
-
+  
   $('.sliderI2').slick({
     infinite: true,
     slidesToShow: 5,
@@ -11,6 +11,43 @@ $('.sliderC3').slick({
   });
   
   $('.sliderI1').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: "unslick",
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+  $('.sliderI3').slick({
     dots: true,
     infinite: true,
     speed: 300,
@@ -40,8 +77,5 @@ $('.sliderC3').slick({
           slidesToScroll: 1
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ]
   });

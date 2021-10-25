@@ -2,11 +2,19 @@
     session_start();
     
     $articleId = $_GET['id'];
+    $dateLVP = time();
 
     setcookie('lastViewedProduct', $articleId, time() + 365 * 24 * 3600, null, null, true, true);
+    setcookie('dateLVP', $dateLVP, time() + 365 * 24 * 3600, null, null, true, true);
 
     require_once 'functionDatabase.php';
     $bdd = Database::connect();
+
+    if ($_SESSION['role'] != 'admin'){
+        $art = $bdd->prepare('UPDATE article SET viewCount=viewCount + 1 WHERE id=?');
+        $art->execute([$articleId]);
+    }
+
 
     $articleDesc = $bdd-> prepare('SELECT * FROM article WHERE id = ?');
     $articleDesc-> execute([$articleId]);
@@ -19,37 +27,38 @@
     $price = number_format($article['prix'], 2,',','');
 
     include('include/head&header.php');
-?>
+
+    ?>
 <div class="allArticle">
     <div class='imgArticle'>
-        <img src="assets/uploads/<?php echo $article[3] ?>" alt="<?php echo $article[1] ?>">
+        <img src="assets/uploads/<?php echo $article['photo'] ?>" alt="<?php echo $article['nom'] ?>">
     </div>
     <div class="detailArticle">
-        <h2><?php echo $article[1] ?></h2>
-        <p class="articleBrand"><?php echo $article[6] ?></p>
+        <h2><?php echo $article['nom'] ?></h2>
+        <p class="articleBrand"><?php echo $article['marque'] ?></p>
         <p class="articlePrize">Prix: <span><?php echo $price ?> €</span></p>
-        <p class="articleDesc"><?php echo $article[2] ?></p>
-            <?php 
+        <p class="articleDesc"><?php echo $article['description'] ?></p>
+        <?php 
                 if($article['stock'] >= 50){ ?>
                     <p style="color:green;font-weight:bolder;">En stock</p>
-                        <form class="formPanier" action="addArtToCart.php?id=<?=$article[0]?>" method="post">
-                            <label>Quantité:</label> 
-                            <select id="quantity" name="quantity"></select>
-                            <input type="submit" name="submitPanier" value="Ajouter au panier">
-                        </form>
-                <?php }
+                    <form class="formPanier" action="addArtToCart.php?id=<?=$article['id']?>" method="post">
+                        <label>Quantité:</label> 
+                        <select id="quantity" name="quantity"></select>
+                        <input type="submit" name="submitPanier" value="Ajouter au panier">
+                    </form>
+                    <?php }
                 elseif($article['stock'] < 50 && $article['stock'] > 0){ ?>
                     <p style="color:green;font-weight:bolder;"><?=$article['stock']?> en stock</p>
-                    <form class="formPanier" action="addArtToCart.php?id=<?=$article[0]?>" method="post">
+                    <form class="formPanier" action="addArtToCart.php?id=<?=$article['id']?>" method="post">
                         <label for="quantity">Quantité: </label>
                         <select id="quantity" name="quantity"></select>
                         <input type="submit" name="submitPanier" value="Ajouter au panier">
                     </form>
-                <?php }
+                    <?php }
                 else{
                     echo '<p style="color:red;font-weight:bolder;">Stock épuisé</p>';
                 }
-            ?>
+                ?>
     </div>
 </div>
 <h3 class="similarh3">Articles similaire à <?php echo $article[1]; ?></h3>
@@ -58,20 +67,21 @@
         foreach($similarArticle as $similar){
             echo '<a href="article.php?id=' . $similar['id'] .'">
             <div class="similar">
-                <div class="similarTop">
-                    <img src="assets/uploads/' .  $similar['photo'] . '" alt="">
-                </div>
-                <div class="similarBottom">
-                    <h4>' . $similar['1'] . '</h4>
-                    <p class="articleBrand">' . $similar['6'] . '</p>
-                    <p class="articlePrize">' . $similar['4'] . ' €</p>
-                </div>
+            <div class="similarTop">
+            <img src="assets/uploads/' .  $similar['photo'] . '" alt="">
+            </div>
+            <div class="similarBottom">
+            <h4>' . $similar['1'] . '</h4>
+            <p class="articleBrand">' . $similar['6'] . '</p>
+            <p class="articlePrize">' . $similar['4'] . ' €</p>
+            </div>
             </div></a>';
         }
-    ?>
+        ?>
 </div>
 
 <?php include('include/footer.php'); ?>
+
 
 
 <script>
@@ -85,8 +95,6 @@
 </script>
 
 
-
-
 <!-- if($article['stock'] == 0){
-                echo '<p class="addCartSuccess"><i class="fas fa-times"></i> Article ajouté au panier</p>'             
-            } -->
+    echo '<p class="addCartSuccess"><i class="fas fa-times"></i> Article ajouté au panier</p>'             
+} -->
