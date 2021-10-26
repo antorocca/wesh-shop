@@ -466,26 +466,160 @@ section~h3{
     margin-right:1vw;
 }
 
- /**********on verra***********/
+/*-------second section highlight index.php-------*/
 .highLighted2{
     width:80%;
     margin:2vh auto 0 auto;
-    border-radius:5px;
-    background: darkmagenta;
+    display:flex;
+    justify-content:space-between;
 }
 .highLighted2>div{
-    display: inline-block;
+    /* display: inline-block; */
     background:white;
-    height:250px;
     border-radius:5px;
 }
 .highLighted2>div:nth-child(1){
     width: 75%;
 }
-.highLighted2>div:nth-child(2){
+.highLighted2>div:last-child{
     width: 24%;
-    float:right;
 }
+
+ /*---------christmas selection--------*/
+ .highLighted2>div:first-child>h3{
+    margin:1vh 0vw 1vh 1vw;
+    color:var(--base-blue);
+ }
+ .card5{
+    width:200px;
+    text-decoration:none;
+    height:23vh;
+    margin:1vh 1vw;
+    border-radius:5px;
+}
+.card5:hover{
+    box-shadow: 2px 2px 5px 1px #b6b6b6;
+}
+.card5>img{
+    max-width:120px;
+    width:auto;
+    max-height:120px;
+    height:auto;
+    margin:1vh auto 0 auto;
+}
+.card5 p:nth-child(2){
+    text-align: center;
+    color:var(--base-txt-color);
+    font-weight:bold;
+    margin:1vh 0 0.5vh 0;
+}
+.card5 p:nth-child(3){
+    text-align: center;
+    color:var(--base-txt-color);
+    font-size: 0.9rem;
+    margin:0.5vh 0;
+}
+.card5>div{
+    display:flex;
+    justify-content:space-between;
+    margin:0 2vw;
+}
+.card5>p:last-child{
+    color:var(--base-red);
+    font-weight:bold;
+    margin:0.5vh 2vw 1vh 0;
+    text-align:right;
+}
+.highLighted2>div:first-child>.slick-slider{
+    margin-bottom:0;
+}
+.highLighted2>div:first-child>.slick-dotted{
+    margin-bottom:0;
+}
+/*most viewed article yesterday*/
+.highLighted2>div:last-child h3{
+    margin:1vh 0vw 2vh 1vw;
+    color:var(--base-blue);
+}
+.highLighted2>div:last-child>a{
+    text-decoration:none;
+}
+.highLighted2>div:last-child>a>img{
+    display:block;
+    max-width:130px;
+    width:auto;
+    max-height:130px;
+    height:auto;
+    margin:1vh auto 0 auto;
+}
+.highLighted2>div:last-child>a>p{
+    text-align:center;
+    color:var(--base-txt-color);
+    font-weight:bold;
+}
+.highLighted2>div:last-child>div{
+    display:flex;
+    justify-content:space-between;
+}
+.highLighted2>div:last-child>div>p:first-child{
+    margin-left:1.5vw;
+}
+.highLighted2>div:last-child>div>p:last-child{
+    margin-right:1.5vw;
+    font-weight:bold;
+    color:var(--base-red);
+}
+
+/*----------promo or advertising section-----------*/
+.promo-ad{
+    width:90%;
+    margin:2vh auto 0 auto;
+}
+.promo-ad>.slick-slider{
+    margin-bottom:0;
+}
+.promo-ad>.slick-dotted{
+    margin-bottom:0;
+}
+.promo-ad img{
+    border-radius:5px;
+    height:450px;
+    width:90%;
+}
+.promo-ad>.slick-prev{
+    margin-left:30px;
+    z-index:1;
+}
+.promo-ad>.slick-next{
+    margin-right:30px;
+    z-index:1;
+}
+.promo-ad>.slick-next:hover,
+.promo-ad>.slick-next:focus,
+.promo-ad>.slick-prev:hover,
+.promo-ad>.slick-prev:focus{
+    background:none;
+}
+.promo-ad>.slick-next:before,
+.promo-ad>.slick-prev:before{
+    color:white;
+}
+/* .promo-ad>.slick-prev:before{
+    
+}
+.promo-ad>.slick-next:before{
+   
+} */
+
+
+
+/* .slick-prev:before, .slick-next:before {
+    color:var(--base-orange,rgb(255, 159, 34));
+    font-size:1.5rem;
+    position:relative;
+    right:2px;
+}
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus  */
 
 
 
@@ -497,16 +631,16 @@ section~h3{
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-/*********************************/
-/*--------SLIDER and CARD-------*/
-/*******************************/
+/*********************************************/
+/*--------------SLIDER and CARD-------------*/
+/*******************************************/
 .sliderI1{
     width:92%;
     margin:0 auto;
 }
 /*--slider index.php--*/
 .sliderI2{/*SScard*/
-    width:80%;
+    width:94%;
     margin:0 auto;
 }
 .sliderI3{
@@ -702,23 +836,26 @@ section~h3{
 .card4>p:last-child>span{
     text-decoration: line-through;
 }
-.card4>div p:first-child{
-    text-decoration: line-through;
-}
 .slick-dots{
     visibility: hidden;
 }
 
+/*-----------card5--------------*/
 
+/*find card5 in christmas selection index.php*/
 
 /*-----------scroll button in sliders---------*/
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
     color:var(--base-orange,rgb(255, 159, 34));
     font-size:1.5rem;
     position:relative;
     right:2px;
 }
-.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
     background: var(--base-blue,rgb(8, 63, 181));
     border-radius:50%;
 }
@@ -802,7 +939,10 @@ section~h3{
 .descArticle h2{
     margin:20px 0px 5px 0px;
 }
-.articleName,.articleBrand,.articlePrize,.articleDesc{
+.articleName,
+.articleBrand,
+.articlePrize,
+.articleDesc{
     margin:0px;
 }
 .articleBrand{
@@ -1031,7 +1171,9 @@ section~h3{
     width:20%;
     text-align:center;
 }
-.modifyUser, .deleteUser, .banUser{
+.modifyUser,
+.deleteUser,
+.banUser{
     width:18%;
     padding:5px;
     text-decoration:none;

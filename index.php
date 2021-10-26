@@ -9,11 +9,6 @@ $stmt = $bdd->prepare('SELECT * FROM article');
 $stmt->execute();
 $articles = $stmt->fetchAll();
 
-/* for the doriane brand*/
-$brand = $bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');
-$brand->execute();
-$brandA = $brand->fetchAll();
-
 /*top categories*/
 $topC = $bdd->prepare('SELECT * FROM category ORDER BY visitCounter DESC LIMIT 0,6');
 $topC->execute();
@@ -29,12 +24,24 @@ $p = $bdd->prepare('SELECT article.id AS idArticle, article.nom, article.photo, 
 $p->execute();
 $promotions = $p->fetchAll();
 
+/*for christmas section*/
+$n = $bdd->prepare('SELECT * FROM article WHERE idCat > 599 AND idCat < 700');
+$n->execute();
+$christmasD = $n->fetchAll();
+
 /* for last viewed product*/
 if(isset($_COOKIE['lastViewedProduct'])){
     $ls = $bdd->prepare('SELECT id, nom,photo,prix FROM article WHERE id=?');
     $ls->execute([$_COOKIE['lastViewedProduct']]);
     $lastSeen = $ls->fetch();
 }
+
+/* for the doriane brand*/
+$brand = $bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');
+$brand->execute();
+$brandA = $brand->fetchAll();
+
+
 
 /*LVP method*/
 $dateDiff='';
@@ -64,7 +71,7 @@ if(isset($_COOKIE['dateLVP'])){
 
     <main class="shop">
         <figure class="promo">
-            <img src="assets/picture/pub.jpg" alt="">
+            <img src="assets/picture/pub.jpg" alt="pub">
         </figure>    
         <section class="indFirst">
             <h3>Catégories les plus visitées</h3>
@@ -135,24 +142,53 @@ if(isset($_COOKIE['dateLVP'])){
             </div>
         </section>
 
-
-
-
         <section class="highLighted2">
             <div>
-                <p>C'est bientot noël ! Des offres pour ravir les plus petits</p>
+                <h3>C'est bientot noël ! Des offres pour ravir les plus petits</h3>
                 <div class="sliderI3">
-                    
+                <?php
+                    foreach($christmasD as $christmas){
+
+                        $christmas['prix'] = number_format($christmas['prix'], 2,',','');
+
+                    echo '<a class="card5" href="article.php?id=' . $christmas['id'] . '">
+                            <img src="assets/uploads/' . $christmas['photo'] . '" alt="' . $christmas['nom'] . '">';
+                            if(strlen($christmas['nom'])>20){
+                                $christmas['nom'] = substr( $christmas['nom'],0,18);
+                                echo '<p>' . $christmas['nom'] . '...</p>';
+                            }
+                            else{
+                                echo '<p>' . $christmas['nom'] . '</p>';
+                            }
+                        echo '<p>' . $christmas['marque'] . '</p>
+                            <p>' . $christmas['prix'] . ' €</p>
+                        </a>';
+                    }
+                    ?>
                 </div>
             </div>
             <div>
-                <p>top vu hier ou nouveauté?</p>
+                <h3>Article le plus consulté hier</h3>
+                <?php
+                    $topArt['prix'] = number_format($topArt['prix'], 2,',','');
+
+                    echo '<a href="article.php?id=' . $topArt['id'] . '">
+                            <img src="assets/uploads/' . $topArt['photo'] . '" alt="">
+                            <p>' . $topArt['nom'] . '</p>
+                        </a>
+                        <div>
+                            <p>Consulté ' . $topArt['viewCount'] . ' fois</p>
+                            <p>' . $topArt['prix'] . ' €</p>
+                        </div>';
+                ?>
             </div>
         </section>
-
-
-
-
+        
+        <article class="promo-ad">
+            <img src="assets/picture/publicite3.jpg" alt="">
+            <img src="assets/picture/publicite5.png" alt="">
+            <img src="assets/picture/publicite6.png" alt="">
+        </article>
 
         <section class="PFbrand">
             <h3>Découvrez les produits de la marque Doriane</h3>
@@ -167,15 +203,3 @@ if(isset($_COOKIE['dateLVP'])){
     </main>
     <?php include('include/sliderLink.php'); ?>
     <?php include('include/footer.php'); ?>
-
-
-
-    <!-- if(time()-$_COOKIE['dateLVP']< 86400){
-                        echo '<p>Consulté aujourd\'hui</p>';
-                    }
-                    elseif(time()-$_COOKIE['dateLVP']> 86400 && time()-$_COOKIE['dateLVP']< 172800){
-                        echo '<p>Consulté hier</p>';
-                    }
-                    else{
-                        echo '<p>Consulté le ' .  date('d.m.y') . '</p>';
-                    } -->

@@ -3,14 +3,15 @@ $('.sliderC3').slick({
   slidesToShow: 6,
     slidesToScroll: 2
   });
-  
-  $('.sliderI2').slick({
+
+  // index.php
+  $('.sliderI2').slick({//marque en avant
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1
   });
   
-  $('.sliderI1').slick({
+  $('.sliderI1').slick({//promotion
     dots: true,
     infinite: true,
     speed: 300,
@@ -41,13 +42,10 @@ $('.sliderC3').slick({
           slidesToScroll: 1
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ]
   });
 
-  $('.sliderI3').slick({
+  $('.sliderI3').slick({// fete
     dots: true,
     infinite: true,
     speed: 300,
@@ -79,3 +77,12 @@ $('.sliderC3').slick({
       }
     ]
   });
+
+  
+$('.promo-ad').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  fade: true,
+  cssEase: 'linear'
+});
