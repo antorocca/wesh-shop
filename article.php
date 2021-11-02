@@ -1,16 +1,22 @@
 <?php
     session_start();
-    
-    $articleId = $_GET['id'];
-    $dateLVP = time();
 
-    setcookie('lastViewedProduct', $articleId, time() + 365 * 24 * 3600, null, null, true, true);
-    setcookie('dateLVP', $dateLVP, time() + 365 * 24 * 3600, null, null, true, true);
+    $articleId = (int) $_GET['id'];
+    $dateLVP = time();
+    $expiration = time() + 365 * 24 * 3600;
+
+    if (!isset($_COOKIE['lastViewedProducts'])) {
+        setcookie('lastViewedProducts', json_encode([['id' => $articleId, 'date' => time()]]), $expiration, null, null, true, true);//info and date last viewed product
+    } else {
+        $arr = json_decode($_COOKIE['lastViewedProducts']);
+        array_push($arr, ['id' => $articleId, 'date' => time()]);
+        setcookie('lastViewedProducts', json_encode($arr), $expiration, null, null, true, true);
+    }
 
     require_once 'functionDatabase.php';
     $bdd = Database::connect();
 
-    if ($_SESSION['role'] != 'admin'){
+    if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin'){
         $art = $bdd->prepare('UPDATE article SET viewCount=viewCount + 1 WHERE id=?');
         $art->execute([$articleId]);
     }
@@ -71,9 +77,9 @@
             <img src="assets/uploads/' .  $similar['photo'] . '" alt="">
             </div>
             <div class="similarBottom">
-            <h4>' . $similar['1'] . '</h4>
-            <p class="articleBrand">' . $similar['6'] . '</p>
-            <p class="articlePrize">' . $similar['4'] . ' €</p>
+            <h4>' . $similar['nom'] . '</h4>
+            <p class="articleBrand">' . $similar['marque'] . '</p>
+            <p class="articlePrize">' . $similar['prix'] . ' €</p>
             </div>
             </div></a>';
         }
@@ -81,8 +87,6 @@
 </div>
 
 <?php include('include/footer.php'); ?>
-
-
 
 <script>
     const select = document.getElementById('quantity');
@@ -93,7 +97,6 @@
         select.add(option);
     }
 </script>
-
 
 <!-- if($article['stock'] == 0){
     echo '<p class="addCartSuccess"><i class="fas fa-times"></i> Article ajouté au panier</p>'             

@@ -396,6 +396,7 @@ section~h3{
     color:var(--base-blue,rgb(8, 63, 181));
 }
 /*------------promo section------------*/
+/* general */
 .highLighted{
     width:80%;
     margin:2vh auto 0 auto;
@@ -507,11 +508,11 @@ section~h3{
     height:auto;
     margin:1vh auto 0 auto;
 }
-.card5 p:nth-child(2){
+.card5>p:nth-child(2){
     text-align: center;
     color:var(--base-txt-color);
     font-weight:bold;
-    margin:1vh 0 0.5vh 0;
+    margin:1vh 0;
 }
 .card5 p:nth-child(3){
     text-align: center;
@@ -522,12 +523,16 @@ section~h3{
 .card5>div{
     display:flex;
     justify-content:space-between;
-    margin:0 2vw;
 }
-.card5>p:last-child{
+.christmasStock{
+    margin:0 0 0 1vh;
+}
+.christmasPrice{
+    margin:0 1vh 0 0;
+}
+.card5>div>p:last-child{
     color:var(--base-red);
     font-weight:bold;
-    margin:0.5vh 2vw 1vh 0;
     text-align:right;
 }
 .highLighted2>div:first-child>.slick-slider{
@@ -570,7 +575,7 @@ section~h3{
     color:var(--base-red);
 }
 
-/*----------promo or advertising section-----------*/
+/*----------promo and advertising section-----------*/
 .promo-ad{
     width:90%;
     margin:2vh auto 0 auto;
@@ -604,23 +609,28 @@ section~h3{
 .promo-ad>.slick-prev:before{
     color:white;
 }
-/* .promo-ad>.slick-prev:before{
-    
+.adSection>.slick-dotted,.adSection>.slick-slider{
+    margin-bottom:0;
 }
-.promo-ad>.slick-next:before{
-   
-} */
-
-
-
-/* .slick-prev:before, .slick-next:before {
-    color:var(--base-orange,rgb(255, 159, 34));
-    font-size:1.5rem;
-    position:relative;
-    right:2px;
+/*--------last viewed products--------*/
+.lvp{
+    width:80%;
+    margin: 2vh auto 0 auto;
+    background:white;
 }
-.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus  */
-
+.lvp>h3{
+    margin:1vh 0vw 2vh 1vw;
+    color:var(--base-blue);
+}
+.stockLvp{
+    margin: 0;
+    padding-left:0.5vw;
+}
+.priceLvp{
+    margin:0;
+    padding-right:0.5vw;
+}
+/*look card5 for css
 
 
 /*--------INFINITE LOOP OF ARTICLE------*/
@@ -630,6 +640,17 @@ section~h3{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    border:3px solid white;
+    border-radius:5px;
+    padding-bottom:1vh;
+}
+.loop>h3{
+    width:100%;
+    margin:0 auto;
+    padding:0.5vh 0;
+    color:var(--base-blue);
+    text-align: center;
+    background:white;
 }
 /*********************************************/
 /*--------------SLIDER and CARD-------------*/
@@ -644,6 +665,10 @@ section~h3{
     margin:0 auto;
 }
 .sliderI3{
+    width:94%;
+    margin:0 auto;
+}
+.sliderI4{
     width:94%;
     margin:0 auto;
 }
@@ -821,7 +846,6 @@ section~h3{
 .card4>p{
     text-align: center;
     color:var(--base-txt-color);
-    font-weight:bold;
     margin:1vh 0 0.5vh 0;
 }
 .card4>div{
@@ -829,12 +853,18 @@ section~h3{
     justify-content:space-between;
     margin:0 2vw;
 }
-.card4>p:last-child{
+.card4>p:nth-child(2){
+    font-weight:bold;
+}
+.card4>p:nth-child(3){
     color:var(--base-red);
     margin:0.5vh 0 1vh 0;
+    font-weight:bold;
 }
-.card4>p:last-child>span{
+.card4>p:nth-child(3)>span{
     text-decoration: line-through;
+}
+.card4>p:last-child{
 }
 .slick-dots{
     visibility: hidden;

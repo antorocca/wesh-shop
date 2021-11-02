@@ -4,7 +4,7 @@
 
     $idCat = $_GET['id'];
 
-    if ($_SESSION['role'] != 'admin'){
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
         Database::connect();
         $cat = Database::$bdd->prepare('UPDATE category SET visitCounter=visitCounter+1 WHERE id=?');
         $cat->execute([$idCat]);

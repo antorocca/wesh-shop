@@ -5,7 +5,7 @@ require_once 'functionDatabase.php';
 $bdd = Database::connect();
 
 /*for the loop at the end*/
-$stmt = $bdd->prepare('SELECT * FROM article');
+$stmt = $bdd->prepare('SELECT * FROM article WHERE RAND() LIMIT 0,35');
 $stmt->execute();
 $articles = $stmt->fetchAll();
 
@@ -20,7 +20,7 @@ $topA ->execute();
 $topArt = $topA->fetch();
 
 /*for the promotion slider*/
-$p = $bdd->prepare('SELECT article.id AS idArticle, article.nom, article.photo, article.prix, article.idPromo, promotion.id, promotion.percentage FROM article INNER JOIN promotion WHERE article.idPromo = promotion.id AND article.idPromo IS NOT NULL ORDER BY `idPromo` DESC LIMIT 0,10');
+$p = $bdd->prepare('SELECT article.id AS idArticle, article.nom, article.photo, article.prix, article.idPromo, article.stock, promotion.id, promotion.percentage FROM article INNER JOIN promotion WHERE article.idPromo = promotion.id AND article.idPromo IS NOT NULL ORDER BY `idPromo` DESC LIMIT 0,10');
 $p->execute();
 $promotions = $p->fetchAll();
 
@@ -29,42 +29,59 @@ $n = $bdd->prepare('SELECT * FROM article WHERE idCat > 599 AND idCat < 700');
 $n->execute();
 $christmasD = $n->fetchAll();
 
-/* for last viewed product*/
-if(isset($_COOKIE['lastViewedProduct'])){
-    $ls = $bdd->prepare('SELECT id, nom,photo,prix FROM article WHERE id=?');
-    $ls->execute([$_COOKIE['lastViewedProduct']]);
-    $lastSeen = $ls->fetch();
-}
-
 /* for the doriane brand*/
 $brand = $bdd->prepare('SELECT * FROM article WHERE marque=\'Doriane\'');
 $brand->execute();
 $brandA = $brand->fetchAll();
 
-
-
 /*LVP method*/
+$lvp = json_decode($_COOKIE['lastViewedProducts']);
+$count=count(json_decode($_COOKIE['lastViewedProducts']));
+$countLVP = $count - 1;
 $dateDiff='';
-if(isset($_COOKIE['dateLVP'])){
-    if(time() - $_COOKIE['dateLVP'] < 3600){
+
+//get info of last viewed article
+if(isset($_COOKIE['lastViewedProducts'])){
+    $ls = $bdd->prepare('SELECT id, nom,photo,prix FROM article WHERE id=?');
+    $ls->execute([$lvp[$countLVP]->id]);
+    $lastSeen = $ls->fetch();
+}
+//get all the info of LVP cookie
+if(isset($_COOKIE['lastViewedProducts'])){
+    $arr = json_decode($_COOKIE['lastViewedProducts'], true);
+    $mapped = array_map(function ($elem) {
+        return $elem['id'];
+    }, $arr);
+    $filtered = array_values(array_unique($mapped));
+
+    $implodeArr = implode(', ', array_fill(0, count($filtered), '?'));
+    $stmt = $bdd->prepare("SELECT id, nom, photo, prix, marque, stock FROM article WHERE id IN($implodeArr)");
+    $stmt->execute($filtered);
+    $lvpArticles = $stmt->fetchAll();
+    // var_dump($stmt);
+}   
+
+if(isset($_COOKIE['lastViewedProducts'])){
+    if(time() - $lvp[$countLVP]->date < 3600){
         $dateDiff = 'il y a moins d\' 1 heures';
     }
-    elseif(time() - $_COOKIE['dateLVP'] < 21600){
+    elseif(time() - $lvp[$countLVP]->date < 21600){
         $dateDiff = 'il y a moins de 6 heures';
     }
-    elseif(time() - $_COOKIE['dateLVP'] < 43200){
+    elseif(time() - $lvp[$countLVP]->date < 43200){
         $dateDiff = 'il y a moins de 12 heures';
     }
-    elseif(time() - $_COOKIE['dateLVP'] < 86400){
+    elseif(time() - $lvp[$countLVP]->date < 86400){
         $dateDiff = 'il y a moins de 24 heures';
     }
-    elseif(time() - $_COOKIE['dateLVP']<172800){
+    elseif(time() - $lvp[$countLVP]->date < 172800){
         $dateDiff = 'hier';
     }
     else{
         $dateDiff = 'le' . date('d/m/y');
     }
 }
+
 ?>
 
 <?php include('include/head&header.php'); ?>
@@ -72,7 +89,8 @@ if(isset($_COOKIE['dateLVP'])){
     <main class="shop">
         <figure class="promo">
             <img src="assets/picture/pub.jpg" alt="pub">
-        </figure>    
+        </figure>
+
         <section class="indFirst">
             <h3>Catégories les plus visitées</h3>
             <div>
@@ -85,7 +103,7 @@ if(isset($_COOKIE['dateLVP'])){
         <section class="highLighted">
             <div>
                 <?php
-                if(isset($_COOKIE['lastViewedProduct'])){
+                if(isset($_COOKIE['lastViewedProducts'])){
 
                     $lastSeen['prix'] = number_format($lastSeen['prix'], 2,',','');
 
@@ -123,7 +141,7 @@ if(isset($_COOKIE['dateLVP'])){
 
                         $promotion['prix'] = number_format($promotion['prix'], 2,',','');
                         $fPrice = number_format($fPrice, 2,',','');
-
+                        // card4
                     echo '<a class="card4" href="article.php?id=' . $promotion['idArticle'] . '">
                             <img src="assets/uploads/' . $promotion['photo'] . '" alt="' . $promotion['nom'] . '">';
                             if(strlen($promotion['nom'])>20){
@@ -133,8 +151,14 @@ if(isset($_COOKIE['dateLVP'])){
                             else{
                                 echo '<p>' . $promotion['nom'] . '</p>';
                             }
-                        echo'<p><span>' . $promotion['prix'] . ' €</span> ' . ' <i class="fas fa-arrow-right"></i> ' . ' ' . $fPrice . ' €</p>
-                        </a>';
+                        echo'<p><span>' . $promotion['prix'] . ' €</span> ' . ' <i class="fas fa-arrow-right"></i> ' . ' ' . $fPrice . ' €</p>';
+                        if($promotion['stock']> 1){
+                            echo '<p style="color:green;">' . $promotion['stock'] . ' en stock</p>';
+                        }
+                        else{
+                            echo'<p style="color:red;">Stock épuisé</p>';
+                        }
+                        echo '</a>';
                     }
                     ?>
                 </div>
@@ -161,7 +185,15 @@ if(isset($_COOKIE['dateLVP'])){
                                 echo '<p>' . $christmas['nom'] . '</p>';
                             }
                         echo '<p>' . $christmas['marque'] . '</p>
-                            <p>' . $christmas['prix'] . ' €</p>
+                            <div>';
+                                if($christmas['stock']> 1){
+                                    echo '<p class="christmasStock" style="color:green;">' . $christmas['stock'] . ' en stock</p>';
+                                }
+                                else{
+                                    echo'<p class="christmasStock" style="color:red;">Stock épuisé</p>';
+                                }
+                                echo '<p class="christmasPrice">' . $christmas['prix'] . ' €</p>
+                            </div>
                         </a>';
                     }
                     ?>
@@ -170,7 +202,7 @@ if(isset($_COOKIE['dateLVP'])){
             <div>
                 <h3>Article le plus consulté hier</h3>
                 <?php
-                    $topArt['prix'] = number_format($topArt['prix'], 2,',','');
+                    $topArt['prix'] = number_format((float) $topArt['prix'], 2,'.',',');
 
                     echo '<a href="article.php?id=' . $topArt['id'] . '">
                             <img src="assets/uploads/' . $topArt['photo'] . '" alt="">
@@ -183,12 +215,14 @@ if(isset($_COOKIE['dateLVP'])){
                 ?>
             </div>
         </section>
-        
-        <article class="promo-ad">
-            <img src="assets/picture/publicite3.jpg" alt="">
-            <img src="assets/picture/publicite5.png" alt="">
-            <img src="assets/picture/publicite6.png" alt="">
-        </article>
+
+        <section class="adSection">
+            <article class="promo-ad">
+                <img src="assets/picture/publicite3.jpg" alt="">
+                <img src="assets/picture/publicite5.png" alt="">
+                <img src="assets/picture/publicite6.png" alt="">
+            </article>
+        </section>
 
         <section class="PFbrand">
             <h3>Découvrez les produits de la marque Doriane</h3>
@@ -196,8 +230,39 @@ if(isset($_COOKIE['dateLVP'])){
                 <?php include('include/SScard.php') ?>
             </div>
         </section>
-        
+
+        <section class="lvp">
+            <h3>Articles précédemment consultés</h3>
+            <article class="sliderI4">
+                    <?php
+                    foreach($lvpArticles as $lvpArticle){
+                        echo '<a class="card5" href="article.php?id=' . $lvpArticle['id'] . '">
+                                <img src="assets/uploads/' . $lvpArticle['photo'] . '" alt="' . $lvpArticle['nom'] . '">';
+                                if(strlen($lvpArticle['nom'])>20){
+                                    $lvpArticle['nom'] = substr( $lvpArticle['nom'],0,18);
+                                    echo '<p>' . $lvpArticle['nom'] . '...</p>';
+                                }
+                                else{
+                                    echo '<p>' . $lvpArticle['nom'] . '</p>';
+                                }
+                            echo '<p>' . $lvpArticle['marque'] . '</p>
+                                <div>';
+                                    if($lvpArticle['stock']> 1){
+                                        echo '<p class="stockLvp" style="color:green;">' . $lvpArticle['stock'] . ' en stock</p>';
+                                    }
+                                    else{
+                                        echo'<p class="stockLvp" style="color:red;">Stock épuisé</p>';
+                                    }
+                                    echo '<p class="priceLvp">' . $lvpArticle['prix'] . ' €</p>
+                                </div>
+                            </a>';
+                    }
+                    ?>
+            </article>
+        </section>
+
         <section class="loop">
+            <h3>Produits en vrac</h3>
             <?php include('include/BScard.php') ?>
         </section>
     </main>
