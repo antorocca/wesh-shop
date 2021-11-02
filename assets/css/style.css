@@ -617,9 +617,10 @@ section~h3{
     width:80%;
     margin: 2vh auto 0 auto;
     background:white;
+    border-radius:5px;
 }
 .lvp>h3{
-    margin:1vh 0vw 2vh 1vw;
+    margin:1vh 0vw 1vh 1vw;
     color:var(--base-blue);
 }
 .stockLvp{
@@ -630,13 +631,16 @@ section~h3{
     margin:0;
     padding-right:0.5vw;
 }
+.lvp>.slick-dotted,.lvp>.slick-slider{
+    margin-bottom:1vh;
+}
 /*look card5 for css
 
 
 /*--------INFINITE LOOP OF ARTICLE------*/
 .loop{
     width:80%;
-    margin: 15px auto;
+    margin: 2vh auto 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

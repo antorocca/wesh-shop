@@ -35,10 +35,13 @@ $brand->execute();
 $brandA = $brand->fetchAll();
 
 /*LVP method*/
+/*array length*/
+if(isset($_COOKIE['lastViewedProducts'])){
 $lvp = json_decode($_COOKIE['lastViewedProducts']);
 $count=count(json_decode($_COOKIE['lastViewedProducts']));
 $countLVP = $count - 1;
 $dateDiff='';
+}
 
 //get info of last viewed article
 if(isset($_COOKIE['lastViewedProducts'])){
@@ -55,7 +58,7 @@ if(isset($_COOKIE['lastViewedProducts'])){
     $filtered = array_values(array_unique($mapped));
 
     $implodeArr = implode(', ', array_fill(0, count($filtered), '?'));
-    $stmt = $bdd->prepare("SELECT id, nom, photo, prix, marque, stock FROM article WHERE id IN($implodeArr)");
+    $stmt = $bdd->prepare("SELECT id, nom, photo, prix, marque, stock FROM article WHERE id IN($implodeArr) LIMIT 0,10");
     $stmt->execute($filtered);
     $lvpArticles = $stmt->fetchAll();
     // var_dump($stmt);
@@ -202,16 +205,21 @@ if(isset($_COOKIE['lastViewedProducts'])){
             <div>
                 <h3>Article le plus consulté hier</h3>
                 <?php
-                    $topArt['prix'] = number_format((float) $topArt['prix'], 2,'.',',');
+                    if(isset($_COOKIE['lastViewedProducts'])){
+                        $topArt['prix'] = number_format((float) $topArt['prix'], 2,'.',',');
 
-                    echo '<a href="article.php?id=' . $topArt['id'] . '">
-                            <img src="assets/uploads/' . $topArt['photo'] . '" alt="">
-                            <p>' . $topArt['nom'] . '</p>
-                        </a>
-                        <div>
-                            <p>Consulté ' . $topArt['viewCount'] . ' fois</p>
-                            <p>' . $topArt['prix'] . ' €</p>
-                        </div>';
+                        echo '<a href="article.php?id=' . $topArt['id'] . '">
+                                <img src="assets/uploads/' . $topArt['photo'] . '" alt="">
+                                <p>' . $topArt['nom'] . '</p>
+                            </a>
+                            <div>
+                                <p>Consulté ' . $topArt['viewCount'] . ' fois</p>
+                                <p>' . $topArt['prix'] . ' €</p>
+                            </div>';
+                    }
+                    else{
+                        echo '<p>find something when cookie lvp isn\'t set</p>';
+                    }
                 ?>
             </div>
         </section>
@@ -231,39 +239,44 @@ if(isset($_COOKIE['lastViewedProducts'])){
             </div>
         </section>
 
-        <section class="lvp">
-            <h3>Articles précédemment consultés</h3>
-            <article class="sliderI4">
-                    <?php
-                    foreach($lvpArticles as $lvpArticle){
-                        echo '<a class="card5" href="article.php?id=' . $lvpArticle['id'] . '">
-                                <img src="assets/uploads/' . $lvpArticle['photo'] . '" alt="' . $lvpArticle['nom'] . '">';
-                                if(strlen($lvpArticle['nom'])>20){
-                                    $lvpArticle['nom'] = substr( $lvpArticle['nom'],0,18);
-                                    echo '<p>' . $lvpArticle['nom'] . '...</p>';
-                                }
-                                else{
-                                    echo '<p>' . $lvpArticle['nom'] . '</p>';
-                                }
-                            echo '<p>' . $lvpArticle['marque'] . '</p>
-                                <div>';
-                                    if($lvpArticle['stock']> 1){
-                                        echo '<p class="stockLvp" style="color:green;">' . $lvpArticle['stock'] . ' en stock</p>';
-                                    }
-                                    else{
-                                        echo'<p class="stockLvp" style="color:red;">Stock épuisé</p>';
-                                    }
-                                    echo '<p class="priceLvp">' . $lvpArticle['prix'] . ' €</p>
-                                </div>
-                            </a>';
-                    }
-                    ?>
-            </article>
-        </section>
-
         <section class="loop">
             <h3>Produits en vrac</h3>
             <?php include('include/BScard.php') ?>
+        </section>
+
+        <section class="lvp">
+            <h3>Historique de navigation</h3>
+            <article class="sliderI4">
+                    <?php
+                    if(isset($_COOKIE['lastViewedProducts'])){
+                        foreach($lvpArticles as $lvpArticle){
+                            echo '<a class="card5" href="article.php?id=' . $lvpArticle['id'] . '">
+                                    <img src="assets/uploads/' . $lvpArticle['photo'] . '" alt="' . $lvpArticle['nom'] . '">';
+                                    if(strlen($lvpArticle['nom'])>20){
+                                        $lvpArticle['nom'] = substr( $lvpArticle['nom'],0,18);
+                                        echo '<p>' . $lvpArticle['nom'] . '...</p>';
+                                    }
+                                    else{
+                                        echo '<p>' . $lvpArticle['nom'] . '</p>';
+                                    }
+                                echo '<p>' . $lvpArticle['marque'] . '</p>
+                                    <div>';
+                                        if($lvpArticle['stock']> 0){
+                                            echo '<p class="stockLvp" style="color:green;">' . $lvpArticle['stock'] . ' en stock</p>';
+                                        }
+                                        else{
+                                            echo'<p class="stockLvp" style="color:red;">Stock épuisé</p>';
+                                        }
+                                        echo '<p class="priceLvp">' . $lvpArticle['prix'] . ' €</p>
+                                    </div>
+                                    
+                                </a>';
+                        }
+                    }else{
+                        echo '<p style="text-align:center;">Ici retrouvez tout les articles que vous avez précédemment consultés</p>';
+                    }
+                    ?>
+            </article>
         </section>
     </main>
     <?php include('include/sliderLink.php'); ?>
