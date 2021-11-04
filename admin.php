@@ -23,28 +23,48 @@ session_start();
 
 <h2 class="userTitle">Page administrateur</h2>
 <h3 class="userTitle">Liste des utilisateurs</h3>
-<div class="test">
-<a class="createUser" href="create.php"><div>Créer un nouvel utilisateur</div></a>
-<div class="usertab">
-    <?php
-    foreach($userList as $user){
-        echo '<div class="ligne">
-                <div class="email">' . $user['email'] . '</div>
-                <div class="role">' . $user['role'] . '</div>
-                <a class="modifyUser" href="modifier.php?email='. urlencode($user['email']) . '"><div>Voir/Modifier</div></a>
-                <a class="deleteUser" href="supprimer.php?email='. urlencode($user['email']) .'"><div>Supprimer</div></a>';
-                if($user['role'] == 'ban'){
-                    echo '<a class="banUser" href="bannir.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) .'"><div>Débannir</div></a>
-            </div>';
-                }
-                else{
-                echo '<a class="banUser" href="bannir.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) .'"><div>Bannir</div></a>
-            </div>';
-        }
-    } ?>
-</div></div>
+<div class="userTable">
+    <a class="createUser" href="create.php"><div>Créer un nouvel utilisateur</div></a>
+    <div class="usertab">
+        <?php
+        foreach($userList as $user){
+            echo '<div class="ligne">
+                    <div class="email">' . $user['email'] . '</div>
+                    <div class="role">' . $user['role'] . '</div>
+                    <a class="modifyUser" href="modifier.php?email='. urlencode($user['email']) . '">Voir/Modifier</a>
+                    <a class="deleteUser" href="supprimer.php?email='. urlencode($user['email']) .'">Supprimer</a>';
+                    if($user['role'] == 'ban'){
+                        echo '<a class="banUser" href="bannir.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) .'">Débannir</a>
+                </div>';
+                    }
+                    else{
+                    echo '<a class="banUser" href="bannir.php?email='. urlencode($user['email']) . '&amp;role=' . urlencode($user['role']) .'">Bannir</a>
+                </div>';
+            }
+        } ?>
+    </div>
+</div>
 
-<a class="goShop" href="index.php"><div>Aller dans la boutique</div></a>
+
+
+
+
+
+
+<div class="testsearch">
+    <h3>Rechercher un utilisateur (Nom, prénom ou id) : </h3>
+    <input class="inputSearch" id="search2" type="text" value="" placeholder="rechercher">
+    <div>
+        <div id="result-search1" style="text-align:center;"></div>
+    </div>
+</div>
+
+
+
+
+
+<a class="goShop" href="index.php">Aller dans la boutique</a>
+
 <h3 class="addTitle">Ajouter un article</h3>
 <div class="addTable">
     <div class="addArticle">
@@ -114,7 +134,48 @@ session_start();
         </form>
     </div>
 </div>
-<br>
+
+<!-- <h3>Rechercher un article:</h3>
+<form action="" method ="post">
+	<select name="" id="">
+        <option value="">Par nom</option>
+        <option value="">Par marque</option>
+        <option value="">Par catégories</option>
+        <option value="">Par promotion</option>
+        <option value="">Par prix</option>
+    </select>
+    <input type="text">
+</form>  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>/*user search script*/
+    $(document).ready(function(){
+        $('#search2').keyup(function(){
+            $('#result-search1').html("");
+
+
+            let utilisateur = $(this).val();
+
+            if(utilisateur != ""){
+                $.ajax({
+                    type: 'GET',
+                    url: 'function/search-user.php',
+                    data: 'user=' + encodeURIComponent(utilisateur),
+                    success: function(data){
+                        if(data != ""){
+                            $('#result-search1').append(data);
+                        }else{
+                            document.getElementById('result-search1').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
+                        }
+                    }
+                })
+                console.log(utilisateur);
+            }
+        });
+    });
+</script>
+<?php include('include/link.php'); ?>
 <?php include('include/footer.php'); ?>
+
+
 
 

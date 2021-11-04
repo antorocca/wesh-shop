@@ -15,7 +15,7 @@ session_start();
             <form action="" method="post">
             <?php
                 if(Submit::$erreurCo || Submit::$ban){
-                    echo '<h4 style="color:red; margin:5px 0px;">' . Submit::$erreurCo, Submit::$ban . '</h4>';
+                    echo '<h4 style="color:red; margin:1vh 1vw;">' . Submit::$erreurCo, Submit::$ban . '</h4>';
                 }
                 elseif(Submit::$successCo){
                     echo '<h4 style="color:rgb(28, 100, 255); margin:5px 0px;">' . Submit::$successCo . '</h4>';

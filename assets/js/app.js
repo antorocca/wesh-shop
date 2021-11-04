@@ -1,5 +1,6 @@
+/*print subcat for category*/
 const categorySelect = document.getElementById('cats');
-console.log('hello');
+
 categorySelect.addEventListener('change', (event) => {
     console.log('updated');
     let catId = event.target.value;
@@ -18,9 +19,8 @@ categorySelect.addEventListener('change', (event) => {
                 console.error(err)
             })
         }
-        console.log('test');
     });
-    console.log('hello2');
+
     
     // categorySelect.addEventListener('change', async (event) => {
 //     let catId = event.target.value;

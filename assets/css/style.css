@@ -369,18 +369,19 @@ section~h3{
     margin:1px auto;
     border-radius:50%;
     width:100%;
+    background:var(--base-blue);
     transition:0.3s;
+    padding:3px;
 }
-.indFirst img:hover{
-    transform:scale(1.1)
-}
+
 .indFirst>div>a{
     border-radius:50%;
-    background:var(--base-orange);
     width:13%;
 }
 .indFirst>div>a>img:hover{
+    transform:scale(1.1);
     box-shadow: 2px 2px 5px 1px #929292;
+    background:var(--base-orange);
 }
 
 /*--------put forward brand section--------*/
@@ -868,8 +869,6 @@ section~h3{
 .card4>p:nth-child(3)>span{
     text-decoration: line-through;
 }
-.card4>p:last-child{
-}
 .slick-dots{
     visibility: hidden;
 }
@@ -1174,19 +1173,18 @@ section~h3{
     text-align:center;
 }
 .goShop{
+    display:block;
+    width:60%;
     text-align: center;
     text-decoration: none;
     color:white;
     font-weight:bolder;
-}
-.goShop div{
     background-color: var(--base-blue,rgb(8, 63, 181));
-    width:60%;
-    margin:0% auto;
+    margin:2vh auto;
     padding:15px 0px;
-    border-radius:10px;
-
+    border-radius:5px;
 }
+
 /*---------------LISTE USER------------*/
 /**************************************/
 .usertab{
@@ -1245,7 +1243,7 @@ section~h3{
     align-items:center;
 }
 
-.test{
+.userTable{
     display:flex;
     width:100%;
     margin:1% 0%;
@@ -1256,12 +1254,39 @@ section~h3{
 /********************************************************/
 .tabUser{
     display:flex;
-    justify-content:space-around;
+    flex-direction: column;
     width:70%;
     margin-left:auto;
     margin-right:auto;
+    padding-bottom:4vh;
     border:1px solid black;
     border-radius:10px;
+}
+.tabUser>div:first-child{
+    display:flex;
+    justify-content: space-around;
+}
+.tabUser>div:last-child{
+    width:50%;
+    margin:3vh auto 0 auto;
+    text-align: center;
+    display:flex;
+}
+.tabUser>div:last-child>a{
+    display:block;
+    padding:15px 0;
+    width:20%;
+    margin:0 auto;
+    text-decoration: none;
+    color:white;
+    font-weight:bold;
+    border-radius: 5px;
+}
+.tabUser>div:last-child>a:first-child{
+    background-color:var(--base-red);
+}
+.tabUser>div:last-child>a:last-child{
+    background-color:rgb(43, 43, 43);
 }
 .afficherUser{
     display:flex;
@@ -1454,4 +1479,46 @@ footer>p{
     color: #FFFFFF;
     font-size:100px;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1861ff, 0 0 30px #1861ff, 0 0 40px #1861ff, 0 0 55px #1861ff, 0 0 75px #1861ff;
+}
+
+
+
+.testsearch{
+    width:60%;
+    margin:4vh auto 0 auto;
+    position:relative;
+    overflow: hidden;
+    
+}
+
+.testsearch:focus-within {
+    overflow: visible;
+}
+
+.inputSearch{
+    width:100%;
+    padding:10px 0;
+    box-sizing: border-box;
+}
+
+.userResult{
+    display:block;
+    text-decoration:none;
+    padding: 1vh 0;
+    margin-top:20px;
+    margin: 0 auto;
+    color:var(--base-txt-color);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    -webkit-box-shadow: 0px 8px 10px 0px #808080; 
+    box-shadow: 0px 8px 10px 0px #808080;
+}
+.userResult:hover{
+    background:var(--base-blue);
+    color:white;
+}
+.testsearch>div{
+    position:absolute;
+    width:100%; 
 }

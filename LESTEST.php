@@ -6,10 +6,6 @@ session_start();
 
     require_once 'functionDatabase.php';
     require_once 'functionArticle.php';
-    
-    if($_SERVER["REQUEST_METHOD"] === "POST") {
-        Article::addarticle();
-    }
 
     $bdd = Database::connect();
     $list = $bdd ->query('SELECT * FROM user ORDER BY role ASC');
@@ -21,49 +17,41 @@ session_start();
 // var_dump($cat);
 // echo '</pre>';
 ?>
-   <?php include('include/head&header.php'); ?>
-<br><br><br><br><br>
-<form action="" method="post">
-    <label>*Type:</label>
-    <select id="cats" name="addCat">
-        <option value="none"></option>
-        <option value="11">Ameublement</option>
-        <option value="15">Animalerie</option>
-        <option value="9">Beauté et bien-être</option>
-        <option value="1">Bijoux</option>
-        <option value="8">Boisson</option>
-        <option value="16">Décoration</option>
-        <option value="4">Épicerie</option>
-        <option value="14">Jardinerie</option>
-        <option value="6">Jeu et jouet</option>
-        <option value="12">Puériculture et bébé</option>
-        <option value="2">Livre</option>
-        <option value="3">Mode</option>
-        <option value="7">Musique et Art</option>
-        <option value="10">Sport et loisir</option>
-        <option value="5">Technologie</option>
-    </select>
+<?php include('include/head&header.php'); ?>
 
-    <select name="subcat" id="subcats"></select>
-    <script src="./assets/js/app.js"></script>
-    <input type="submit">
-</form>
+<div class="testsearch">
+    <input class="inputSearch" id="search1" type="text" value="" placeholder="rechercher">
+</div>
+
+<div style="margin-top:3vh;">
+    <div id="result-search" style="text-align:center;"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#search1').keyup(function(){
+            $('#result-search').html("");
 
 
-<?php
-    $cat = $_POST['addCat'];
-    $subcat = $_POST['subcat'];
-    $aCat = [$cat,$subcat];
-    $allCat = implode(',', $aCat);
-    $arrayEx = explode(",",$allCat);
+            let utilisateur = $(this).val();
 
-
-
-    echo 'ma caté: ' . $cat . '<br> ma sous caté: ' . $subcat . '<br>les 2 dans un tableau:' . $aCat . '<br>fonction implode:' . $allCat . "<br>la fonction explode:" . $arrayEx;
-
-?>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-
+            if(utilisateur != ""){
+                $.ajax({
+                    type: 'GET',
+                    url: 'function/search-user.php',
+                    data: 'user=' + encodeURIComponent(utilisateur),
+                    success: function(data){
+                        if(data != ""){
+                            $('#result-search').append(data);
+                        }else{
+                            document.getElementById('result-search').innerHTML = '<div style="fontsize:20px; text-align:center; margin-top:10px;">Aucun utilisateurs</div>'
+                        }
+                    }
+                })
+                console.log(utilisateur);
+            }
+        });
+    });
+</script>
+<?php include('include/footer.php'); ?>

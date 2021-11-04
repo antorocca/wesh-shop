@@ -54,5 +54,5 @@
         <div class="subCinC"></div>
     </section>
 </main>
-<?php include('include/sliderLink.php'); ?>
+<?php include('include/link.php'); ?>
 <?php include('include/footer.php'); ?>

@@ -30,19 +30,23 @@
             <div class="headerRight">
                 <?php
                 if(!empty($_SESSION)){
-                    echo '<div class="account">
-                    <button class="dropBtn">' . $_SESSION['name'] . '<br>Mon Compte</button>
+                ?>
+                    <div class="account">
+                    <button class="dropBtn"><?=$_SESSION['name'] ?><br>Mon Compte</button>
                         <div class="dropdownAccount">
                         <a href="#">Mon compte</a>
-                        <a href="#">Mes commandes</a>';
-                        echo '<a href="logout.php">Se déconnecter</a>
+                        <a href="#">Mes commandes</a>
+                        <a href="logout.php">Se déconnecter</a>
                         </div>
-                    </div>';
+                    </div>
+                    <?php
                 }else{
-                    echo '<div class="goIdentify">
-                    <a class="goConnexion" href="connexion.php">S\'identifier</a>
-                    <a class="goSubscribe" href="inscription.php">Créer un compte</a>
-                    </div>';
+                    ?>
+                    <div class="goIdentify">
+                        <a class="goConnexion" href="connexion.php">S\'identifier</a>
+                        <a class="goSubscribe" href="inscription.php">Créer un compte</a>
+                    </div>
+                <?php
                 }
                 ?>
                 <figure class="panier">
@@ -78,6 +82,6 @@
 
             }
             elseif($_SESSION['role']== 'admin'){
-                echo '<br><a class="goShop" href="admin.php"><div>Aller à la page administrateur</div></a>';
+                echo '<a class="goShop" href="admin.php">Aller à la page administrateur</a>';
             }
         ?>
