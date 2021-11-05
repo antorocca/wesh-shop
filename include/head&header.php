@@ -43,7 +43,7 @@
                 }else{
                     ?>
                     <div class="goIdentify">
-                        <a class="goConnexion" href="connexion.php">S\'identifier</a>
+                        <a class="goConnexion" href="connexion.php">S'identifier</a>
                         <a class="goSubscribe" href="inscription.php">Créer un compte</a>
                     </div>
                 <?php

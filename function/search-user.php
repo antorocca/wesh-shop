@@ -22,4 +22,23 @@
         }
 
     }
+
+//strip_tags()
+    if(isset($_GET['article'])){
+        $article = trim($_GET['article']);
+
+        $stmt = $bdd ->prepare('SELECT * FROM article WHERE nom LIKE :n% OR marque LIKE :n% OR id LIKE :n% OR stock LIKE :n LIMIT 10');
+        $stmt-> execute(['n' => "$article"]);
+        $stmt = $stmt->fetchAll();
+    
+        // var_dump($req);
+        foreach($stmt as $s){ 
+        ?>
+        <a class="userResult" href="article.php?id=<?=urlencode($s['id'])?>">
+            <?= $s['id'] . ': ' . $s['nom'] . ' / ' . $s['marque'] . ' / ' . $s['stock'] . ' en stock' ?>
+        </a>    
+        <?php
+        }
+
+    }
     ?>

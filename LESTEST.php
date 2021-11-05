@@ -19,39 +19,46 @@ session_start();
 ?>
 <?php include('include/head&header.php'); ?>
 
-<div class="testsearch">
-    <input class="inputSearch" id="search1" type="text" value="" placeholder="rechercher">
+
+<?php include('include/footer.php'); ?>
+
+
+
+<div class="userSearch">
+    <h3>Rechercher un utilisateur (Nom, prénom ou id) : </h3>
+    <input class="inputSearch" id="searchU" type="text" value="" placeholder=" Rechercher un utilisateur">
+    <div id="result-searchU"></div>
 </div>
 
-<div style="margin-top:3vh;">
-    <div id="result-search" style="text-align:center;"></div>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+// function search(){
     $(document).ready(function(){
-        $('#search1').keyup(function(){
-            $('#result-search').html("");
-
+        $('#searchU').keyup(function(){
+            $('#result-searchU').html("");
 
             let utilisateur = $(this).val();
+
+            console.log($(this).val());
 
             if(utilisateur != ""){
                 $.ajax({
                     type: 'GET',
                     url: 'function/search-user.php',
-                    data: 'user=' + encodeURIComponent(utilisateur),
+                    data: 'article=' + encodeURIComponent(utilisateur),
                     success: function(data){
                         if(data != ""){
-                            $('#result-search').append(data);
+                            $('#result-searchU').append(data);
                         }else{
-                            document.getElementById('result-search').innerHTML = '<div style="fontsize:20px; text-align:center; margin-top:10px;">Aucun utilisateurs</div>'
+                            document.getElementById('result-searchU').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
                         }
                     }
                 })
-                console.log(utilisateur);
             }
         });
     });
+
 </script>
-<?php include('include/footer.php'); ?>
+
+#searchU    #result-searchU*3  user

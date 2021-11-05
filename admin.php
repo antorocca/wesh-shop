@@ -24,7 +24,7 @@ session_start();
 <h2 class="userTitle">Page administrateur</h2>
 <h3 class="userTitle">Liste des utilisateurs</h3>
 <div class="userTable">
-    <a class="createUser" href="create.php"><div>Créer un nouvel utilisateur</div></a>
+    <a class="createUser" href="create.php">Créer un nouvel utilisateur</a>
     <div class="usertab">
         <?php
         foreach($userList as $user){
@@ -45,23 +45,11 @@ session_start();
     </div>
 </div>
 
-
-
-
-
-
-
-<div class="testsearch">
+<div class="userSearch">
     <h3>Rechercher un utilisateur (Nom, prénom ou id) : </h3>
-    <input class="inputSearch" id="search2" type="text" value="" placeholder="rechercher">
-    <div>
-        <div id="result-search1" style="text-align:center;"></div>
-    </div>
+    <input class="inputSearch" id="searchU" type="text" value="" placeholder=" Rechercher un utilisateur">
+    <div id="result-searchU"></div>
 </div>
-
-
-
-
 
 <a class="goShop" href="index.php">Aller dans la boutique</a>
 
@@ -135,23 +123,18 @@ session_start();
     </div>
 </div>
 
-<!-- <h3>Rechercher un article:</h3>
-<form action="" method ="post">
-	<select name="" id="">
-        <option value="">Par nom</option>
-        <option value="">Par marque</option>
-        <option value="">Par catégories</option>
-        <option value="">Par promotion</option>
-        <option value="">Par prix</option>
-    </select>
-    <input type="text">
-</form>  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>/*user search script*/
-    $(document).ready(function(){
-        $('#search2').keyup(function(){
-            $('#result-search1').html("");
+<div class="articleSearch">
+    <h3>Rechercher un article (id, nom, marque, catégorie ou stock) : </h3>
+    <input class="inputSearchA" id="searchA" type="text" value="" placeholder=" Rechercher un article">
+    <div id="result-searchA"></div>
+</div>
 
+<!--user search script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#searchU').keyup(function(){
+            $('#result-searchU').html("");
 
             let utilisateur = $(this).val();
 
@@ -162,9 +145,9 @@ session_start();
                     data: 'user=' + encodeURIComponent(utilisateur),
                     success: function(data){
                         if(data != ""){
-                            $('#result-search1').append(data);
+                            $('#result-searchU').append(data);
                         }else{
-                            document.getElementById('result-search1').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
+                            document.getElementById('result-searchU').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
                         }
                     }
                 })

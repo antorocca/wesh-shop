@@ -1249,6 +1249,97 @@ section~h3{
     margin:1% 0%;
     justify-content:center;
 }
+/*-------user search bar ---------*/
+
+.userSearch{
+    width:60%;
+    margin:4vh auto 0 auto;
+    position:relative;
+    overflow: hidden;
+}
+
+.userSearch:focus-within {
+    overflow: visible;
+}
+.userSearch>h3{
+    margin-top:0;
+}
+.userSearch>div{
+    position:absolute;
+    width:100%; 
+}
+.inputSearch{
+    width:100%;
+    padding:10px 0;
+    box-sizing: border-box;
+}
+
+.userResult{
+    display:block;
+    text-decoration:none;
+    padding: 1vh 0;
+    margin-top:20px;
+    margin: 0 auto;
+    color:var(--base-txt-color);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    -webkit-box-shadow: 0px 8px 10px 0px #808080; 
+    box-shadow: 0px 8px 10px 0px #808080;
+}
+.userResult:hover{
+    background:var(--base-blue);
+    color:white;
+}
+#result-search1{
+    text-align:center;
+}
+
+/*-------article search bar ---------*/
+
+.articleSearch{
+    width:60%;
+    margin:4vh auto 0 auto;
+    position:relative;
+    overflow: hidden;
+}
+
+.articleSearch:focus-within {
+    overflow: visible;
+}
+.articleSearch>h3{
+    margin-top:0;
+}
+.articleSearch>div{
+    position:absolute;
+    width:100%; 
+}
+.inputSearchA{
+    width:100%;
+    padding:10px 0;
+    box-sizing: border-box;
+}
+
+.articleResult{
+    display:block;
+    text-decoration:none;
+    padding: 1vh 0;
+    margin-top:20px;
+    margin: 0 auto;
+    color:var(--base-txt-color);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    -webkit-box-shadow: 0px 8px 10px 0px #808080; 
+    box-shadow: 0px 8px 10px 0px #808080;
+}
+.articleResult:hover{
+    background:var(--base-blue);
+    color:white;
+}
+#result-search2{
+    text-align:center;
+}
 
 /*---------------------MODIFIER.PHP----------------------*/
 /********************************************************/
@@ -1482,43 +1573,3 @@ footer>p{
 }
 
 
-
-.testsearch{
-    width:60%;
-    margin:4vh auto 0 auto;
-    position:relative;
-    overflow: hidden;
-    
-}
-
-.testsearch:focus-within {
-    overflow: visible;
-}
-
-.inputSearch{
-    width:100%;
-    padding:10px 0;
-    box-sizing: border-box;
-}
-
-.userResult{
-    display:block;
-    text-decoration:none;
-    padding: 1vh 0;
-    margin-top:20px;
-    margin: 0 auto;
-    color:var(--base-txt-color);
-    background-color: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    -webkit-box-shadow: 0px 8px 10px 0px #808080; 
-    box-shadow: 0px 8px 10px 0px #808080;
-}
-.userResult:hover{
-    background:var(--base-blue);
-    color:white;
-}
-.testsearch>div{
-    position:absolute;
-    width:100%; 
-}
