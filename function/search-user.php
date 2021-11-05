@@ -27,8 +27,8 @@
     if(isset($_GET['article'])){
         $article = trim($_GET['article']);
 
-        $stmt = $bdd ->prepare('SELECT * FROM article WHERE nom LIKE :n% OR marque LIKE :n% OR id LIKE :n% OR stock LIKE :n LIMIT 10');
-        $stmt-> execute(['n' => "$article"]);
+        $stmt = $bdd ->prepare('SELECT * FROM article WHERE nom LIKE :n OR marque LIKE :n OR id LIKE :n OR stock LIKE :n LIMIT 10');
+        $stmt-> execute(['n' => "$article%"]);
         $stmt = $stmt->fetchAll();
     
         // var_dump($req);
