@@ -24,41 +24,46 @@ session_start();
 
 
 
-<div class="userSearch">
-    <h3>Rechercher un utilisateur (Nom, prénom ou id) : </h3>
-    <input class="inputSearch" id="searchU" type="text" value="" placeholder=" Rechercher un utilisateur">
-    <div id="result-searchU"></div>
-</div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-// function search(){
-    $(document).ready(function(){
-        $('#searchU').keyup(function(){
-            $('#result-searchU').html("");
+<script src="assets/js/search.js"></script>
+<!-- 
+$(document).ready(function(){
 
-            let utilisateur = $(this).val();
+$('#typeSearch').change(function(){
 
-            console.log($(this).val());
+    let type = $(this).val();
+    console.log(type)
+    if(type) {
+            $.ajax({
+                type: 'GET',
+                url: 'function/search-user.php',
+                data: 'type=' + encodeURIComponent(type)
+                });
+        }
+    <script>
+    $('#searchU').keyup(function(){
+        $('#result-searchU').html("");
 
-            if(utilisateur != ""){
-                $.ajax({
-                    type: 'GET',
-                    url: 'function/search-user.php',
-                    data: 'article=' + encodeURIComponent(utilisateur),
-                    success: function(data){
-                        if(data != ""){
-                            $('#result-searchU').append(data);
-                        }else{
-                            document.getElementById('result-searchU').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
-                        }
+        let utilisateur = $(this).val();
+        let type = document.getElementById('typeSearch');
+
+        console.log(type);
+        if(utilisateur != "") {
+            $.ajax({
+                type: 'GET',
+                url: 'function/search-user.php',
+                data: 'article=' + encodeURIComponent(utilisateur) + '&type=' + encodeURIComponent(type.value),
+                success: function(data){
+                    if(data != ""){
+                        $('#result-searchU').append(data);
+                    }else{
+                        document.getElementById('result-searchU').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
                     }
-                })
-            }
-        });
-    });
-
-</script>
-
-#searchU    #result-searchU*3  user
+                }
+            })
+        }
+    });//here
+</script> -->

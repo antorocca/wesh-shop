@@ -124,38 +124,20 @@ session_start();
 </div>
 
 <div class="articleSearch">
-    <h3>Rechercher un article (id, nom, marque, catégorie ou stock) : </h3>
-    <input class="inputSearchA" id="searchA" type="text" value="" placeholder=" Rechercher un article">
+    <h3>Rechercher un article :</h3>
+    <select name="cri" id="typeSearch">
+        <option value="nom">Nom</option>
+        <option value="marque">Marque</option>
+        <option value="id">ID</option>
+        <option value="stock">Stock</option>
+    </select>
+    <input class="inputSearchA" id="searchA" type="text" value="" placeholder=" Rechercher un utilisateur">
     <div id="result-searchA"></div>
 </div>
 
-<!--user search script-->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#searchU').keyup(function(){
-            $('#result-searchU').html("");
-
-            let utilisateur = $(this).val();
-
-            if(utilisateur != ""){
-                $.ajax({
-                    type: 'GET',
-                    url: 'function/search-user.php',
-                    data: 'user=' + encodeURIComponent(utilisateur),
-                    success: function(data){
-                        if(data != ""){
-                            $('#result-searchU').append(data);
-                        }else{
-                            document.getElementById('result-searchU').innerHTML = '<div class="userResult">Aucun utilisateurs</div>'
-                        }
-                    }
-                })
-                console.log(utilisateur);
-            }
-        });
-    });
-</script>
+<script src="assets/js/search.js"></script>
 <?php include('include/link.php'); ?>
 <?php include('include/footer.php'); ?>
 
