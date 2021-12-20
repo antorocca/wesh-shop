@@ -55,7 +55,7 @@
             </div>
         </header>
 
-        <div class="main">
+        <div class="wdwShop">
         
             <h1>WESH SHOP</h1>
             

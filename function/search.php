@@ -43,10 +43,16 @@
                 $col = $type;
                 break;
         }
-
-        $stmt = $bdd ->prepare("SELECT * FROM article WHERE $col LIKE :n");
-        $stmt-> execute(['n' => "$article%"]);
-        $stmt = $stmt->fetchAll();
+        if($_GET['type'] == 'stock' || $_GET['type'] == 'id'){
+            $stmt = $bdd ->prepare("SELECT * FROM article WHERE $col LIKE :n");
+            $stmt-> execute(['n' => "$article"]);
+            $stmt = $stmt->fetchAll();
+        }
+        else{
+            $stmt = $bdd ->prepare("SELECT * FROM article WHERE $col LIKE :n");
+            $stmt-> execute(['n' => "$article%"]);
+            $stmt = $stmt->fetchAll();
+        }
         
         // var_dump($req);
         foreach($stmt as $s){ 
